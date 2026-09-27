@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Explorer | Interactive Solar System & Astronomy Lab</title>
+  <meta name="description" content="An interactive, scientifically accurate 3D astronomy lab designed for curious minds. Explore the solar system, understand day and night, seasons, moon phases, and eclipses.">
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="space-theme">
+  <!-- Starfield Canvas for Background Atmosphere -->
+  <canvas id="bg-starfield" class="starfield-bg"></canvas>
+
+  <div class="app-layout">
+    <!-- Top Navigation Header -->
+    <header class="app-header glass-panel">
+      <div class="header-brand">
+        <div class="brand-icon-wrapper">
+          <span class="brand-orbit"></span>
+          <span class="brand-sun">☀️</span>
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-title">Cosmic Explorer</h1>
+          <span class="brand-tagline">ToruLearn Interactive Astronomy & Solar System Lab</span>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-tabs" role="tablist" aria-label="Astronomy Simulations">
+        <button class="nav-tab active" data-tab="solar-system" role="tab" aria-selected="true" id="tab-solar-system">
+          <span class="tab-icon">🌌</span>
+          <span class="tab-label">Solar System</span>
+        </button>
+        <button class="nav-tab" data-tab="day-night" role="tab" aria-selected="false" id="tab-day-night">
+          <span class="tab-icon">☀️</span>
+          <span class="tab-label">Day &amp; Night</span>
+        </button>
+        <button class="nav-tab" data-tab="seasons" role="tab" aria-selected="false" id="tab-seasons">
+          <span class="tab-icon">🌍</span>
+          <span class="tab-label">The Seasons</span>
+        </button>
+        <button class="nav-tab" data-tab="moon-phases" role="tab" aria-selected="false" id="tab-moon-phases">
+          <span class="tab-icon">🌖</span>
+          <span class="tab-label">Moon Phases</span>
+        </button>
+        <button class="nav-tab" data-tab="eclipses" role="tab" aria-selected="false" id="tab-eclipses">
+          <span class="tab-icon">🌑</span>
+          <span class="tab-label">Eclipses Lab</span>
+        </button>
+        <button class="nav-tab" data-tab="quiz" role="tab" aria-selected="false" id="tab-quiz">
+          <span class="tab-icon">🏆</span>
+          <span class="tab-label">Cosmic Quiz</span>
+        </button>
+      </nav>
+
+      <!-- Utility Controls -->
+      <div class="header-actions">
+        <button id="audio-toggle-btn" class="icon-btn" title="Toggle Cosmic Ambient Audio" aria-label="Toggle Audio">
+          <span id="audio-icon">🔇</span>
+        </button>
+        <button id="fullscreen-btn" class="icon-btn" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
+          <span>⛶</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="simulation-viewport">
+      
+      <!-- ================= SECTION 1: SOLAR SYSTEM ORRERY ================= -->
+      <section id="section-solar-system" class="sim-section active" role="tabpanel" aria-labelledby="tab-solar-system">
+        <div class="sim-container">
+          <div class="canvas-wrapper">
+            <canvas id="canvas-solar-system"></canvas>
+            
+            <!-- Floating Simulation Overlay Controls -->
+            <div class="floating-controls glass-panel">
+              <div class="control-group">
+                <button id="ss-play-btn" class="btn-primary-small">⏸ Pause</button>
+                <button id="ss-reset-btn" class="btn-ghost-small">↺ Reset View</button>
+              </div>
+              <div class="control-group">
+                <label for="ss-speed-slider">Speed: <span id="ss-speed-val">1x</span></label>
+                <input type="range" id="ss-speed-slider" min="0.1" max="10" step="0.1" value="1">
+              </div>
+              <div class="control-group">
+                <label class="toggle-switch">
+                  <input type="checkbox" id="ss-labels-toggle" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">Labels</span>
+                </label>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="ss-scale-toggle">
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">True Scale</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="canvas-hint">
+              <span>💡 Drag to pan • Scroll to zoom • Click any planet to inspect</span>
+            </div>
+          </div>
+
+          <!-- Deep-Dive Science Card -->
+          <aside class="science-panel glass-panel">
+            <div class="science-header">
+              <span class="science-badge">Orbital Mechanics</span>
+              <h2 id="ss-inspector-title">Our Solar System</h2>
+            </div>
+
+            <!-- Planet Detail Box (Swapped dynamically on click) -->
+            <div id="ss-planet-card" class="planet-card">
+              <div class="planet-hero-preview">
+                <img id="ss-hero-image" src="assets/images/solar_system_hero.jpg" alt="Solar System Overview" class="zoomable-img" title="Click to view full photo">
+                <span class="image-caption-tag">Click photo to zoom</span>
+              </div>
+
+              <div id="ss-detail-content" class="science-body">
+                <h3>The Cosmic Neighborhood</h3>
+                <p>
+                  Our Solar System was born about <strong>4.6 billion years ago</strong> from a giant swirling cloud of gas and interstellar dust called a solar nebula. At the center, gravity pulled material together to ignite our <strong>Sun</strong>—a blazing nuclear furnace containing 99.8% of all the mass in our entire solar system!
+                </p>
+                <div class="fun-fact-box">
+                  <span class="fact-icon">🚀</span>
+                  <div class="fact-text">
+                    <strong>Did You Know?</strong> The Sun is so gigantic that <strong>1.3 million Earths</strong> could fit inside it! Yet, compared to other stars in our Milky Way galaxy, our Sun is just an average yellow dwarf star.
+                  </div>
+                </div>
+
+                <div class="planet-stats-grid" id="planet-stats-grid">
+                  <div class="stat-item">
+                    <span class="stat-label">Planets</span>
+                    <span class="stat-value">8 Major</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">Known Moons</span>
+                    <span class="stat-value">290+</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">Asteroid Belt</span>
+                    <span class="stat-value">Between Mars &amp; Jupiter</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-label">Cosmic Age</span>
+                    <span class="stat-value">4.6 Billion Yrs</span>
+                  </div>
+                </div>
+
+                <div class="interactive-prompt">
+                  <h4>Try This Experiment:</h4>
+                  <p>Click on <strong>Mercury</strong> and compare how fast it orbits compared to distant <strong>Neptune</strong>. Why does Mercury fly so much faster? (Hint: Kepler’s 3rd Law! Closer planets feel stronger solar gravity).</p>
+                  <div class="preset-buttons">
+                    <button class="preset-btn" data-planet="Earth">🌍 Focus Earth</button>
+                    <button class="preset-btn" data-planet="Jupiter">🪐 Focus Jupiter</button>
+                    <button class="preset-btn" data-planet="Saturn">✨ Focus Saturn</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================= SECTION 2: DAY & NIGHT ================= -->
+      <section id="section-day-night" class="sim-section" role="tabpanel" aria-labelledby="tab-day-night">
+        <div class="sim-container">
+          <div class="canvas-wrapper">
+            <canvas id="canvas-day-night"></canvas>
+            
+            <div class="floating-controls glass-panel">
+              <div class="control-group">
+                <button id="dn-play-btn" class="btn-primary-small">⏸ Pause</button>
+                <button id="dn-reset-btn" class="btn-ghost-small">↺ Reset Time</button>
+              </div>
+              <div class="control-group slider-wide">
+                <label for="dn-time-slider">Time of Day: <span id="dn-time-display" class="highlight-val">12:00 PM (Noon)</span></label>
+                <input type="range" id="dn-time-slider" min="0" max="24" step="0.01" value="12">
+              </div>
+              <div class="control-group slider-wide">
+                <label for="dn-orbit-slider">Earth Orbit &amp; Season: <span id="dn-season-display" class="highlight-val">June Solstice (Arctic 24h Day)</span></label>
+                <input type="range" id="dn-orbit-slider" min="0" max="12" step="0.01" value="0">
+              </div>
+              <div class="control-group">
+                <button class="dn-orbit-btn active" data-month="0">☀️ June (Arctic 24h Day)</button>
+                <button class="dn-orbit-btn" data-month="3">🍂 Sept (Equal 12h/12h)</button>
+                <button class="dn-orbit-btn" data-month="6">❄️ Dec (Antarctica 24h Day)</button>
+                <button class="dn-orbit-btn" data-month="9">🌱 March (Equal 12h/12h)</button>
+                <button id="dn-auto-orbit-btn" class="btn-ghost-small" title="Simulate Earth traveling along its orbit">🔄 Orbit Play</button>
+              </div>
+              <div class="control-group">
+                <label for="dn-city-select">Observer City:</label>
+                <select id="dn-city-select" class="custom-select">
+                  <option value="dhaka">Dhaka, Bangladesh 🇧🇩</option>
+                  <option value="newyork" selected>New York, USA 🇺🇸</option>
+                  <option value="tromso">Tromsø, Norway (Arctic 24h) 🇳🇴</option>
+                  <option value="mcmurdo">McMurdo, Antarctica (24h) 🇦🇶</option>
+                  <option value="london">London, UK 🇬🇧</option>
+                  <option value="tokyo">Tokyo, Japan 🇯🇵</option>
+                  <option value="sydney">Sydney, Australia 🇦🇺</option>
+                  <option value="cairo">Cairo, Egypt 🇪🇬</option>
+                  <option value="northpole">North Pole (Arctic) ❄️</option>
+                </select>
+              </div>
+              <div class="control-group">
+                <label class="toggle-switch" title="Toggle Earth's true oblate spheroid geoid shape">
+                  <input type="checkbox" id="dn-shape-toggle" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">Oblate Spheroid (True Shape)</span>
+                </label>
+                <label class="toggle-switch" title="Show Earth's Orbit around the Sun Mini-Map">
+                  <input type="checkbox" id="dn-orbit-map-toggle" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">Orbit Mini-Map</span>
+                </label>
+                <label class="toggle-switch" title="Show equatorial bulge & polar flattening calipers">
+                  <input type="checkbox" id="dn-calipers-toggle" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">Calipers</span>
+                </label>
+                <label class="toggle-switch" title="Compare against a theoretical unspinning round sphere">
+                  <input type="checkbox" id="dn-compare-toggle">
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">Compare Perfect Ball</span>
+                </label>
+              </div>
+              <div class="control-group">
+                <label for="dn-bulge-slider">Bulge Scale: <span id="dn-bulge-val">1.0x</span></label>
+                <input type="range" id="dn-bulge-slider" min="0.5" max="2.5" step="0.1" value="1.0">
+              </div>
+            </div>
+
+            <!-- Multi-City Pin Manager (Add & compare pins worldwide including Dhaka) -->
+            <div class="dn-pin-manager glass-panel">
+              <div class="pin-manager-header">
+                <span>📍 Pin Cities on Earth</span>
+                <span id="dn-pin-count" class="pin-count-badge">2 Pinned</span>
+              </div>
+              <div class="pin-input-row">
+                <input type="text" id="dn-city-input" list="dn-city-datalist" placeholder="Type city to pin (e.g. Dhaka, Tromsø)..." class="pin-input">
+                <datalist id="dn-city-datalist">
+                  <option value="Dhaka, Bangladesh">
+                  <option value="New York, USA">
+                  <option value="Tromsø, Norway (Arctic 24h)">
+                  <option value="McMurdo Station, Antarctica">
+                  <option value="London, UK">
+                  <option value="Tokyo, Japan">
+                  <option value="Sydney, Australia">
+                  <option value="Cairo, Egypt">
+                  <option value="Paris, France">
+                  <option value="Dubai, UAE">
+                  <option value="São Paulo, Brazil">
+                  <option value="Beijing, China">
+                  <option value="Los Angeles, USA">
+                  <option value="Mumbai, India">
+                  <option value="Singapore">
+                  <option value="Reykjavik, Iceland">
+                  <option value="North Pole (Arctic)">
+                </datalist>
+                <button id="dn-add-pin-btn" class="btn-primary-small">📍 Pin City</button>
+              </div>
+              <div class="quick-pin-presets">
+                <button class="quick-pin-btn" data-city="dhaka">🇧🇩 + Dhaka</button>
+                <button class="quick-pin-btn" data-city="newyork">🇺🇸 + New York</button>
+                <button class="quick-pin-btn" data-city="tromso">🇳🇴 + Tromsø (Arctic 24h)</button>
+                <button class="quick-pin-btn" data-city="mcmurdo">🇦🇶 + Antarctica (24h)</button>
+                <button class="quick-pin-btn" data-city="london">🇬🇧 + London</button>
+                <button class="quick-pin-btn" data-city="tokyo">🇯🇵 + Tokyo</button>
+                <button class="quick-pin-btn" data-city="sydney">🇦🇺 + Sydney</button>
+                <button class="quick-pin-btn" data-city="cairo">🇪🇬 + Cairo</button>
+              </div>
+              <div id="dn-pinned-chips" class="pinned-chips-container">
+                <!-- Dynamically populated city chips with live times -->
+              </div>
+            </div>
+
+            <!-- Ground Sky Preview Box -->
+            <div class="ground-sky-box glass-panel">
+              <div class="ground-sky-header">
+                <span class="pin-icon">📍</span>
+                <span id="ground-sky-location">New York Observer</span>
+              </div>
+              <div id="ground-sky-view" class="sky-window noon">
+                <div class="sky-celestial-body" id="sky-sun-moon">☀️</div>
+                <div class="sky-horizon">
+                  <span class="horizon-trees">🌲 🏡 🌳</span>
+                </div>
+              </div>
+              <div class="ground-sky-status">
+                <span id="ground-sky-phase">Direct Overhead Sunlight</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="science-panel glass-panel">
+            <div class="science-header">
+              <span class="science-badge">Planetary Geodesy &amp; Rotation</span>
+              <h2>Earth's True Shape &amp; Day/Night</h2>
+            </div>
+
+            <div class="planet-hero-preview">
+              <img src="assets/images/earth_oblate_spheroid.jpg" alt="Earth Oblate Spheroid Caliper Diagram" class="zoomable-img" title="Click to view full photo">
+              <span class="image-caption-tag">Earth's True Shape: Oblate Spheroid (Geoid)</span>
+            </div>
+
+            <div class="science-body">
+              <h3>Earth is NOT a Perfect Sphere!</h3>
+              <p>
+                From faraway space pictures, Earth looks like a perfectly round marble. <strong>But in reality, Earth is an Oblate Spheroid (a Geoid)!</strong>
+              </p>
+              <p>
+                Because Earth spins rapidly on its axis once every 24 hours (whipping around at <strong>1,670 km/h or 1,037 mph</strong> at the equator), <strong>centrifugal force</strong> flings rocks, magma, and oceans outward. This creates a noticeable <strong>equatorial bulge</strong> while flattening the North and South Poles!
+              </p>
+
+              <div class="planet-stats-grid">
+                <div class="stat-item">
+                  <span class="stat-label">Equatorial Diameter</span>
+                  <span class="stat-value">12,756 km</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Polar Diameter</span>
+                  <span class="stat-value">12,714 km</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Equatorial Bulge</span>
+                  <span class="stat-value">+42.8 km (26.6 mi)</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">True Classification</span>
+                  <span class="stat-value">Oblate Spheroid</span>
+                </div>
+              </div>
+
+              <h3>The 24-Hour Cosmic Carousel</h3>
+              <p>
+                As our oblate Earth rotates on its 23.44° tilted axis, the stationary Sun can only illuminate one half at any instant:
+              </p>
+              <ul class="concept-list">
+                <li><span class="bullet-tag day">Day</span> <strong>Day Side:</strong> Facing the Sun, bathed in light and thermal energy.</li>
+                <li><span class="bullet-tag night">Night</span> <strong>Night Side:</strong> Facing into the cold vacuum of space, sparkling with city night lights!</li>
+                <li><span class="bullet-tag term">Terminator</span> <strong>The Terminator Line:</strong> The glowing sunset/sunrise band separating day from night.</li>
+              </ul>
+
+              <div class="fun-fact-box">
+                <span class="fact-icon">🏔️</span>
+                <div class="fact-text">
+                  <strong>Mind-Blowing Geography Secret:</strong>
+                  Because of Earth's equatorial bulge, the summit of <strong>Mount Chimborazo in Ecuador</strong> (near the equator) is actually the <em>farthest point on the planet's surface from Earth's center</em>—over 2 kilometers farther into space than Mount Everest!
+                </div>
+              </div>
+
+              <div class="interactive-prompt world-time-card">
+                <h4>🌍 Global Solar & Time Contrast:</h4>
+                <p>Because Earth is an oblate rotating sphere, half is always in daylight while the opposite half is in nighttime! Compare times across your pinned cities:</p>
+                <div id="dn-world-clock-list" class="world-clock-list">
+                  <!-- Dynamically populated cards for all pinned cities -->
+                </div>
+              </div>
+
+              <div class="interactive-prompt polar-phenomenon-card">
+                <h4>☀️ Why Do Poles Have 24-Hour Day or Night?</h4>
+                <p>
+                  Because Earth's 23.44° axis stays pointed at Polaris in space as Earth orbits the Sun, the North and South Poles take turns leaning toward or away from incoming sunlight:
+                </p>
+                <ul class="concept-list">
+                  <li><span class="bullet-tag day">24h Day</span> <strong>Midnight Sun (Polar Day):</strong> During June, the North Pole tilts towards the Sun. The entire Arctic Circle stays on the sunlit hemisphere throughout all 24 hours of rotation. The Sun dips near the horizon at midnight but never sets!</li>
+                  <li><span class="bullet-tag night">24h Night</span> <strong>Polar Night:</strong> During December, the North Pole tilts away into deep shadow—the Sun never rises above the horizon. Meanwhile, Antarctica experiences 24-hour daylight!</li>
+                  <li><span class="bullet-tag term">Equinox</span> <strong>Equal Day &amp; Night:</strong> In September &amp; March, Earth's tilt is side-on to sunlight, giving exactly 12 hours of day and 12 hours of night everywhere.</li>
+                </ul>
+                <div style="margin-top: 10px;">
+                  <strong style="color: #ffffff; font-size: 0.82rem; display: block; margin-bottom: 6px;">Try Live Demonstrations:</strong>
+                  <button class="orbit-demo-btn" id="demo-arctic-midnight">☀️ June: Arctic 24h Sun (Tromsø)</button>
+                  <button class="orbit-demo-btn" id="demo-antarctic-midnight">🇦🇶 Dec: Antarctica 24h Sun (McMurdo)</button>
+                  <button class="orbit-demo-btn" id="demo-arctic-night">❄️ Dec: Arctic 24h Polar Night</button>
+                  <button class="orbit-demo-btn" id="demo-equinox">🍂 Sept Equinox: Equal 12h/12h</button>
+                </div>
+              </div>
+
+              <div class="interactive-prompt">
+                <h4>Try These Shape Experiments:</h4>
+                <p>1. Check the <strong>"Compare Perfect Ball"</strong> box to see the difference between a round sphere and Earth's true oblate geoid.</p>
+                <p>2. Drag the <strong>"Bulge Scale"</strong> slider up to 2.5x to see how the centrifugal force squashes the poles and pushes the equator outward!</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================= SECTION 3: THE SEASONS ================= -->
+      <section id="section-seasons" class="sim-section" role="tabpanel" aria-labelledby="tab-seasons">
+        <div class="sim-container">
+          <div class="canvas-wrapper">
+            <canvas id="canvas-seasons"></canvas>
+            
+            <div class="floating-controls glass-panel">
+              <div class="control-group">
+                <button id="sea-play-btn" class="btn-primary-small">⏸ Pause</button>
+                <button id="sea-reset-btn" class="btn-ghost-small">↺ Reset Year</button>
+              </div>
+              <div class="control-group slider-wide">
+                <label for="sea-month-slider">Month of Year: <span id="sea-month-display" class="highlight-val">June (Summer Solstice)</span></label>
+                <input type="range" id="sea-month-slider" min="0" max="12" step="0.01" value="5">
+              </div>
+              <div class="control-group">
+                <label for="sea-tilt-slider">Earth's Tilt: <span id="sea-tilt-display">23.5°</span></label>
+                <input type="range" id="sea-tilt-slider" min="0" max="45" step="0.1" value="23.5">
+              </div>
+            </div>
+
+            <!-- Milestone Quick Buttons -->
+            <div class="milestone-bar">
+              <button class="milestone-btn active" data-month="5">☀️ June Solstice (Summer North)</button>
+              <button class="milestone-btn" data-month="8">🍂 Sept Equinox (Equal Day/Night)</button>
+              <button class="milestone-btn" data-month="11">❄️ Dec Solstice (Winter North)</button>
+              <button class="milestone-btn" data-month="2">🌱 March Equinox (Spring Begins)</button>
+            </div>
+          </div>
+
+          <aside class="science-panel glass-panel">
+            <div class="science-header">
+              <span class="science-badge">Axial Tilt &amp; Sunlight</span>
+              <h2>How the Seasons Happen</h2>
+            </div>
+
+            <div class="planet-hero-preview">
+              <img src="assets/images/earth_seasons.jpg" alt="Earth Seasons Orbital Diagram" class="zoomable-img" title="Click to view full photo">
+              <span class="image-caption-tag">Earth's 23.5° Tilted Orbit Around the Sun</span>
+            </div>
+
+            <div class="science-body">
+              <h3>The 23.5° Secret of Seasons</h3>
+              <p>
+                Many people think summer happens because Earth is closer to the Sun. <strong>That is a big myth!</strong> In fact, Earth is actually <em>closest</em> to the Sun in January (147 million km) and <em>farthest</em> in July (152 million km)!
+              </p>
+              <p>
+                The real reason for seasons is Earth's <strong>23.5-degree axial tilt</strong>. As Earth orbits the Sun once every 365.25 days, its axis always points in the exact same direction into deep space (towards Polaris, the North Star).
+              </p>
+
+              <div class="season-comparison-table">
+                <div class="season-col northern">
+                  <h4>Northern Hemisphere</h4>
+                  <div class="season-badge summer">☀️ June: Summer</div>
+                  <p>Tilted toward the Sun. Sun climbs high; direct rays deliver maximum heat; days are long.</p>
+                  <div class="season-badge winter">❄️ December: Winter</div>
+                  <p>Tilted away from Sun. Sunlight arrives at a shallow angle and spreads out; days are short.</p>
+                </div>
+                <div class="season-col southern">
+                  <h4>Southern Hemisphere</h4>
+                  <div class="season-badge winter">❄️ June: Winter</div>
+                  <p>Tilted away from the Sun. Winter in Australia and South America!</p>
+                  <div class="season-badge summer">☀️ December: Summer</div>
+                  <p>Tilted toward the Sun. Christmas on the beach in Australia!</p>
+                </div>
+              </div>
+
+              <div class="fun-fact-box">
+                <span class="fact-icon">💡</span>
+                <div class="fact-text">
+                  <strong>Flashlight Angle Experiment:</strong> If you shine a flashlight straight down at a table, it makes a small, super bright, concentrated circle of intense light. If you tilt the flashlight at an angle, the light stretches out into an oval and gets dimmer. That is exactly what happens to winter sunlight!
+                </div>
+              </div>
+
+              <div class="interactive-prompt">
+                <h4>What If Experiment:</h4>
+                <p>Move the <strong>Earth's Tilt Slider</strong> to <strong>0°</strong>. What happens? Seasons completely vanish! Every spot on Earth would have exactly 12 hours of day and 12 hours of night all year round.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================= SECTION 4: MOON PHASES ================= -->
+      <section id="section-moon-phases" class="sim-section" role="tabpanel" aria-labelledby="tab-moon-phases">
+        <div class="sim-container">
+          <div class="canvas-wrapper">
+            <canvas id="canvas-moon-phases"></canvas>
+            
+            <div class="floating-controls glass-panel">
+              <div class="control-group">
+                <button id="mp-play-btn" class="btn-primary-small">⏸ Pause</button>
+                <button id="mp-reset-btn" class="btn-ghost-small">↺ Reset Orbit</button>
+              </div>
+              <div class="control-group slider-wide">
+                <label for="mp-day-slider">Lunar Month Day: <span id="mp-day-display" class="highlight-val">Day 14.8 (Full Moon)</span></label>
+                <input type="range" id="mp-day-slider" min="0" max="29.53" step="0.01" value="14.76">
+              </div>
+            </div>
+
+            <!-- Lunar Phase Selector Ribbon -->
+            <div class="lunar-ribbon glass-panel" id="lunar-ribbon">
+              <!-- Dynamically populated 8 phases -->
+            </div>
+          </div>
+
+          <aside class="science-panel glass-panel">
+            <div class="science-header">
+              <span class="science-badge">Lunar Geometry</span>
+              <h2>How Moon Phases Happen</h2>
+            </div>
+
+            <div class="planet-hero-preview">
+              <img src="assets/images/realistic_moon.jpg" alt="Realistic Photograph of Earth's Moon" class="zoomable-img" title="Click to view high-resolution photo of the Moon">
+              <span class="image-caption-tag">Earth's Moon (Luna): Real Lunar Surface &amp; Impact Craters</span>
+            </div>
+
+            <div class="science-body">
+              <h3>The 29.5-Day Lunar Waltz</h3>
+              <p>
+                Does the Moon produce its own light? <strong>No! The Moon is a giant rocky ball that acts like a cosmic mirror</strong>, reflecting sunlight back to Earth.
+              </p>
+              <p>
+                At all times, exactly <strong>half of the Moon is illuminated by the Sun</strong>, and half is in shadow. The reason we see different shapes—called <strong>Moon Phases</strong>—is that as the Moon orbits Earth every 29.5 days, we see varying fractions of that sunlit half from our vantage point on Earth!
+              </p>
+
+              <div class="phases-guide-grid">
+                <div class="phase-chip"><strong>1. New Moon:</strong> Moon is between Sun and Earth. The dark side faces us. (Invisible!)</div>
+                <div class="phase-chip"><strong>2. Waxing Crescent:</strong> Slivers of light appear on the right side ("waxing" = growing).</div>
+                <div class="phase-chip"><strong>3. First Quarter:</strong> We see half of the sunlit hemisphere (looks like half a pie).</div>
+                <div class="phase-chip"><strong>4. Waxing Gibbous:</strong> More than half lit and expanding toward full.</div>
+                <div class="phase-chip"><strong>5. Full Moon:</strong> Earth is between Sun and Moon. Entire sunlit face gleams!</div>
+                <div class="phase-chip"><strong>6. Waning Gibbous:</strong> Moon begins shrinking on the right ("waning" = fading).</div>
+                <div class="phase-chip"><strong>7. Third Quarter:</strong> Left half illuminated, heading towards dawn.</div>
+                <div class="phase-chip"><strong>8. Waning Crescent:</strong> A delicate sliver on the left before turning new again.</div>
+              </div>
+
+              <div class="fun-fact-box">
+                <span class="fact-icon">🌕</span>
+                <div class="fact-text">
+                  <strong>Why do we always see the same face of the Moon?</strong>
+                  The Moon is <strong>tidally locked</strong> to Earth. It takes exactly the same amount of time to spin once on its own axis (27.3 days) as it does to orbit Earth! Humans never saw the "Far Side of the Moon" until space probes flew behind it in 1959.
+                </div>
+              </div>
+
+              <div class="interactive-prompt">
+                <h4>Kid-Scientist Memory Trick:</h4>
+                <p>Remember <strong>DOC</strong>! When the Moon looks like a <strong>D</strong>, it is growing (waxing). When it is an <strong>O</strong>, it is Full. When it looks like a <strong>C</strong>, it is shrinking (waning)!</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================= SECTION 5: ECLIPSES LAB ================= -->
+      <section id="section-eclipses" class="sim-section" role="tabpanel" aria-labelledby="tab-eclipses">
+        <div class="sim-container">
+          <div class="canvas-wrapper">
+            <canvas id="canvas-eclipses"></canvas>
+            
+            <div class="floating-controls glass-panel">
+              <div class="eclipse-type-selector">
+                <button id="btn-solar-eclipse" class="type-pill active">☀️ Solar Eclipse</button>
+                <button id="btn-lunar-eclipse" class="type-pill">🌕 Lunar Eclipse</button>
+              </div>
+              <div class="control-group slider-wide">
+                <label for="ec-alignment-slider">Shadow Alignment: <span id="ec-alignment-val" class="highlight-val">Exact Alignment (Totality)</span></label>
+                <input type="range" id="ec-alignment-slider" min="-100" max="100" step="1" value="0">
+              </div>
+              <div class="control-group">
+                <label class="toggle-switch">
+                  <input type="checkbox" id="ec-tilt-toggle" checked>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-label">5° Orbital Tilt Simulation</span>
+                </label>
+                <button id="ec-align-node-btn" class="btn-ghost-small">🎯 Snap to Node</button>
+              </div>
+            </div>
+
+            <!-- Inset View: Telescope View from Earth -->
+            <div class="eclipse-telescope-view glass-panel">
+              <div class="telescope-header">
+                <span>🔭 View from Earth</span>
+                <span id="eclipse-totality-status" class="totality-badge">Totality!</span>
+              </div>
+              <div class="telescope-viewport" id="telescope-sky">
+                <canvas id="canvas-eclipse-view" width="220" height="220"></canvas>
+              </div>
+              <div class="telescope-footer" id="eclipse-view-desc">
+                Solar Corona &amp; Diamond Ring Visible!
+              </div>
+            </div>
+          </div>
+
+          <aside class="science-panel glass-panel">
+            <div class="science-header">
+              <span class="science-badge">Cosmic Shadows</span>
+              <h2 id="eclipse-science-title">How Solar &amp; Lunar Eclipses Happen</h2>
+            </div>
+
+            <div class="planet-hero-preview">
+              <img id="eclipse-hero-img" src="assets/images/solar_eclipse.jpg" alt="Solar Eclipse Diagram" class="zoomable-img" title="Click to view full photo">
+              <span class="image-caption-tag" id="eclipse-caption-tag">Moon's Shadow (Umbra &amp; Penumbra) Reaching Earth</span>
+            </div>
+
+            <div class="science-body" id="eclipse-science-body">
+              <h3>Nature's Grandest Shadow Show</h3>
+              <p>
+                An eclipse happens when three celestial bodies—the <strong>Sun, Moon, and Earth</strong>—line up in a straight line called a <strong>syzygy</strong> (pronounced <em>SIZ-i-jee</em>).
+              </p>
+
+              <div class="eclipse-modes-tabs">
+                <div class="eclipse-mode-card">
+                  <h4>☀️ Solar Eclipse (Sun - Moon - Earth)</h4>
+                  <p>
+                    During a New Moon, the Moon passes directly between the Sun and Earth, casting its shadow onto our planet.
+                  </p>
+                  <ul>
+                    <li><strong>Umbra:</strong> The dark inner cone where 100% of the Sun is blocked. Inside this narrow path, daytime instantly turns into night, temperatures drop, stars shine, and the Sun's ghostly white <strong>corona</strong> appears!</li>
+                    <li><strong>Penumbra:</strong> The lighter outer shadow where observers see a crescent "bite" taken out of the Sun (partial eclipse).</li>
+                  </ul>
+                </div>
+
+                <div class="eclipse-mode-card">
+                  <h4>🌕 Lunar Eclipse (Sun - Earth - Moon)</h4>
+                  <p>
+                    During a Full Moon, Earth passes directly between the Sun and Moon, casting Earth’s enormous shadow onto the Moon!
+                  </p>
+                  <p>
+                    <strong>Why does the Moon turn blood red?</strong> Even in total shadow, sunlight filters through the edge of Earth's atmosphere. Blue light scatters away (Rayleigh scattering), but red wavelengths bend and project onto the Moon. A Blood Moon is lit by <em>all the sunrises and sunsets on Earth occurring at once!</em>
+                  </p>
+                </div>
+              </div>
+
+              <div class="fun-fact-box">
+                <span class="fact-icon">🌟</span>
+                <div class="fact-text">
+                  <strong>The Cosmic Coincidence of All Time:</strong>
+                  The Sun is roughly <strong>400 times wider</strong> than our Moon, but the Sun is also <strong>400 times farther away</strong> from Earth! Because of this incredible coincidence, both appear almost identical in size in our sky (about 0.5 degrees across). That is why the Moon can cover the Sun’s disk with pinpoint perfection!
+                </div>
+              </div>
+
+              <div class="interactive-prompt">
+                <h4>Why don't eclipses happen every month?</h4>
+                <p>The Moon's orbit is tilted by <strong>5.1 degrees</strong> relative to Earth's orbit. Most months, the Moon passes slightly above or below the Sun. Eclipses can only occur when the Moon crosses the orbital plane at crossing points called <strong>nodes</strong>!</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ================= SECTION 6: COSMIC QUIZ & LAB ================= -->
+      <section id="section-quiz" class="sim-section" role="tabpanel" aria-labelledby="tab-quiz">
+        <div class="quiz-container">
+          <div class="quiz-card glass-panel">
+            <div class="quiz-header">
+              <div class="quiz-badge-wrap">
+                <span class="quiz-badge-icon">🚀</span>
+                <div>
+                  <h2 class="quiz-title">Cosmic Master Quiz</h2>
+                  <p class="quiz-subtitle">Test your knowledge like a real astrophysicist!</p>
+                </div>
+              </div>
+              <div class="quiz-scoreboard">
+                <div class="score-pill">
+                  <span class="score-label">Score</span>
+                  <span id="quiz-score" class="score-number">0</span>
+                </div>
+                <div class="score-pill">
+                  <span class="score-label">Question</span>
+                  <span id="quiz-progress-text" class="score-number">1 / 10</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Question Area -->
+            <div class="quiz-body" id="quiz-question-box">
+              <div class="quiz-progress-bar">
+                <div id="quiz-progress-fill" class="progress-fill" style="width: 10%;"></div>
+              </div>
+
+              <div class="quiz-category" id="quiz-category">Category: Planetary Rotation</div>
+              <h3 class="quiz-question" id="quiz-question-text">Loading question...</h3>
+
+              <div class="quiz-options-grid" id="quiz-options-container">
+                <!-- Options injected via JavaScript -->
+              </div>
+
+              <!-- Explanation Box (Appears after answer) -->
+              <div id="quiz-explanation-box" class="quiz-explanation hidden">
+                <div class="explanation-title" id="explanation-title">Scientific Fact:</div>
+                <p id="explanation-text">Explanation goes here...</p>
+                <button id="quiz-next-btn" class="btn-primary-small">Next Question ➔</button>
+              </div>
+            </div>
+
+            <!-- Quiz Results Screen (Hidden initially) -->
+            <div id="quiz-results-box" class="quiz-results hidden">
+              <div class="results-badge" id="results-badge-icon">🎖️</div>
+              <h3 id="results-title">Mission Accomplished!</h3>
+              <p id="results-score-summary">You scored 10 out of 10!</p>
+              <div class="results-award" id="results-rank-award">
+                Rank: <strong>Grand Cosmic Explorer</strong> 🌟
+              </div>
+              <p id="results-message" class="results-msg">You have a brilliant scientific mind. Galileo and Kepler would be proud!</p>
+              <button id="quiz-restart-btn" class="btn-primary-small">↺ Play Again</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Photo Zoom Modal / Lightbox -->
+    <div id="photo-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+      <div class="modal-dialog glass-panel">
+        <button id="modal-close-btn" class="modal-close-btn" aria-label="Close photo">✕</button>
+        <div class="modal-img-wrapper">
+          <img id="modal-image" src="" alt="Enlarged Astronomy Diagram">
+        </div>
+        <div class="modal-caption" id="modal-caption">Caption text</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Synthesis & Simulation Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/solar_system.js"></script>
+  <script src="js/day_night.js"></script>
+  <script src="js/seasons.js"></script>
+  <script src="js/moon_phases.js"></script>
+  <script src="js/eclipses.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
