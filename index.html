@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cosmic Explorer | Interactive Solar System & Astronomy Lab</title>
-  <meta name="description" content="An interactive, scientifically accurate 3D astronomy lab designed for curious minds. Explore the solar system, understand day and night, seasons, moon phases, and eclipses.">
+  <title>ToruLearn | Curious Minds: Science, Mind &amp; Philosophy</title>
+  <meta name="description" content="An interactive learning environment for curious kids exploring space astronomy, human body systems, immunology, cell biology, mathematics, psychology, and philosophy.">
   
   <!-- Modern Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,42 +21,42 @@
   <div class="app-layout">
     <!-- Top Navigation Header -->
     <header class="app-header glass-panel">
-      <div class="header-brand">
+      <div class="header-brand" id="brand-home-link" role="button" title="Back to ToruLearn Home">
         <div class="brand-icon-wrapper">
           <span class="brand-orbit"></span>
-          <span class="brand-sun">☀️</span>
+          <span class="brand-sun">🌟</span>
         </div>
         <div class="brand-text">
-          <h1 class="brand-title">Cosmic Explorer</h1>
-          <span class="brand-tagline">ToruLearn Interactive Astronomy & Solar System Lab</span>
+          <h1 class="brand-title">ToruLearn</h1>
+          <span class="brand-tagline">Curious Minds • Science, Mind &amp; Philosophy</span>
         </div>
       </div>
 
-      <!-- Navigation Tabs -->
-      <nav class="nav-tabs" role="tablist" aria-label="Astronomy Simulations">
-        <button class="nav-tab active" data-tab="solar-system" role="tab" aria-selected="true" id="tab-solar-system">
-          <span class="tab-icon">🌌</span>
-          <span class="tab-label">Solar System</span>
+      <!-- Primary Multi-Domain Navigation Ribbon -->
+      <nav class="main-nav-bar" aria-label="Main Disciplines">
+        <button class="main-nav-pill active" data-view-target="home" title="Discovery Home">
+          <span>🏠</span> Home
         </button>
-        <button class="nav-tab" data-tab="day-night" role="tab" aria-selected="false" id="tab-day-night">
-          <span class="tab-icon">☀️</span>
-          <span class="tab-label">Day &amp; Night</span>
+        <button class="main-nav-pill" data-view-target="cosmic-explorer" title="Cosmic Explorer &amp; Astronomy">
+          <span>🌌</span> Cosmic Explorer
         </button>
-        <button class="nav-tab" data-tab="seasons" role="tab" aria-selected="false" id="tab-seasons">
-          <span class="tab-icon">🌍</span>
-          <span class="tab-label">The Seasons</span>
+        <button class="main-nav-pill" data-view-target="body-systems" title="The Human Machine: Living Systems">
+          <span>🫀</span> Body Systems
         </button>
-        <button class="nav-tab" data-tab="moon-phases" role="tab" aria-selected="false" id="tab-moon-phases">
-          <span class="tab-icon">🌖</span>
-          <span class="tab-label">Moon Phases</span>
+        <button class="main-nav-pill" data-view-target="immunology" title="The Immune Army Defenders">
+          <span>🛡️</span> Immunology
         </button>
-        <button class="nav-tab" data-tab="eclipses" role="tab" aria-selected="false" id="tab-eclipses">
-          <span class="tab-icon">🌑</span>
-          <span class="tab-label">Eclipses Lab</span>
+        <button class="main-nav-pill" data-view-target="cell-biology" title="Cell City &amp; Nanoscopic Biology">
+          <span>🧬</span> Cell Biology
         </button>
-        <button class="nav-tab" data-tab="quiz" role="tab" aria-selected="false" id="tab-quiz">
-          <span class="tab-icon">🏆</span>
-          <span class="tab-label">Cosmic Quiz</span>
+        <button class="main-nav-pill" data-view-target="math-patterns" title="Math Secrets &amp; Sacred Patterns">
+          <span>📐</span> Math &amp; Logic
+        </button>
+        <button class="main-nav-pill" data-view-target="psychology" title="Mind, Brain &amp; Optical Illusions">
+          <span>🧠</span> Mind &amp; Brain
+        </button>
+        <button class="main-nav-pill" data-view-target="philosophy" title="Big Questions &amp; Philosophy for Kids">
+          <span>💭</span> Big Questions
         </button>
       </nav>
 
@@ -71,11 +71,317 @@
       </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="simulation-viewport">
-      
-      <!-- ================= SECTION 1: SOLAR SYSTEM ORRERY ================= -->
-      <section id="section-solar-system" class="sim-section active" role="tabpanel" aria-labelledby="tab-solar-system">
+    <!-- Main Content Area: Multi-Domain Portal Viewport -->
+    <main class="portal-viewport">
+
+      <!-- ================= VIEW 1: TORULEARN DISCOVERY HOME ================= -->
+      <section id="view-home" class="app-main-view active">
+        <div class="portal-container">
+          
+          <!-- Hero Section -->
+          <div class="portal-hero">
+            <div class="hero-badge">✨ ToruLearn • Wonder. Think. Discover.</div>
+            <h2>Where Curious Kids Explore Big Questions</h2>
+            <p class="hero-subtitle">
+              From the cosmic dance of distant planets to how your stomach turns apples into energy, how white blood cells defend your body, and the greatest philosophical mysteries of existence.
+            </p>
+            <div class="hero-actions">
+              <button class="btn-hero-primary" data-view-target="cosmic-explorer">
+                <span>🌌</span> Launch Cosmic Explorer
+              </button>
+              <button class="btn-hero-secondary" data-view-target="body-systems">
+                <span>🫀</span> The Human Machine
+              </button>
+              <button class="btn-hero-secondary" data-view-target="immunology">
+                <span>🛡️</span> The Immune Army
+              </button>
+            </div>
+          </div>
+
+          <!-- Category Filter Bar -->
+          <div class="topic-filter-bar">
+            <button class="topic-filter-pill active" data-filter="all">All Topics (7)</button>
+            <button class="topic-filter-pill" data-filter="astronomy">🌌 Space &amp; Astronomy</button>
+            <button class="topic-filter-pill" data-filter="body">🫀 Human Body Systems</button>
+            <button class="topic-filter-pill" data-filter="immunology">🛡️ Immunology</button>
+            <button class="topic-filter-pill" data-filter="cell">🧬 Cell Biology</button>
+            <button class="topic-filter-pill" data-filter="math">📐 Math &amp; Logic</button>
+            <button class="topic-filter-pill" data-filter="psychology">🧠 Mind &amp; Brain</button>
+            <button class="topic-filter-pill" data-filter="philosophy">💭 Big Questions</button>
+          </div>
+
+          <!-- Topic Exploration Cards Grid -->
+          <div class="portal-topics-grid">
+
+            <!-- Card 1: Cosmic Explorer -->
+            <div class="portal-topic-card" data-category="astronomy" style="--card-color: #38bdf8;">
+              <div>
+                <div class="card-top-row">
+                  <span class="card-cat-badge">Astronomy &amp; Astrophysics</span>
+                  <span class="card-status-badge">● Interactive Lab</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-domain-icon">🌌</span>
+                  <div class="card-title-text">
+                    <h3>Cosmic Explorer</h3>
+                    <span class="card-tagline">Planets, Day &amp; Night, and The Seasons</span>
+                  </div>
+                </div>
+                <div class="card-question-box">
+                  “Why is it night in Dhaka when it's bright daytime in New York? What makes Saturn's icy rings?”
+                </div>
+                <div class="card-tags-list">
+                  <span class="subtopic-tag">Real NASA Photos</span>
+                  <span class="subtopic-tag">3D Day/Night with Dhaka Pin</span>
+                  <span class="subtopic-tag">Earth Tilt &amp; Seasons</span>
+                  <span class="subtopic-tag">Moon Phases</span>
+                  <span class="subtopic-tag">Eclipses</span>
+                </div>
+              </div>
+              <button class="card-action-btn" data-view-target="cosmic-explorer">
+                Launch Cosmic Explorer ➔
+              </button>
+            </div>
+
+            <!-- Card 2: The Human Machine -->
+            <div class="portal-topic-card" data-category="body biology" style="--card-color: #f43f5e;">
+              <div>
+                <div class="card-top-row">
+                  <span class="card-cat-badge">Human Anatomy &amp; Physiology</span>
+                  <span class="card-status-badge">● Interactive Lab</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-domain-icon">🫀</span>
+                  <div class="card-title-text">
+                    <h3>The Human Machine</h3>
+                    <span class="card-tagline">Body &amp; Living Systems in Action</span>
+                  </div>
+                </div>
+                <div class="card-question-box">
+                  “Where does an apple go after you swallow it? How do your lungs pull oxygen out of thin air?”
+                </div>
+                <div class="card-tags-list">
+                  <span class="subtopic-tag">🍎 Digestive Journey</span>
+                  <span class="subtopic-tag">🫁 Breathing &amp; Lungs</span>
+                  <span class="subtopic-tag">❤️ 100,000 Heartbeats</span>
+                  <span class="subtopic-tag">⚡ Nervous Reflexes</span>
+                </div>
+              </div>
+              <button class="card-action-btn" data-view-target="body-systems">
+                Explore Body Systems ➔
+              </button>
+            </div>
+
+            <!-- Card 3: Immunology -->
+            <div class="portal-topic-card" data-category="immunology biology" style="--card-color: #10b981;">
+              <div>
+                <div class="card-top-row">
+                  <span class="card-cat-badge">Immunology &amp; Health</span>
+                  <span class="card-status-badge">● Interactive Lab</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-domain-icon">🛡️</span>
+                  <div class="card-title-text">
+                    <h3>The Immune Army</h3>
+                    <span class="card-tagline">Microscopic Defenders Fighting For You</span>
+                  </div>
+                </div>
+                <div class="card-question-box">
+                  “What happens when you get a scrape? Who are the microscopic soldiers protecting your cells 24/7?”
+                </div>
+                <div class="card-tags-list">
+                  <span class="subtopic-tag">Giant Macrophages</span>
+                  <span class="subtopic-tag">Neutrophil Scouts</span>
+                  <span class="subtopic-tag">Helper &amp; Killer T-Cells</span>
+                  <span class="subtopic-tag">Antibody Precision Keys</span>
+                </div>
+              </div>
+              <button class="card-action-btn" data-view-target="immunology">
+                Meet the Defenders ➔
+              </button>
+            </div>
+
+            <!-- Card 4: Cell Biology -->
+            <div class="portal-topic-card" data-category="cell biology" style="--card-color: #a855f7;">
+              <div>
+                <div class="card-top-row">
+                  <span class="card-cat-badge">Cell Biology &amp; Genetics</span>
+                  <span class="card-status-badge">● Interactive Lab</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-domain-icon">🧬</span>
+                  <div class="card-title-text">
+                    <h3>The Secret Life of Cells</h3>
+                    <span class="card-tagline">Inside the Nanoscopic Living City</span>
+                  </div>
+                </div>
+                <div class="card-question-box">
+                  “If every human is made of 37 trillion cells, what does a single cell look like inside?”
+                </div>
+                <div class="card-tags-list">
+                  <span class="subtopic-tag">DNA Master Blueprint</span>
+                  <span class="subtopic-tag">Mitochondria Powerhouse</span>
+                  <span class="subtopic-tag">Ribosome Factories</span>
+                  <span class="subtopic-tag">Cell Membrane Gate</span>
+                </div>
+              </div>
+              <button class="card-action-btn" data-view-target="cell-biology">
+                Enter the Cell City ➔
+              </button>
+            </div>
+
+            <!-- Card 5: Math & Logic -->
+            <div class="portal-topic-card" data-category="math" style="--card-color: #f59e0b;">
+              <div>
+                <div class="card-top-row">
+                  <span class="card-cat-badge">Mathematics &amp; Patterns</span>
+                  <span class="card-status-badge">● Interactive Canvas</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-domain-icon">📐</span>
+                  <div class="card-title-text">
+                    <h3>Math Secrets</h3>
+                    <span class="card-tagline">Hidden Codes of Nature &amp; Cosmos</span>
+                  </div>
+                </div>
+                <div class="card-question-box">
+                  “Why do sunflowers pack seeds in Fibonacci spirals? Can numbers describe the shapes of nature?”
+                </div>
+                <div class="card-tags-list">
+                  <span class="subtopic-tag">Golden Ratio Φ</span>
+                  <span class="subtopic-tag">Sunflower Spiral Canvas</span>
+                  <span class="subtopic-tag">Fractal Trees</span>
+                  <span class="subtopic-tag">Prime Number Cicadas</span>
+                </div>
+              </div>
+              <button class="card-action-btn" data-view-target="math-patterns">
+                Discover Math Patterns ➔
+              </button>
+            </div>
+
+            <!-- Card 6: Mind & Psychology -->
+            <div class="portal-topic-card" data-category="psychology" style="--card-color: #06b6d4;">
+              <div>
+                <div class="card-top-row">
+                  <span class="card-cat-badge">Psychology &amp; Neuroscience</span>
+                  <span class="card-status-badge">● Interactive Lab</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-domain-icon">🧠</span>
+                  <div class="card-title-text">
+                    <h3>Mind, Brain &amp; Perception</h3>
+                    <span class="card-tagline">How Your Brain Reconstructs Reality</span>
+                  </div>
+                </div>
+                <div class="card-question-box">
+                  “Can you always trust your own eyes? Why do optical illusions fool our clever brains?”
+                </div>
+                <div class="card-tags-list">
+                  <span class="subtopic-tag">Cafe Wall Parallel Trick</span>
+                  <span class="subtopic-tag">Hermann Vanishing Dots</span>
+                  <span class="subtopic-tag">Kanizsa Ghost Triangle</span>
+                  <span class="subtopic-tag">Growth Mindset Superpower</span>
+                </div>
+              </div>
+              <button class="card-action-btn" data-view-target="psychology">
+                Test Your Brain ➔
+              </button>
+            </div>
+
+            <!-- Card 7: Philosophy -->
+            <div class="portal-topic-card" data-category="philosophy" style="--card-color: #ec4899;">
+              <div>
+                <div class="card-top-row">
+                  <span class="card-cat-badge">Philosophy &amp; Critical Thinking</span>
+                  <span class="card-status-badge">● Thought Experiments</span>
+                </div>
+                <div class="card-title-row">
+                  <span class="card-domain-icon">💭</span>
+                  <div class="card-title-text">
+                    <h3>Big Questions</h3>
+                    <span class="card-tagline">Puzzles For Curious Young Thinkers</span>
+                  </div>
+                </div>
+                <div class="card-question-box">
+                  “If you replace every wooden plank on a ship, is it still the same ship? What makes something truly fair?”
+                </div>
+                <div class="card-tags-list">
+                  <span class="subtopic-tag">Ship of Theseus Paradox</span>
+                  <span class="subtopic-tag">The Ring of Invisibility</span>
+                  <span class="subtopic-tag">What is Real?</span>
+                  <span class="subtopic-tag">The Art of Asking "Why?"</span>
+                </div>
+              </div>
+              <button class="card-action-btn" data-view-target="philosophy">
+                Ponder Big Questions ➔
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Manifesto Strip -->
+          <div class="home-manifesto-strip glass-panel">
+            <div class="manifesto-col">
+              <div class="m-icon">💡</div>
+              <h4>Never Stop Asking "Why?"</h4>
+              <p>Every breakthrough in science and philosophy began with a child asking an innocent, brilliant question.</p>
+            </div>
+            <div class="manifesto-col">
+              <div class="m-icon">🔬</div>
+              <h4>Hands-On Discovery</h4>
+              <p>Instead of memorizing definitions, we build interactive simulations where you manipulate the variables directly.</p>
+            </div>
+            <div class="manifesto-col">
+              <div class="m-icon">🌐</div>
+              <h4>Everything Is Connected</h4>
+              <p>The atoms in your body were forged inside exploding ancient stars, and your thoughts are electrical patterns governed by physics.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= VIEW 2: COSMIC EXPLORER (ASTRONOMY SUITE) ================= -->
+      <section id="view-cosmic-explorer" class="app-main-view">
+        <div class="view-top-toolbar glass-panel">
+          <button class="back-to-home-btn" data-view-target="home">
+            <span>←</span> Back to ToruLearn Home
+          </button>
+          
+          <!-- Astronomy Simulation Sub-Tabs -->
+          <nav class="nav-tabs" role="tablist" aria-label="Astronomy Simulations">
+            <button class="nav-tab active" data-tab="solar-system" role="tab" aria-selected="true" id="tab-solar-system">
+              <span class="tab-icon">🌌</span>
+              <span class="tab-label">Solar System</span>
+            </button>
+            <button class="nav-tab" data-tab="day-night" role="tab" aria-selected="false" id="tab-day-night">
+              <span class="tab-icon">☀️</span>
+              <span class="tab-label">Day &amp; Night</span>
+            </button>
+            <button class="nav-tab" data-tab="seasons" role="tab" aria-selected="false" id="tab-seasons">
+              <span class="tab-icon">🌍</span>
+              <span class="tab-label">The Seasons</span>
+            </button>
+            <button class="nav-tab" data-tab="moon-phases" role="tab" aria-selected="false" id="tab-moon-phases">
+              <span class="tab-icon">🌖</span>
+              <span class="tab-label">Moon Phases</span>
+            </button>
+            <button class="nav-tab" data-tab="eclipses" role="tab" aria-selected="false" id="tab-eclipses">
+              <span class="tab-icon">🌑</span>
+              <span class="tab-label">Eclipses Lab</span>
+            </button>
+            <button class="nav-tab" data-tab="quiz" role="tab" aria-selected="false" id="tab-quiz">
+              <span class="tab-icon">🏆</span>
+              <span class="tab-label">Cosmic Quiz</span>
+            </button>
+          </nav>
+        </div>
+
+        <!-- Cosmic Simulations Viewport Container -->
+        <div class="simulation-viewport">
+          
+          <!-- ================= SECTION 1: SOLAR SYSTEM ORRERY ================= -->
+          <section id="section-solar-system" class="sim-section active" role="tabpanel" aria-labelledby="tab-solar-system">
         <div class="sim-container">
           <div class="canvas-wrapper">
             <canvas id="canvas-solar-system"></canvas>
@@ -102,6 +408,20 @@
                   <span class="toggle-label">True Scale</span>
                 </label>
               </div>
+            </div>
+
+            <!-- Quick Planet Selector Ribbon -->
+            <div class="planet-quick-bar glass-panel" id="planet-quick-bar">
+              <button class="planet-quick-btn active" data-planet="sun" title="Inspect The Sun">☀️ Sun</button>
+              <button class="planet-quick-btn" data-planet="Mercury" title="Inspect Mercury">🌑 Mercury</button>
+              <button class="planet-quick-btn" data-planet="Venus" title="Inspect Venus">🟡 Venus</button>
+              <button class="planet-quick-btn" data-planet="Earth" title="Inspect Earth">🌍 Earth</button>
+              <button class="planet-quick-btn" data-planet="Mars" title="Inspect Mars">🔴 Mars</button>
+              <button class="planet-quick-btn" data-planet="Jupiter" title="Inspect Jupiter">🟠 Jupiter</button>
+              <button class="planet-quick-btn" data-planet="Saturn" title="Inspect Saturn">🪐 Saturn</button>
+              <button class="planet-quick-btn" data-planet="Uranus" title="Inspect Uranus">🌐 Uranus</button>
+              <button class="planet-quick-btn" data-planet="Neptune" title="Inspect Neptune">🔵 Neptune</button>
+              <button class="planet-quick-btn" data-planet="Pluto" title="Inspect Pluto">❄️ Pluto</button>
             </div>
 
             <div class="canvas-hint">
@@ -702,6 +1022,529 @@
             </div>
           </div>
         </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW 3: HUMAN BODY SYSTEMS ================= -->
+      <section id="view-body-systems" class="app-main-view">
+        <div class="view-top-toolbar glass-panel">
+          <button class="back-to-home-btn" data-view-target="home">
+            <span>←</span> Back to ToruLearn Home
+          </button>
+          <div class="view-heading-box">
+            <h2>🫀 The Human Machine: Living Systems</h2>
+            <p>Explore How Organs, Blood &amp; Oxygen Power You Every Second</p>
+          </div>
+        </div>
+
+        <div class="body-systems-lab">
+          <!-- Sub-Tabs for Body Systems -->
+          <div class="body-sys-nav">
+            <button class="body-sys-tab active" data-system="digestive">
+              <span>🍎</span> The Digestive Journey
+            </button>
+            <button class="body-sys-tab" data-system="respiratory">
+              <span>🫁</span> The Breathing Engine (Lungs)
+            </button>
+            <button class="body-sys-tab" data-system="circulatory">
+              <span>❤️</span> The Living Pump (Heart &amp; Blood)
+            </button>
+          </div>
+
+          <!-- Panel 1: Digestive System -->
+          <div id="sys-panel-digestive" class="body-sys-panel active">
+            <div class="digestive-stepper-wrap">
+              <div>
+                <div class="digest-nav-nodes">
+                  <div class="digest-node active" data-step="0" title="1. Mouth &amp; Teeth">👄</div>
+                  <div class="digest-node" data-step="1" title="2. Esophagus">🧬</div>
+                  <div class="digest-node" data-step="2" title="3. Stomach Acid">🧪</div>
+                  <div class="digest-node" data-step="3" title="4. Small Intestine">🌱</div>
+                  <div class="digest-node" data-step="4" title="5. Large Intestine">💧</div>
+                </div>
+
+                <div id="digestive-stage-info" class="digest-stage-card glass-panel">
+                  <!-- Injected via JavaScript -->
+                </div>
+
+                <div class="stepper-nav-controls">
+                  <button id="digest-prev-btn" class="btn-ghost-small">◀ Previous Station</button>
+                  <button id="digest-next-btn" class="btn-primary-small">Next Station ▶</button>
+                </div>
+              </div>
+
+              <!-- Digestive Visual & Fun Facts -->
+              <div class="glass-panel" style="padding: 24px; border-radius: var(--radius-lg);">
+                <h4 style="font-size: 1.15rem; color: #ffffff; margin-bottom: 12px;">🍎 Follow an Apple's Journey</h4>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                  Every bite of food travels through a <strong>30-foot continuous digestive tube</strong>. Your body takes around 24 to 72 hours to completely extract every drop of water, protein building block, and sugar fuel from your meals!
+                </p>
+                <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md); border-left: 3px solid #10b981; margin-bottom: 12px;">
+                  <strong style="color: #10b981;">The Villus Superpower:</strong>
+                  <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">
+                    Inside the small intestine, millions of microscopic finger-like villi increase your absorption surface area to over 250 square meters—equal to the size of a tennis court!
+                  </p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md); border-left: 3px solid #f59e0b;">
+                  <strong style="color: #f59e0b;">Gut Microbiome Friends:</strong>
+                  <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">
+                    Over 100 trillion friendly bacteria live in your gut. They help you digest fibrous foods, produce vitamin K, and even release chemicals that talk to your brain to influence your mood!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 2: Respiratory System -->
+          <div id="sys-panel-respiratory" class="body-sys-panel">
+            <div class="digestive-stepper-wrap">
+              <div class="breathing-box glass-panel">
+                <span class="stage-badge" style="background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; color: #38bdf8;">
+                  Interactive Breathing Simulator
+                </span>
+                <div class="lungs-graphic-container">
+                  <span id="animated-lungs-graphic" class="lungs-icon">🫁</span>
+                  <div id="animated-diaphragm-graphic" class="diaphragm-bar" title="Diaphragm Muscle"></div>
+                </div>
+                <div id="air-flow-indicator" class="air-flow-tag">⬇ Oxygen (O₂) Flowing In Through Trachea</div>
+                <p id="breathing-status-text" style="font-size: 0.9rem; color: var(--text-secondary); max-width: 380px; margin-bottom: 20px;">
+                  Inhaling: Diaphragm contracts downwards, chest expands, creating low pressure that pulls fresh air in.
+                </p>
+                <button id="breathe-toggle-btn" class="btn-primary-small">
+                  🌬️ Toggle Inhale / Exhale
+                </button>
+              </div>
+
+              <!-- Lungs Anatomy & Science -->
+              <div class="glass-panel" style="padding: 24px; border-radius: var(--radius-lg);">
+                <h4 style="font-size: 1.15rem; color: #ffffff; margin-bottom: 12px;">🫁 300 Million Tiny Air Sacks (Alveoli)</h4>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                  Air enters your nose, travels down your windpipe (trachea), splits into left and right bronchi, and branches into hundreds of thousands of tiny bronchioles like an upside-down tree!
+                </p>
+                <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md); border-left: 3px solid #38bdf8; margin-bottom: 12px;">
+                  <strong style="color: #38bdf8;">The Gas Exchange Magic:</strong>
+                  <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">
+                    At the tips of bronchioles are grape-like bunches called alveoli. Oxygen molecules slip directly through walls only one cell thick into red blood cells, while waste carbon dioxide (CO₂) slips back out to be exhaled.
+                  </p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md); border-left: 3px solid #a855f7;">
+                  <strong style="color: #a855f7;">Why Do You Yawn or Hiccup?</strong>
+                  <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">
+                    A hiccup is a sudden, involuntary spasm of your diaphragm muscle! When it jerks, your vocal cords snap shut with a "hic" sound.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3: Circulatory System -->
+          <div id="sys-panel-circulatory" class="body-sys-panel">
+            <div class="digestive-stepper-wrap">
+              <div class="heart-pulse-box glass-panel">
+                <span class="stage-badge" style="background: rgba(244, 63, 94, 0.2); border-color: #f43f5e; color: #f43f5e;">
+                  Interactive Heart Rate Engine
+                </span>
+                <div>
+                  <span id="pulsing-heart-graphic" class="pulsing-heart">❤️</span>
+                </div>
+                <div style="font-size: 1.6rem; font-weight: 700; color: #ffffff; margin-bottom: 10px;" id="heart-bpm-val">
+                  75 BPM
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 16px;">
+                  Slide to adjust heart rate: resting, sprinting, or sleeping!
+                </p>
+                <div style="max-width: 300px; margin: 0 auto;">
+                  <input type="range" id="heart-bpm-slider" min="45" max="175" value="75" style="width: 100%;">
+                </div>
+              </div>
+
+              <!-- Circulatory Anatomy & Science -->
+              <div class="glass-panel" style="padding: 24px; border-radius: var(--radius-lg);">
+                <h4 style="font-size: 1.15rem; color: #ffffff; margin-bottom: 12px;">❤️ 60,000 Miles of Blood Vessels</h4>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                  If laid out in a straight line, all the blood vessels in one human body could circle the entire Earth <strong>more than twice</strong>!
+                </p>
+                <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md); border-left: 3px solid #f43f5e; margin-bottom: 12px;">
+                  <strong style="color: #f43f5e;">The Double Loop Pump:</strong>
+                  <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">
+                    The right side of your heart pumps oxygen-poor blood to the lungs to pick up fresh O₂. The left side pumps high-pressure oxygenated blood through the aorta to your brain and toes!
+                  </p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md); border-left: 3px solid #38bdf8;">
+                  <strong style="color: #38bdf8;">Why Do Veins Look Blue?</strong>
+                  <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">
+                    Your blood is ALWAYS red! Veins look blue or greenish under your skin because of an optical illusion: red light penetrates deep into tissue, while shorter blue wavelengths scatter back to your eyes from shallow veins.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW 4: IMMUNOLOGY DEFENDERS ================= -->
+      <section id="view-immunology" class="app-main-view">
+        <div class="view-top-toolbar glass-panel">
+          <button class="back-to-home-btn" data-view-target="home">
+            <span>←</span> Back to ToruLearn Home
+          </button>
+          <div class="view-heading-box">
+            <h2>🛡️ The Immune Army: Microscopic Defenders</h2>
+            <p>Meet the Cellular Warriors Protecting Your Body 24 Hours a Day</p>
+          </div>
+        </div>
+
+        <div class="immunology-lab">
+          <!-- Defender Ribbon Selector -->
+          <div class="defenders-ribbon">
+            <button class="defender-card-btn active" data-defender="macrophage">
+              <span class="d-btn-icon">🛡️</span>
+              <div>
+                <div class="d-btn-title">Giant Macrophage</div>
+                <span style="font-size: 0.75rem; color: #10b981;">The Voracious Sentinel</span>
+              </div>
+            </button>
+            <button class="defender-card-btn" data-defender="neutrophil">
+              <span class="d-btn-icon">⚡</span>
+              <div>
+                <div class="d-btn-title">Neutrophil Scout</div>
+                <span style="font-size: 0.75rem; color: #f59e0b;">Rapid Responder</span>
+              </div>
+            </button>
+            <button class="defender-card-btn" data-defender="dendritic">
+              <span class="d-btn-icon">📡</span>
+              <div>
+                <div class="d-btn-title">Dendritic Cell</div>
+                <span style="font-size: 0.75rem; color: #38bdf8;">Intelligence Messenger</span>
+              </div>
+            </button>
+            <button class="defender-card-btn" data-defender="tcell">
+              <span class="d-btn-icon">🎯</span>
+              <div>
+                <div class="d-btn-title">T-Cell Generals</div>
+                <span style="font-size: 0.75rem; color: #a855f7;">Helper &amp; Killer</span>
+              </div>
+            </button>
+            <button class="defender-card-btn" data-defender="bcell">
+              <span class="d-btn-icon">🏷️</span>
+              <div>
+                <div class="d-btn-title">B-Cell Factory</div>
+                <span style="font-size: 0.75rem; color: #f43f5e;">Antibody Precision</span>
+              </div>
+            </button>
+          </div>
+
+          <!-- Active Defender Detail Card -->
+          <div id="defender-detail-card" class="glass-panel" style="padding: 28px; border-radius: var(--radius-lg); margin-bottom: 24px;">
+            <!-- Injected via JavaScript -->
+          </div>
+
+          <!-- Story Strip: What Happens When You Get a Scrape? -->
+          <div class="glass-panel" style="padding: 24px; border-radius: var(--radius-lg);">
+            <h4 style="font-size: 1.15rem; color: #ffffff; margin-bottom: 16px;">🩸 Comic Storyline: What Happens When You Scrape Your Knee?</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+              <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md);">
+                <div style="font-size: 1.5rem; margin-bottom: 6px;">1. 💥 Breach!</div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                  The skin fortress is cracked. Bacteria from the pavement rush into the warm, nutrient-rich wound tissue.
+                </p>
+              </div>
+              <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md);">
+                <div style="font-size: 1.5rem; margin-bottom: 6px;">2. 🚨 Alarm!</div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                  Resident macrophages sound the alarm with histamine chemicals. Blood vessels widen, causing redness and swelling.
+                </p>
+              </div>
+              <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md);">
+                <div style="font-size: 1.5rem; margin-bottom: 6px;">3. ⚡ The Swarm</div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                  Millions of neutrophils squeeze through blood vessel walls into the battlefield, trapping microbes in DNA nets.
+                </p>
+              </div>
+              <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md);">
+                <div style="font-size: 1.5rem; margin-bottom: 6px;">4. 🛡️ Clean &amp; Heal</div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                  Platelets form a mesh scab over the wound, macrophages vacuum up the debris, and skin stem cells rebuild fresh tissue!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW 5: CELL BIOLOGY ================= -->
+      <section id="view-cell-biology" class="app-main-view">
+        <div class="view-top-toolbar glass-panel">
+          <button class="back-to-home-btn" data-view-target="home">
+            <span>←</span> Back to ToruLearn Home
+          </button>
+          <div class="view-heading-box">
+            <h2>🧬 The Secret Life of Cells</h2>
+            <p>Explore the Nanoscopic City Inside Every Living Organism</p>
+          </div>
+        </div>
+
+        <div class="cell-biology-lab">
+          <!-- Organelle Selector -->
+          <div class="organelle-nav">
+            <button class="organelle-nav-btn active" data-organelle="nucleus">🏛️ Nucleus &amp; DNA</button>
+            <button class="organelle-nav-btn" data-organelle="mitochondria">⚡ Mitochondria</button>
+            <button class="organelle-nav-btn" data-organelle="ribosome">🏭 Ribosomes</button>
+            <button class="organelle-nav-btn" data-organelle="membrane">🛡️ Cell Membrane</button>
+          </div>
+
+          <!-- Active Organelle Box -->
+          <div id="organelle-detail-box" class="glass-panel" style="padding: 24px; border-radius: var(--radius-lg); margin-bottom: 24px;">
+            <!-- Injected via JavaScript -->
+          </div>
+
+          <!-- Microscopic Scale Journey -->
+          <div class="glass-panel" style="padding: 24px; border-radius: var(--radius-lg);">
+            <h4 style="font-size: 1.15rem; color: #ffffff; margin-bottom: 14px;">🔬 How Small Is "Small"? A Journey Through Scale</h4>
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; text-align: center;">
+              <div style="flex: 1 1 120px; background: rgba(255,255,255,0.04); padding: 12px; border-radius: var(--radius-md);">
+                <div style="font-size: 1.2rem; font-weight: 700; color: #fbbf24;">100 µm</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Human Hair Width</div>
+              </div>
+              <div style="color: var(--accent-cyan);">➔</div>
+              <div style="flex: 1 1 120px; background: rgba(255,255,255,0.04); padding: 12px; border-radius: var(--radius-md);">
+                <div style="font-size: 1.2rem; font-weight: 700; color: #38bdf8;">25 µm</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Skin / Liver Cell</div>
+              </div>
+              <div style="color: var(--accent-cyan);">➔</div>
+              <div style="flex: 1 1 120px; background: rgba(255,255,255,0.04); padding: 12px; border-radius: var(--radius-md);">
+                <div style="font-size: 1.2rem; font-weight: 700; color: #10b981;">2 µm</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Bacterium (E. coli)</div>
+              </div>
+              <div style="color: var(--accent-cyan);">➔</div>
+              <div style="flex: 1 1 120px; background: rgba(255,255,255,0.04); padding: 12px; border-radius: var(--radius-md);">
+                <div style="font-size: 1.2rem; font-weight: 700; color: #a855f7;">100 nm</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Flu / COVID Virus</div>
+              </div>
+              <div style="color: var(--accent-cyan);">➔</div>
+              <div style="flex: 1 1 120px; background: rgba(255,255,255,0.04); padding: 12px; border-radius: var(--radius-md);">
+                <div style="font-size: 1.2rem; font-weight: 700; color: #f43f5e;">2 nm</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">DNA Double Helix</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW 6: MATHEMATICS & LOGIC ================= -->
+      <section id="view-math-patterns" class="app-main-view">
+        <div class="view-top-toolbar glass-panel">
+          <button class="back-to-home-btn" data-view-target="home">
+            <span>←</span> Back to ToruLearn Home
+          </button>
+          <div class="view-heading-box">
+            <h2>📐 Math Secrets: Nature's Hidden Code</h2>
+            <p>Interactive Fibonacci Spirals, Golden Ratios &amp; Sacred Geometry</p>
+          </div>
+        </div>
+
+        <div class="math-patterns-lab">
+          <div class="fibo-container">
+            <!-- Canvas -->
+            <div class="math-canvas-box">
+              <canvas id="canvas-fibonacci"></canvas>
+            </div>
+
+            <!-- Controls & Explanation -->
+            <div class="glass-panel" style="padding: 24px; border-radius: var(--radius-lg);">
+              <span class="stage-badge" style="background: rgba(245, 158, 11, 0.2); border-color: #f59e0b; color: #f59e0b;">
+                The Sunflower Algorithm
+              </span>
+              <h3 style="font-size: 1.4rem; color: #ffffff; margin-bottom: 12px;">Interactive Golden Spiral</h3>
+              <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+                Sunflowers pack hundreds of seeds into their flowerheads with zero empty space. They do this by turning by exactly the <strong>Golden Angle (137.5077°)</strong> between each new seed!
+              </p>
+
+              <div style="margin-bottom: 24px;">
+                <label for="fibo-count-slider" style="display: block; font-size: 0.88rem; color: #f1f5f9; margin-bottom: 6px;">
+                  Seed Count: <strong id="fibo-count-val" style="color: #f59e0b;">34 Seeds</strong>
+                </label>
+                <input type="range" id="fibo-count-slider" min="10" max="300" value="34" style="width: 100%;">
+              </div>
+
+              <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md); border-left: 3px solid #f59e0b;">
+                <strong style="color: #f59e0b;">The Sequence of Life:</strong>
+                <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">
+                  0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...<br>
+                  Count the spiral arms on any pinecone or pineapple: you will almost always find consecutive Fibonacci numbers!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW 7: MIND & PSYCHOLOGY ================= -->
+      <section id="view-psychology" class="app-main-view">
+        <div class="view-top-toolbar glass-panel">
+          <button class="back-to-home-btn" data-view-target="home">
+            <span>←</span> Back to ToruLearn Home
+          </button>
+          <div class="view-heading-box">
+            <h2>🧠 Mind, Brain &amp; Perception: The Illusion Lab</h2>
+            <p>See How Your Visual Cortex Reconstructs Light Signals Into Reality</p>
+          </div>
+        </div>
+
+        <div class="psychology-lab">
+          <!-- Illusion Navigation -->
+          <div class="illusion-nav">
+            <button class="illusion-tab active" data-illusion="cafe">🧱 The Cafe Wall</button>
+            <button class="illusion-tab" data-illusion="hermann">🏁 The Hermann Grid</button>
+            <button class="illusion-tab" data-illusion="growth">🌱 Growth Mindset</button>
+          </div>
+
+          <!-- Illusion 1: Cafe Wall -->
+          <div id="illusion-cafe" class="illusion-panel active">
+            <div class="glass-panel" style="padding: 28px; border-radius: var(--radius-lg); text-align: center;">
+              <h3 style="font-size: 1.3rem; color: #ffffff; margin-bottom: 8px;">Are the horizontal mortar lines straight and parallel?</h3>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">
+                Your eyes will tell you the lines are crooked, slanted, or wedge-shaped. Toggle the guide lines below!
+              </p>
+
+              <div id="cafe-wall-visual" class="cafe-wall-visual">
+                <div class="cafe-row" style="margin-left: 0px;">
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                </div>
+                <div class="cafe-row" style="margin-left: 18px;">
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                </div>
+                <div class="cafe-row" style="margin-left: 0px;">
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                </div>
+                <div class="cafe-row" style="margin-left: 18px;">
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                  <div class="cafe-brick b-black"></div><div class="cafe-brick b-white"></div>
+                </div>
+              </div>
+
+              <label class="toggle-switch" style="display: inline-flex; align-items: center; gap: 8px;">
+                <input type="checkbox" id="toggle-cafe-guides">
+                <span class="toggle-slider"></span>
+                <span class="toggle-label" style="font-weight: 600; color: #ef4444;">Show Straight Parallel Guides</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Illusion 2: Hermann Grid -->
+          <div id="illusion-hermann" class="illusion-panel">
+            <div class="glass-panel" style="padding: 28px; border-radius: var(--radius-lg); text-align: center;">
+              <h3 style="font-size: 1.3rem; color: #ffffff; margin-bottom: 8px;">The Ghostly Dots</h3>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">
+                Look around this grid. Do you see faint gray dots flickering at the white intersections? Try looking directly at one!
+              </p>
+              <div style="display: inline-grid; grid-template-columns: repeat(4, 70px); gap: 14px; background: #ffffff; padding: 14px; border-radius: 8px;">
+                <div style="width: 70px; height: 70px; background: #000;"></div>
+                <div style="width: 70px; height: 70px; background: #000;"></div>
+                <div style="width: 70px; height: 70px; background: #000;"></div>
+                <div style="width: 70px; height: 70px; background: #000;"></div>
+                <div style="width: 70px; height: 70px; background: #000;"></div>
+                <div style="width: 70px; height: 70px; background: #000;"></div>
+                <div style="width: 70px; height: 70px; background: #000;"></div>
+                <div style="width: 70px; height: 70px; background: #000;"></div>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 500px; margin: 20px auto 0;">
+                Why? It is caused by <em>lateral inhibition</em> in your retina! Cells processing the bright intersections receive inhibition from four sides, making your brain perceive them as slightly darker.
+              </p>
+            </div>
+          </div>
+
+          <!-- Illusion 3: Growth Mindset -->
+          <div id="illusion-growth" class="illusion-panel">
+            <div class="glass-panel" style="padding: 28px; border-radius: var(--radius-lg);">
+              <h3 style="font-size: 1.3rem; color: #ffffff; margin-bottom: 12px;">🌱 The Brain Is a Muscle: Neuroplasticity</h3>
+              <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                Whenever you struggle with a hard math problem, a tricky game, or a musical instrument, you are not failing—your neurons are physically sprouting new dendrites and wrapping axons in myelin insulation!
+              </p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; padding: 16px; border-radius: var(--radius-md);">
+                  <strong style="color: #ef4444;">Fixed Mindset Trap:</strong>
+                  <p style="font-size: 0.85rem; color: #fca5a5; margin-top: 6px;">“I made a mistake, so I am not good at this.”</p>
+                </div>
+                <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; padding: 16px; border-radius: var(--radius-md);">
+                  <strong style="color: #10b981;">Growth Mindset Superpower:</strong>
+                  <p style="font-size: 0.85rem; color: #86efac; margin-top: 6px;">“I made a mistake, which means my brain just learned something new that it didn't know 5 minutes ago!”</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VIEW 8: PHILOSOPHY & BIG QUESTIONS ================= -->
+      <section id="view-philosophy" class="app-main-view">
+        <div class="view-top-toolbar glass-panel">
+          <button class="back-to-home-btn" data-view-target="home">
+            <span>←</span> Back to ToruLearn Home
+          </button>
+          <div class="view-heading-box">
+            <h2>💭 Big Questions: Philosophy for Young Thinkers</h2>
+            <p>Thought Experiments, Dilemmas &amp; The Art of Wonder</p>
+          </div>
+        </div>
+
+        <div class="philosophy-lab">
+          <!-- Thought Experiment: Ship of Theseus -->
+          <div class="theseus-ship-card glass-panel">
+            <span class="stage-badge" style="background: rgba(236, 72, 153, 0.2); border-color: #ec4899; color: #ec4899;">
+              Ancient Paradox
+            </span>
+            <h3 style="font-size: 1.4rem; color: #ffffff; margin-bottom: 12px;">🚢 The Ship of Theseus: What Is Your True Identity?</h3>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+              Theseus sailed his famous wooden ship for decades. As old planks rotted, the crew replaced them one by one with new wood. Slide to replace the ship's planks:
+            </p>
+
+            <div style="max-width: 500px; margin-bottom: 20px;">
+              <label for="theseus-slider" style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #f1f5f9; margin-bottom: 8px;">
+                <span>Planks Replaced:</span>
+                <strong id="theseus-percent" style="color: #ec4899;">0% Replaced</strong>
+              </label>
+              <input type="range" id="theseus-slider" min="0" max="100" value="0" style="width: 100%;">
+            </div>
+
+            <div id="theseus-status-text" class="stage-fact glass-panel" style="font-size: 0.95rem; color: #bae6fd;">
+              100% original wood. Everyone agrees: this is unquestionably the original ship.
+            </div>
+
+            <div style="margin-top: 20px; background: rgba(255, 255, 255, 0.04); padding: 16px; border-radius: var(--radius-md); border-left: 3px solid #ec4899;">
+              <strong style="color: #ec4899;">The Mind-Bending Secret About YOU:</strong>
+              <p style="font-size: 0.88rem; color: #cbd5e1; margin-top: 6px;">
+                Almost every cell in your body dies and is replaced every 7 to 10 years! Virtually none of the atoms in your skin, blood, or muscles right now are the same atoms you were born with. <strong>So what makes you, YOU?</strong> Is it your memories? Your pattern? Your soul?
+              </p>
+            </div>
+          </div>
+
+          <!-- Dilemma Poll -->
+          <div class="dilemma-poll glass-panel" style="padding: 24px; border-radius: var(--radius-lg);">
+            <h4 style="font-size: 1.2rem; color: #ffffff; margin-bottom: 10px;">💍 The Ring of Gyges: Invisibility &amp; Honesty</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px;">
+              Imagine finding a magical ring that turns you completely invisible whenever you turn it. Nobody could ever catch you or know what you did. What would you do?
+            </p>
+            <button class="poll-choice-btn">A) I would always do the right thing anyway, because being good is about who you are inside.</button>
+            <button class="poll-choice-btn">B) I would pull a few harmless pranks on my friends, but never hurt anyone.</button>
+            <button class="poll-choice-btn">C) It would be too tempting; having rules and accountability helps humans stay fair.</button>
+
+            <div class="poll-response-box hidden">
+              <strong>💡 Socrates' Insight:</strong> Socrates argued that true happiness and inner peace come from having a healthy, honest soul. Doing something unfair—even if no one finds out—still damages your own self-respect and peace of mind!
+            </div>
+          </div>
+        </div>
       </section>
 
     </main>
@@ -718,7 +1561,7 @@
     </div>
   </div>
 
-  <!-- Audio Synthesis & Simulation Scripts -->
+  <!-- Audio Synthesis, Simulations & Multi-Domain Portal Scripts -->
   <script src="js/audio.js"></script>
   <script src="js/solar_system.js"></script>
   <script src="js/day_night.js"></script>
@@ -726,6 +1569,8 @@
   <script src="js/moon_phases.js"></script>
   <script src="js/eclipses.js"></script>
   <script src="js/quiz.js"></script>
+  <script src="js/portal.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
+

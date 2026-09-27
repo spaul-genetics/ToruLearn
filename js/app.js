@@ -15,8 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.initMoonPhasesSim) window.initMoonPhasesSim();
   if (window.initEclipsesLab) window.initEclipsesLab();
   if (window.initCosmicQuiz) window.initCosmicQuiz();
+  if (window.initToruPortal) window.initToruPortal();
 
-  // 3. Tab Navigation Handling
+  // 3. Tab Navigation Handling for Cosmic Explorer
   const tabs = document.querySelectorAll('.nav-tab');
   const sections = document.querySelectorAll('.sim-section');
 
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.cosmicAudio?.playWhoosh();
   }
+  window.switchCosmicTab = switchTab;
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -99,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.zoomable-img').forEach(img => {
     img.addEventListener('click', () => {
-      openPhotoModal(img.src, img.alt);
+      openPhotoModal(img.src, img.dataset.caption || img.alt || img.title);
     });
   });
 
