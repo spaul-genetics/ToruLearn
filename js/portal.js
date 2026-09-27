@@ -9,7 +9,7 @@ class ToruPortal {
   constructor() {
     this.currentView = 'home';
     this.currentFilter = 'all';
-    this.bodySystemTab = 'digestive';
+    this.bodySystemTab = 'skeleton';
     this.digestiveStep = 0;
     this.breathingState = 'inhale';
     this.heartBpm = 75;
@@ -92,7 +92,9 @@ class ToruPortal {
     } else if (viewId === 'math-patterns') {
       this.drawFibonacci();
     } else if (viewId === 'body-systems') {
-      this.renderBreathing();
+      if (window.initSkeleton3D) window.initSkeleton3D(true);
+      setTimeout(() => window.skeletonSim3D?.resize(), 60);
+      if (this.bodySystemTab === 'respiratory') this.renderBreathing();
     }
 
     // Scroll to top of viewport
@@ -142,6 +144,10 @@ class ToruPortal {
         document.getElementById(`sys-panel-${sys}`)?.classList.add('active');
         window.cosmicAudio?.playClick();
 
+        if (sys === 'skeleton') {
+          if (window.initSkeleton3D) window.initSkeleton3D(true);
+          setTimeout(() => window.skeletonSim3D?.resize(), 60);
+        }
         if (sys === 'respiratory') this.renderBreathing();
         if (sys === 'circulatory') this.updateHeartRate(this.heartBpm);
       });

@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.initEclipsesLab) window.initEclipsesLab();
   if (window.initCosmicQuiz) window.initCosmicQuiz();
   if (window.initToruPortal) window.initToruPortal();
+  if (window.initSkeleton3D) window.initSkeleton3D();
 
   // 3. Tab Navigation Handling for Cosmic Explorer
   const tabs = document.querySelectorAll('.nav-tab');

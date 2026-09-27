@@ -158,17 +158,17 @@
                   </div>
                 </div>
                 <div class="card-question-box">
-                  “Where does an apple go after you swallow it? How do your lungs pull oxygen out of thin air?”
+                  “How do your 206 bones support your body? Where does food go after you chew it? How do your lungs breathe?”
                 </div>
                 <div class="card-tags-list">
+                  <span class="subtopic-tag">🦴 3D 206 Bones Skeleton</span>
                   <span class="subtopic-tag">🍎 Digestive Journey</span>
                   <span class="subtopic-tag">🫁 Breathing &amp; Lungs</span>
                   <span class="subtopic-tag">❤️ 100,000 Heartbeats</span>
-                  <span class="subtopic-tag">⚡ Nervous Reflexes</span>
                 </div>
               </div>
               <button class="card-action-btn" data-view-target="body-systems">
-                Explore Body Systems ➔
+                Explore 3D Skeleton &amp; Systems ➔
               </button>
             </div>
 
@@ -1038,9 +1038,12 @@
         </div>
 
         <div class="body-systems-lab">
-          <!-- Sub-Tabs for Body Systems -->
+          <!-- Sub-Tabs for Body Systems (Skeleton FIRST!) -->
           <div class="body-sys-nav">
-            <button class="body-sys-tab active" data-system="digestive">
+            <button class="body-sys-tab active" data-system="skeleton">
+              <span>🦴</span> The Skeleton (3D Framework)
+            </button>
+            <button class="body-sys-tab" data-system="digestive">
               <span>🍎</span> The Digestive Journey
             </button>
             <button class="body-sys-tab" data-system="respiratory">
@@ -1051,8 +1054,93 @@
             </button>
           </div>
 
+          <!-- ================= PANEL 0: 3D SKELETAL SYSTEM ================= -->
+          <div id="sys-panel-skeleton" class="body-sys-panel active">
+            
+            <!-- Skeleton View Top Controls Bar -->
+            <div class="skeleton-toolbar glass-panel">
+              <div class="skeleton-presets">
+                <span style="font-size: 0.85rem; color: #94a3b8; font-weight: 500;">Focus Camera:</span>
+                <button id="skeleton-reset-btn" class="btn-ghost-small" title="Reset Camera to Full Body">↺ Full Body</button>
+                <button id="skeleton-head-btn" class="btn-ghost-small" title="Focus Skull">💀 Skull</button>
+                <button id="skeleton-chest-btn" class="btn-ghost-small" title="Focus Ribcage &amp; Spine">🫁 Chest &amp; Ribs</button>
+                <button id="skeleton-arm-btn" class="btn-ghost-small" title="Focus Arms">🦾 Arms</button>
+                <button id="skeleton-leg-btn" class="btn-ghost-small" title="Focus Legs &amp; Feet">🦵 Legs</button>
+              </div>
+              <div class="skeleton-actions">
+                <button id="skeleton-rotate-btn" class="btn-primary-small active" title="Toggle 360 Turntable Spin">⏸ Pause Spin</button>
+              </div>
+            </div>
+
+            <!-- 3D Viewport & Inspector Grid -->
+            <div class="skeleton-grid">
+              
+              <!-- 3D Canvas Box -->
+              <div class="skeleton-canvas-wrapper glass-panel">
+                <div id="skeleton-3d-canvas-box" class="skeleton-3d-canvas"></div>
+
+                <!-- Floating Canvas Helper Tag -->
+                <div class="skeleton-canvas-hint">
+                  <span>💡 Drag to rotate 360° • Scroll / pinch to zoom • Click any bone or pin</span>
+                </div>
+
+                <!-- Quick Bone Selector Ribbon -->
+                <div class="bone-quick-ribbon">
+                  <button class="bone-quick-btn" data-bone="cranium">💀 Skull</button>
+                  <button class="bone-quick-btn" data-bone="mandible">🦷 Jaw</button>
+                  <button class="bone-quick-btn" data-bone="clavicle">🦴 Collarbone</button>
+                  <button class="bone-quick-btn" data-bone="scapula">🪽 Shoulder Blade</button>
+                  <button class="bone-quick-btn" data-bone="ribcage">🫁 Ribcage</button>
+                  <button class="bone-quick-btn" data-bone="sternum">🛡️ Breastbone</button>
+                  <button class="bone-quick-btn" data-bone="spine">⚡ Spine</button>
+                  <button class="bone-quick-btn" data-bone="humerus">🦾 Upper Arm</button>
+                  <button class="bone-quick-btn" data-bone="radius_ulna">🧤 Forearm</button>
+                  <button class="bone-quick-btn" data-bone="hand">✋ Hand</button>
+                  <button class="bone-quick-btn" data-bone="pelvis">🩻 Pelvis</button>
+                  <button class="bone-quick-btn active" data-bone="femur">🦵 Femur</button>
+                  <button class="bone-quick-btn" data-bone="patella">🔘 Kneecap</button>
+                  <button class="bone-quick-btn" data-bone="tibia_fibula">🦶 Shin</button>
+                  <button class="bone-quick-btn" data-bone="foot">👟 Foot</button>
+                </div>
+              </div>
+
+              <!-- Bone Scientific Inspector Card -->
+              <div id="bone-inspector-card" class="bone-inspector glass-panel">
+                <!-- Dynamically populated via SkeletonSim3D -->
+              </div>
+            </div>
+
+            <!-- Skeletal Science Trivia Strip -->
+            <div class="glass-panel" style="padding: 20px; border-radius: var(--radius-lg); margin-top: 18px;">
+              <h4 style="font-size: 1.15rem; color: #ffffff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <span>🦴</span> The Marvel of Your 206 Bones
+              </h4>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;">
+                <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md); border-left: 3px solid #38bdf8;">
+                  <strong style="color: #38bdf8;">From 270 Down to 206:</strong>
+                  <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">
+                    You were born with about 270 soft cartilage bones! As you grew during childhood, many bones fused together (like your skull plates and sacrum) until you reach exactly 206 adult bones.
+                  </p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md); border-left: 3px solid #f59e0b;">
+                  <strong style="color: #f59e0b;">Living, Self-Healing Steel:</strong>
+                  <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">
+                    Bones are NOT dry sticks—they are active living organs with blood vessels and nerves! Osteoclasts break down old bone and osteoblasts rebuild fresh bone every day, completely replacing your skeleton every 10 years.
+                  </p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md); border-left: 3px solid #10b981;">
+                  <strong style="color: #10b981;">The Blood Cell Factory:</strong>
+                  <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 4px;">
+                    Inside the spongy marrow cavity of your long bones (femur, pelvis, sternum), stem cells generate over 2 million brand-new red blood cells every second!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
           <!-- Panel 1: Digestive System -->
-          <div id="sys-panel-digestive" class="body-sys-panel active">
+          <div id="sys-panel-digestive" class="body-sys-panel">
             <div class="digestive-stepper-wrap">
               <div>
                 <div class="digest-nav-nodes">
@@ -1568,7 +1656,14 @@
   <script src="js/seasons.js"></script>
   <script src="js/moon_phases.js"></script>
   <script src="js/eclipses.js"></script>
-  <script src="js/quiz.js"></script>
+  <!-- 3D Graphics Engine & Skeleton Simulator -->
+  <script src="js/libs/three.min.js"></script>
+  <script src="js/libs/OrbitControls.js"></script>
+  <script src="js/libs/GLTFLoader.js"></script>
+  <script src="assets/models/skeleton_data.js"></script>
+  <script src="js/skeleton.js"></script>
+
+  <!-- Multi-Domain Portal & App Controller -->
   <script src="js/portal.js"></script>
   <script src="js/app.js"></script>
 </body>
