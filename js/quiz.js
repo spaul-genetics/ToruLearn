@@ -9,7 +9,7 @@ class CosmicQuiz {
     this.currentIndex = 0;
     this.selectedOption = null;
 
-    this.questions = [
+    this.questionsEn = [
       {
         category: 'Planetary Rotation',
         question: 'Why does the Sun seem to rise in the east and set in the west every day?',
@@ -134,6 +134,7 @@ class CosmicQuiz {
 
     this.setupEvents();
     this.renderQuestion();
+    window.addEventListener("toru:langchange", () => this.renderQuestion());
   }
 
   setupEvents() {
@@ -158,7 +159,8 @@ class CosmicQuiz {
   }
 
   renderQuestion() {
-    const q = this.questions[this.currentIndex];
+    const list = window.currentLang === 'bn' ? this.questionsBn : this.questionsEn;
+    const q = list[this.currentIndex];
     this.selectedOption = null;
 
     // Update scoreboard
@@ -171,9 +173,9 @@ class CosmicQuiz {
     const explanationBox = document.getElementById('quiz-explanation-box');
 
     if (scoreEl) scoreEl.textContent = this.score;
-    if (progTextEl) progTextEl.textContent = `${this.currentIndex + 1} / ${this.questions.length}`;
-    if (progFillEl) progFillEl.style.width = `${((this.currentIndex + 1) / this.questions.length) * 100}%`;
-    if (categoryEl) categoryEl.textContent = `Category: ${q.category}`;
+    if (progTextEl) progTextEl.textContent = `${this.currentIndex + 1} / ${list.length}`;
+    if (progFillEl) progFillEl.style.width = `${((this.currentIndex + 1) / list.length) * 100}%`;
+    if (categoryEl) categoryEl.textContent = window.currentLang === 'bn' ? `বিষয়: ${q.category}` : `Category: ${q.category}`;
     if (questionEl) questionEl.textContent = q.question;
 
     if (explanationBox) explanationBox.classList.add('hidden');
@@ -199,8 +201,10 @@ class CosmicQuiz {
     if (this.selectedOption !== null) return; // already answered
     this.selectedOption = selectedIdx;
 
-    const q = this.questions[this.currentIndex];
+    const list = window.currentLang === 'bn' ? this.questionsBn : this.questionsEn;
+    const q = list[this.currentIndex];
     const isCorrect = selectedIdx === q.correct;
+    const isBn = window.currentLang === 'bn';
     const optionButtons = document.querySelectorAll('.quiz-option-btn');
 
     optionButtons.forEach((btn, idx) => {
@@ -227,7 +231,9 @@ class CosmicQuiz {
     const expText = document.getElementById('explanation-text');
 
     if (explanationBox && expTitle && expText) {
-      expTitle.textContent = isCorrect ? '🌟 Brilliant! Scientific Fact:' : '🔍 Learning Moment:';
+      expTitle.textContent = isCorrect 
+        ? (isBn ? '🌟 চমৎকার উত্তর! বৈজ্ঞানিক ব্যাখ্যা:' : '🌟 Brilliant! Scientific Fact:') 
+        : (isBn ? '🔍 নতুন কিছু শেখার সুযোগ:' : '🔍 Learning Moment:');
       expTitle.style.color = isCorrect ? 'var(--accent-emerald)' : 'var(--accent-gold)';
       expText.textContent = q.explanation;
       explanationBox.classList.remove('hidden');
@@ -246,30 +252,35 @@ class CosmicQuiz {
     if (questionBox) questionBox.classList.add('hidden');
     if (resultsBox) resultsBox.classList.remove('hidden');
 
-    if (summaryEl) summaryEl.textContent = `You scored ${this.score} out of ${this.questions.length}!`;
+    const isBn = window.currentLang === 'bn';
+    if (summaryEl) {
+      summaryEl.textContent = isBn 
+        ? `আপনি ১০টির মধ্যে ${this.score}টি সঠিক উত্তর দিয়েছেন!` 
+        : `You scored ${this.score} out of ${this.questionsEn.length}!`;
+    }
 
     window.cosmicAudio?.playSuccess();
 
     if (this.score === 10) {
       if (badgeIcon) badgeIcon.textContent = '👑';
-      if (titleEl) titleEl.textContent = 'Grand Cosmic Master!';
-      if (rankAward) rankAward.innerHTML = 'Rank: <strong>Grand Astrophysicist Genius</strong> 🌟';
-      if (msgEl) msgEl.textContent = 'Incredible mastery! You understand planetary orbits, axial tilts, lunar waltzes, and eclipse alignments like a seasoned astronomer at NASA!';
+      if (titleEl) titleEl.textContent = isBn ? 'মহান মহাজাগতিক মাস্টার!' : 'Grand Cosmic Master!';
+      if (rankAward) rankAward.innerHTML = isBn ? 'মর্যাদা: <strong>মহা জ্যোতির্বিদ ও জিনিয়াস</strong> 🌟' : 'Rank: <strong>Grand Astrophysicist Genius</strong> 🌟';
+      if (msgEl) msgEl.textContent = isBn ? 'অবিশ্বাস্য দক্ষতা! নাসার অভিজ্ঞ বিজ্ঞানীদের মতো তুমি পৃথিবীর ঘূর্ণন, ঋতু ও গ্রহণ খুব ভালো বোঝো!' : 'Incredible mastery! You understand planetary orbits, axial tilts, lunar waltzes, and eclipse alignments like a seasoned astronomer at NASA!';
     } else if (this.score >= 8) {
       if (badgeIcon) badgeIcon.textContent = '🚀';
-      if (titleEl) titleEl.textContent = 'Cosmic Mission Commander!';
-      if (rankAward) rankAward.innerHTML = 'Rank: <strong>Senior Planetary Scientist</strong> 🛸';
-      if (msgEl) msgEl.textContent = 'Outstanding job! You have a brilliant scientific intuition and an eagle eye for celestial mechanics.';
+      if (titleEl) titleEl.textContent = isBn ? 'মহাকাশ অভিযানের অধিনায়ক!' : 'Cosmic Mission Commander!';
+      if (rankAward) rankAward.innerHTML = isBn ? 'মর্যাদা: <strong>জ্যেষ্ঠ গ্রহবিজ্ঞানী</strong> 🛸' : 'Rank: <strong>Senior Planetary Scientist</strong> 🛸';
+      if (msgEl) msgEl.textContent = isBn ? 'দুর্দান্ত সাফল্য! মহাজাগতিক নিয়মগুলো বোঝার ক্ষেত্রে তোমার চমৎকার অন্তর্দৃষ্টি রয়েছে।' : 'Outstanding job! You have a brilliant scientific intuition and an eagle eye for celestial mechanics.';
     } else if (this.score >= 6) {
       if (badgeIcon) badgeIcon.textContent = '🛰️';
-      if (titleEl) titleEl.textContent = 'Orbital Navigator!';
-      if (rankAward) rankAward.innerHTML = 'Rank: <strong>Flight Scientist</strong> 🔭';
-      if (msgEl) msgEl.textContent = 'Great effort! You clearly grasp how day, night, seasons, and eclipses work. Give it another spin to score a perfect 10!';
+      if (titleEl) titleEl.textContent = isBn ? 'কক্ষপথের নাবিক!' : 'Orbital Navigator!';
+      if (rankAward) rankAward.innerHTML = isBn ? 'মর্যাদা: <strong>ফ্লাইট বিজ্ঞানী</strong> 🔭' : 'Rank: <strong>Flight Scientist</strong> 🔭';
+      if (msgEl) msgEl.textContent = isBn ? 'ভালো চেষ্টা! তুমি দিন-রাত ও ঋতুর প্রাথমিক নিয়মগুলো শিখেছ। আবার চেষ্টা করে ১০/১০ অর্জন করো!' : 'Great effort! You clearly grasp how day, night, seasons, and eclipses work. Give it another spin to score a perfect 10!';
     } else {
       if (badgeIcon) badgeIcon.textContent = '🔭';
-      if (titleEl) titleEl.textContent = 'Junior Stargazer!';
-      if (rankAward) rankAward.innerHTML = 'Rank: <strong>Apprentice Astronomer</strong> ✨';
-      if (msgEl) msgEl.textContent = 'Science is an endless voyage of discovery. Explore the simulation tabs again, then try the quiz to level up your score!';
+      if (titleEl) titleEl.textContent = isBn ? 'নবীন তারা পর্যবেক্ষক!' : 'Junior Stargazer!';
+      if (rankAward) rankAward.innerHTML = isBn ? 'মর্যাদা: <strong>শিক্ষানবিস জ্যোতির্বিজ্ঞানী</strong> ✨' : 'Rank: <strong>Apprentice Astronomer</strong> ✨';
+      if (msgEl) msgEl.textContent = isBn ? 'বিজ্ঞান হলো অনন্ত আবিষ্কারের পথ। সিমুলেশনগুলো আবার একটু দেখে নিয়ে কুইজে অংশ নাও!' : 'Science is an endless voyage of discovery. Explore the simulation tabs again, then try the quiz to level up your score!';
     }
   }
 }

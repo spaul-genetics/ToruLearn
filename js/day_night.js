@@ -877,11 +877,12 @@ class DayNightSim {
     ctx.setLineDash([]);
 
     // Axis Pole Labels
-    ctx.font = '600 11px Outfit, sans-serif';
+    const isBn = window.currentLang === 'bn';
+    ctx.font = isBn ? '600 12px "Hind Siliguri", Outfit, sans-serif' : '600 11px Outfit, sans-serif';
     ctx.fillStyle = '#38bdf8';
     ctx.textAlign = 'center';
-    ctx.fillText('North Pole (Flattened)', 0, -radiusPolar * 1.18);
-    ctx.fillText('South Pole (Flattened)', 0, radiusPolar * 1.20);
+    ctx.fillText(isBn ? 'উত্তর মেরু (চ্যাপ্টা)' : 'North Pole (Flattened)', 0, -radiusPolar * 1.18);
+    ctx.fillText(isBn ? 'দক্ষিণ মেরু (চ্যাপ্টা)' : 'South Pole (Flattened)', 0, radiusPolar * 1.20);
 
     // Atmospheric Rayleigh Scattering Glow around Oblate Spheroid
     ctx.save();
@@ -1238,15 +1239,16 @@ class DayNightSim {
     ctx.restore();
 
     // 11. World-Space Annotations
+    const isBnAnnot = window.currentLang === 'bn';
     // Day Side indicator
-    ctx.font = '700 12px Outfit, sans-serif';
+    ctx.font = isBnAnnot ? '700 13px "Hind Siliguri", Outfit, sans-serif' : '700 12px Outfit, sans-serif';
     ctx.fillStyle = '#fbbf24';
     ctx.textAlign = 'center';
-    ctx.fillText('☀️ Sunlight Incoming (Day Side)', cx - radiusEquator * 0.85, cy - radiusPolar * 0.88);
+    ctx.fillText(isBnAnnot ? '☀️ সূর্যের আলো (দিনের দিক)' : '☀️ Sunlight Incoming (Day Side)', cx - radiusEquator * 0.85, cy - radiusPolar * 0.88);
 
     // Night Side indicator
     ctx.fillStyle = '#94a3b8';
-    ctx.fillText('🌙 Night Side (Shadow)', cx + radiusEquator * 0.88, cy - radiusPolar * 0.88);
+    ctx.fillText(isBnAnnot ? '🌙 রাতের দিক (ছায়া)' : '🌙 Night Side (Shadow)', cx + radiusEquator * 0.88, cy - radiusPolar * 0.88);
 
     // Terminator Line
     ctx.strokeStyle = '#f43f5e';
@@ -1259,9 +1261,9 @@ class DayNightSim {
     ctx.setLineDash([]);
 
     ctx.fillStyle = '#fda4af';
-    ctx.font = '600 11px Outfit, sans-serif';
+    ctx.font = isBnAnnot ? '600 12px "Hind Siliguri", Outfit, sans-serif' : '600 11px Outfit, sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('The Terminator Line (Sunrise & Sunset)', cx, cy - radiusPolar * 1.22);
+    ctx.fillText(isBnAnnot ? 'ছায়াবৃত্ত / টারমিনেটর (সূর্যোদয় ও সূর্যাস্ত)' : 'The Terminator Line (Sunrise & Sunset)', cx, cy - radiusPolar * 1.22);
 
     // 12. Earth Orbit Mini-Map Inset (Shows Earth traveling around Sun with fixed space tilt pointing to Polaris)
     if (this.showOrbitMiniMap) {

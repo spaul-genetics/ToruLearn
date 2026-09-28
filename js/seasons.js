@@ -287,15 +287,29 @@ class SeasonsSim {
     ctx.fill();
     ctx.stroke();
 
-    ctx.font = '700 12px Outfit, sans-serif';
+    const isBn = window.currentLang === 'bn';
+    const seasonBnNames = {
+      'Summer Solstice (Peak Heat)': 'গ্রীষ্ম সংক্রান্তি (সর্বোচ্চ উত্তাপ)',
+      'Summer': 'গ্রীষ্মকাল',
+      'Winter Solstice (Peak Cold)': 'মকর সংক্রান্তি (সর্বোচ্চ শীত)',
+      'Winter': 'শীতকাল',
+      'Autumn Equinox': 'শারদীয় বিষুব (সমান দিন/রাত)',
+      'Autumn': 'শরৎকাল',
+      'Spring Equinox': 'বাসন্ত বিষুব (সমান দিন/রাত)',
+      'Spring': 'বসন্তকাল'
+    };
+    const nhDisplay = isBn ? (seasonBnNames[nhSeason] || nhSeason) : nhSeason;
+    const shDisplay = isBn ? (seasonBnNames[shSeason] || shSeason) : shSeason;
+
+    ctx.font = isBn ? '700 12px "Hind Siliguri", Outfit, sans-serif' : '700 12px Outfit, sans-serif';
     ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'left';
-    ctx.fillText(`North Hemisphere: ${nhSeason}`, boxX + 14, boxY + 24);
-    ctx.fillText(`South Hemisphere: ${shSeason}`, boxX + 14, boxY + 48);
+    ctx.fillText(isBn ? `উত্তর গোলার্ধ: ${nhDisplay}` : `North Hemisphere: ${nhSeason}`, boxX + 14, boxY + 24);
+    ctx.fillText(isBn ? `দক্ষিণ গোলার্ধ: ${shDisplay}` : `South Hemisphere: ${shSeason}`, boxX + 14, boxY + 48);
 
-    ctx.font = '500 11px Outfit, sans-serif';
+    ctx.font = isBn ? '500 11px "Hind Siliguri", Outfit, sans-serif' : '500 11px Outfit, sans-serif';
     ctx.fillStyle = '#38bdf8';
-    ctx.fillText(`Solar Ray Intensity: ${nhDirectness}`, boxX + 14, boxY + 72);
+    ctx.fillText(isBn ? `সূর্যরশ্মির তীব্রতা: ${nhDirectness}` : `Solar Ray Intensity: ${nhDirectness}`, boxX + 14, boxY + 72);
   }
 
   animate(currentTime) {

@@ -155,7 +155,151 @@
       'bone.clavicle': 'Clavicle (Collarbone)',
       'bone.scapula': 'Scapula (Shoulder)',
       'bone.patella': 'Patella (Kneecap)',
-      'bone.hands': 'Hands & Feet'
+      'bone.hands': 'Hands & Feet',
+      // Home Manifesto Strip
+      'manifesto.why.title': 'Never Stop Asking "Why?"',
+      'manifesto.why.desc': 'Every breakthrough in science and philosophy began with a child asking an innocent, brilliant question.',
+      'manifesto.discovery.title': 'Hands-On Discovery',
+      'manifesto.discovery.desc': 'Instead of memorizing definitions, we build interactive simulations where you manipulate the variables directly.',
+      'manifesto.connected.title': 'Everything Is Connected',
+      'manifesto.connected.desc': 'The atoms in your body were forged inside exploding ancient stars, and your thoughts are electrical patterns governed by physics.',
+
+      // Skeletal Trivia Strip
+      'skel.trivia.title': 'The Marvel of Your 206 Bones',
+      'skel.trivia.1.title': 'From 270 Down to 206:',
+      'skel.trivia.1.desc': 'You were born with about 270 soft cartilage bones! As you grew during childhood, many bones fused together (like your skull plates and sacrum) until you reach exactly 206 adult bones.',
+      'skel.trivia.2.title': 'Living, Self-Healing Steel:',
+      'skel.trivia.2.desc': 'Bones are NOT dry sticks—they are active living organs with blood vessels and nerves! Osteoclasts break down old bone and osteoblasts rebuild fresh bone every day, completely replacing your skeleton every 10 years.',
+      'skel.trivia.3.title': 'The Blood Cell Factory:',
+      'skel.trivia.3.desc': 'Inside the spongy marrow cavity of your long bones (femur, pelvis, sternum), stem cells generate over 2 million brand-new red blood cells every second!',
+
+      // Digestive System static cards
+      'digest.btn.prev': '◀ Previous Station',
+      'digest.btn.next': 'Next Station ▶',
+      'digest.apple.title': '🍎 Follow an Apple\'s Journey',
+      'digest.apple.desc': 'Every bite of food travels through a 30-foot continuous digestive tube. Your body takes around 24 to 72 hours to completely extract every drop of water, protein building block, and sugar fuel from your meals!',
+      'digest.villus.title': 'The Villus Superpower:',
+      'digest.villus.desc': 'Inside the small intestine, millions of microscopic finger-like villi increase your absorption surface area to over 250 square meters—equal to the size of a tennis court!',
+      'digest.microbiome.title': 'Gut Microbiome Friends:',
+      'digest.microbiome.desc': 'Over 100 trillion friendly bacteria live in your gut. They help you digest fibrous foods, produce vitamin K, and even release chemicals that talk to your brain to influence your mood!',
+
+      // Respiratory Simulator static cards
+      'resp.badge': 'Interactive Breathing Simulator',
+      'resp.btn.toggle': '🌬️ Toggle Inhale / Exhale',
+      'resp.alveoli.title': '🫁 300 Million Tiny Air Sacks (Alveoli)',
+      'resp.alveoli.desc': 'Air enters your nose, travels down your windpipe (trachea), splits into left and right bronchi, and branches into hundreds of thousands of tiny bronchioles like an upside-down tree!',
+      'resp.gas.title': 'The Gas Exchange Magic:',
+      'resp.gas.desc': 'At the tips of bronchioles are grape-like bunches called alveoli. Oxygen molecules slip directly through walls only one cell thick into red blood cells, while waste carbon dioxide (CO₂) slips back out to be exhaled.',
+      'resp.yawn.title': 'Why Do You Yawn or Hiccup?',
+      'resp.yawn.desc': 'A hiccup is a sudden, involuntary spasm of your diaphragm muscle! When it jerks, your vocal cords snap shut with a "hic" sound.',
+
+      // Circulatory Engine static cards
+      'circ.badge': 'Interactive Heart Rate Engine',
+      'circ.slider.label': 'Slide to adjust heart rate: resting, sprinting, or sleeping!',
+      'circ.vessels.title': '❤️ 60,000 Miles of Blood Vessels',
+      'circ.vessels.desc': 'If laid out in a straight line, all the blood vessels in one human body could circle the entire Earth more than twice!',
+      'circ.double.title': 'The Double Loop Pump:',
+      'circ.double.desc': 'The right side of your heart pumps oxygen-poor blood to the lungs to pick up fresh O₂. The left side pumps high-pressure oxygenated blood through the aorta to your brain and toes!',
+      'circ.veins.title': 'Why Do Veins Look Blue?',
+      'circ.veins.desc': 'Your blood is ALWAYS red! Veins look blue or greenish under your skin because of an optical illusion: red light penetrates deep into tissue, while shorter blue wavelengths scatter back to your eyes from shallow veins.',
+
+      // Immunology
+      'immune.title': '🛡️ The Immune Army: Microscopic Defenders',
+      'immune.subtitle': 'Meet the Cellular Warriors Protecting Your Body 24 Hours a Day',
+      'immune.btn.macrophage': '🛡️ Macrophage',
+      'immune.btn.neutrophil': '⚡ Neutrophil',
+      'immune.btn.dendritic': '📡 Dendritic Cell',
+      'immune.btn.tcell': '🎯 Helper & Killer T-Cells',
+      'immune.btn.bcell': '🏷️ B-Cell & Antibodies',
+
+      // Cell Biology
+      'cell.title': '🧬 The Secret Life of Cells',
+      'cell.subtitle': 'Explore the Nanoscopic City Inside Every Living Organism',
+      'cell.btn.nucleus': '🏛️ Nucleus & DNA',
+      'cell.btn.mitochondria': '⚡ Mitochondria',
+      'cell.btn.ribosome': '🏭 Ribosomes',
+      'cell.btn.membrane': '🛡️ Cell Membrane',
+      'cell.scale.title': '🔬 How Small Is "Small"? A Journey Through Scale',
+      'cell.scale.hair': 'Human Hair Width',
+      'cell.scale.cell': 'Skin / Liver Cell',
+      'cell.scale.bacteria': 'Bacterium (E. coli)',
+      'cell.scale.virus': 'Flu / COVID Virus',
+      'cell.scale.dna': 'DNA Double Helix',
+
+      // Mathematics & Logic
+      'math.title': '📐 Math Secrets: Nature\'s Hidden Code',
+      'math.subtitle': 'Interactive Fibonacci Spirals, Golden Ratios & Sacred Geometry',
+      'math.fibo.title': 'The Golden Spiral: 137.5° Angle of Life',
+      'math.fibo.desc': 'Why do sunflower seeds and pinecones arrange in spirals? If plant seeds grow at any random angle, they bunch together and waste space. But at exactly the Golden Angle (~137.5°), seeds pack together in maximum mathematical efficiency!',
+      'math.fibo.slider': 'Pack Seed Count:',
+      'math.pinecone.title': '🌲 Pinecone Spirals',
+      'math.pinecone.desc': 'Count the spirals turning left and right on a pinecone—you will almost always get consecutive Fibonacci numbers like 8 and 13!',
+      'math.cicada.title': '🦗 Prime Number Cicadas',
+      'math.cicada.desc': 'Periodical cicadas stay underground for exactly 13 or 17 years (both prime numbers!) so that predators cannot sync their life cycles with them!',
+
+      // Mind & Psychology
+      'psych.title': '🧠 Mind, Brain & Perception: The Illusion Lab',
+      'psych.subtitle': 'See How Your Visual Cortex Reconstructs Light Signals Into Reality',
+      'psych.tab.cafe': '🧱 The Cafe Wall',
+      'psych.tab.hermann': '🏁 The Hermann Grid',
+      'psych.tab.growth': '🌱 Growth Mindset',
+      'psych.cafe.q': 'Are the horizontal mortar lines straight and parallel?',
+      'psych.cafe.desc': 'Your eyes will tell you the lines are crooked, slanted, or wedge-shaped. Toggle the guide lines below!',
+      'psych.cafe.toggle': 'Show Straight Parallel Guides',
+      'psych.hermann.title': 'The Ghostly Dots',
+      'psych.hermann.desc': 'Look around this grid. Do you see faint gray dots flickering at the white intersections? Try looking directly at one!',
+      'psych.hermann.expl': 'Why? It is caused by lateral inhibition in your retina! Cells processing the bright intersections receive inhibition from four sides, making your brain perceive them as slightly darker.',
+      'psych.growth.title': '🌱 The Brain Is a Muscle: Neuroplasticity',
+      'psych.growth.desc': 'Whenever you struggle with a hard math problem, a tricky game, or a musical instrument, you are not failing—your neurons are physically sprouting new dendrites and wrapping axons in myelin insulation!',
+      'psych.growth.fixed.title': 'Fixed Mindset Trap:',
+      'psych.growth.fixed.desc': '“I made a mistake, so I am not good at this.”',
+      'psych.growth.grow.title': 'Growth Mindset Superpower:',
+      'psych.growth.grow.desc': '“I made a mistake, which means my brain just learned something new that it didn\'t know 5 minutes ago!”',
+
+      // Philosophy & Big Questions
+      'phil.title': '💭 Big Questions: Philosophy for Young Thinkers',
+      'phil.subtitle': 'Thought Experiments, Dilemmas & The Art of Wonder',
+      'phil.theseus.badge': 'Thought Experiment #1: Personal Identity',
+      'phil.theseus.title': 'The Ship of Theseus ⛵',
+      'phil.theseus.intro': 'Imagine a brave hero named Theseus sails home on a famous wooden ship. Over 30 years of sailing, each wooden plank rots one by one and is replaced with a new plank of timber.',
+      'phil.theseus.slider': 'Replace Planks on the Ship:',
+      'phil.dilemma.title': 'Thought Experiment #2: The Invisibility Ring 💍',
+      'phil.dilemma.q': 'If you found a magical ring that made you completely invisible, would you still follow the rules and be kind when nobody could ever catch you?',
+      'phil.dilemma.opt1': 'Yes! Doing good is about who you are inside, not about getting caught.',
+      'phil.dilemma.opt2': 'I might be tempted to pull harmless pranks or eat extra cookies!',
+      'phil.dilemma.opt3': 'It makes me wonder why laws exist in the first place.',
+
+      // Day & Night section
+      'dn.badge': 'Planetary Geodesy & Rotation',
+      'dn.title': 'Earth\'s True Shape & Day/Night',
+      'dn.shape.title': 'Earth is NOT a Perfect Sphere!',
+      'dn.shape.p1': 'From faraway space pictures, Earth looks like a perfectly round marble. But in reality, Earth is an Oblate Spheroid (a Geoid)!',
+      'dn.shape.p2': 'Because Earth spins rapidly on its axis once every 24 hours, centrifugal force flings rocks, magma, and oceans outward, creating an equatorial bulge while flattening the poles!',
+      'dn.stat.eq_diam': 'Equatorial Diameter',
+      'dn.stat.pol_diam': 'Polar Diameter',
+      'dn.stat.bulge': 'Equatorial Bulge',
+      'dn.stat.class': 'True Classification',
+      'dn.carousel.title': 'The 24-Hour Cosmic Carousel',
+      'dn.carousel.desc': 'As our oblate Earth rotates on its 23.44° tilted axis, the stationary Sun can only illuminate one half at any instant:',
+      'dn.carousel.day': 'Day Side: Facing the Sun, bathed in light and thermal energy.',
+      'dn.carousel.night': 'Night Side: Facing into space, sparkling with city night lights!',
+      'dn.carousel.term': 'The Terminator Line: The glowing sunset/sunrise band separating day from night.',
+      'dn.chimborazo.title': 'Mind-Blowing Geography Secret:',
+      'dn.chimborazo.desc': 'Because of Earth\'s equatorial bulge, the summit of Mount Chimborazo in Ecuador is actually the farthest point on the planet\'s surface from Earth\'s center—over 2 kilometers farther into space than Mount Everest!',
+
+      // Seasons section
+      'sea.badge': 'Axial Tilt & Orbital Mechanics',
+      'sea.title': 'The 23.5° Secret of Seasons',
+      'sea.desc': 'Earth does NOT have seasons because it gets closer or farther from the Sun. Earth\'s seasons happen entirely because our planet is tilted 23.44° on its rotational axis!',
+      'sea.north': 'Northern Hemisphere',
+      'sea.south': 'Southern Hemisphere',
+      'sea.june.title': '☀️ June: Summer Solstice',
+      'sea.june.desc': 'Tilted toward the Sun. Sun climbs high; direct rays deliver maximum heat energy and long daylight hours.',
+      'sea.dec.title': '❄️ December: Winter Solstice',
+      'sea.dec.desc': 'Tilted away from Sun. Sunlight arrives at a shallow angle and daylight hours are short.',
+      'sea.flashlight.title': 'Flashlight Angle Experiment:',
+      'sea.flashlight.desc': 'Shine a flashlight straight down at paper: the circle is small, bright, and intense (Summer). Tilt the flashlight: the beam spreads wide and dim (Winter).'
+
     },
 
     bn: {
@@ -305,7 +449,151 @@
       'bone.clavicle': 'ক্ল্যাভিকল (কলারবোন)',
       'bone.scapula': 'স্ক্যাপুলা (কাঁধ)',
       'bone.patella': 'প্যাটেলা (হাঁটু)',
-      'bone.hands': 'হাত ও পায়ের হাড়'
+      'bone.hands': 'হাত ও পায়ের হাড়',
+      // Home Manifesto Strip
+      'manifesto.why.title': 'প্রশ্ন করা কখনো থামিও না',
+      'manifesto.why.desc': 'বিজ্ঞান ও দর্শনের প্রতিটি যুগান্তকারী আবিষ্কার শুরু হয়েছিল কোনো শিশুর নিষ্পাপ ও বুদ্ধিদীপ্ত প্রশ্ন দিয়ে।',
+      'manifesto.discovery.title': 'হাতে-কলমে আবিষ্কার',
+      'manifesto.discovery.desc': 'সংজ্ঞা মুখস্থ করার বদলে আমরা তৈরি করি এমন সিমুলেশন, যেখানে তুমি নিজেই বিষয়গুলো নিয়ন্ত্রণ করতে পারবে।',
+      'manifesto.connected.title': 'সবকিছু পরস্পরের সাথে যুক্ত',
+      'manifesto.connected.desc': 'তোমার দেহের পরমাণুগুলো তৈরি হয়েছিল প্রাচীন নক্ষত্র বিস্ফোরণে, আর তোমার চিন্তা হলো পদার্থবিজ্ঞান নিয়ন্ত্রিত বৈদ্যুতিক সংকেত।',
+
+      // Skeletal Trivia Strip
+      'skel.trivia.title': 'আপনার ২০৬টি হাড়ের বিস্ময়',
+      'skel.trivia.1.title': '২৭০ থেকে কমে ২০৬:',
+      'skel.trivia.1.desc': 'জন্মের সময় প্রায় ২৭০টি নরম তরুণাস্থির হাড় থাকে! বড় হওয়ার সাথে সাথে অনেকগুলো হাড় জোড়া লেগে প্রাপ্তবয়স্ক শরীরে ঠিক ২০৬টিতে পরিণত হয়।',
+      'skel.trivia.2.title': 'জীবন্ত ও স্ব-নিরাময়কারী ইস্পাত:',
+      'skel.trivia.2.desc': 'হাড় কোনো শুকনা লাঠি নয়—রক্তনালী ও স্নায়ুযুক্ত জীবন্ত অঙ্গ! প্রতিদিন পুরানো কোষ ভেঙে নতুন হাড় তৈরি হয়, ফলে প্রতি ১০ বছরে পুরো কঙ্কালটাই নতুন হয়ে যায়।',
+      'skel.trivia.3.title': 'রক্তকণিকা তৈরির কারখানা:',
+      'skel.trivia.3.desc': 'আপনার দীর্ঘ হাড়ের নরম মজ্জার ভেতর স্টেম সেল প্রতি সেকেন্ডে ২০ লক্ষেরও বেশি নতুন লোহিত রক্তকণিকা তৈরি করে!',
+
+      // Digestive System static cards
+      'digest.btn.prev': '◀ পূর্ববর্তী স্টেশন',
+      'digest.btn.next': 'পরবর্তী স্টেশন ▶',
+      'digest.apple.title': '🍎 একটি আপেলের হজম যাত্রা',
+      'digest.apple.desc': 'খাবারের প্রতিটি গ্রাস প্রায় ৩০ ফুট লম্বা একটি নালী পাড়ি দেয়। শরীর খাবার থেকে সম্পূর্ণ পুষ্টি, প্রোটিন ও শক্তি শুষে নিতে ২৪ থেকে ৭২ ঘণ্টা সময় নেয়!',
+      'digest.villus.title': 'ভিলাইর মহাক্ষমতা:',
+      'digest.villus.desc': 'ক্ষুদ্রান্ত্রের ভেতরের লক্ষ লক্ষ মাইক্রোস্কোপিক আঙুলের মতো ভাঁজ শোষণক্ষেত্রকে ২৫০ বর্গমিটার পর্যন্ত বাড়িয়ে দেয়—যা একটি টেনিস কোর্টের সমান!',
+      'digest.microbiome.title': 'অন্ত্রের বন্ধু ব্যাকটেরিয়া:',
+      'digest.microbiome.desc': 'তোমার অন্ত্রে ১০০ ট্রিলিয়নেরও বেশি উপকারী ব্যাকটেরিয়া বাস করে। তারা আঁশযুক্ত খাবার হজমে সাহায্য করে এবং ভিটামিন কে তৈরি করে।',
+
+      // Respiratory Simulator static cards
+      'resp.badge': 'ইন্টারেক্টিভ শ্বাসপ্রশ্বাস সিমুলেটর',
+      'resp.btn.toggle': '🌬️ শ্বাস নিন / শ্বাস ছাড়ুন',
+      'resp.alveoli.title': '🫁 ৩০ কোটি ক্ষুদ্র বায়ুথলি (অ্যালভিওলাই)',
+      'resp.alveoli.desc': 'বাতাস নাক দিয়ে ঢুকে শ্বাসনালী বেয়ে বাম ও ডান ব্রঙ্কাসে ভাগ হয়ে উল্টানো গাছের ডালপালার মতো ছড়িয়ে পড়ে!',
+      'resp.gas.title': 'গ্যাস বিনিময়ের জাদু:',
+      'resp.gas.desc': 'অ্যালভিওলাইর প্রাচীর মাত্র এক কোষ পুরু! অক্সিজেন সরাসরি রক্তকণিকায় মিশে যায় এবং ক্ষতিকর কার্বন ডাই-অক্সাইড বেরিয়ে আসে।',
+      'resp.yawn.title': 'আমরা হাই তুলি বা হেঁচকি আসে কেন?',
+      'resp.yawn.desc': 'হেঁচকি হলো মধ্যচ্ছদা (ডায়াফ্রাম) পেশির হঠাৎ অনৈচ্ছিক সংকোচন! এতে স্বরতন্ত্র হঠাৎ বন্ধ হয়ে "হিক" শব্দ তৈরি হয়।',
+
+      // Circulatory Engine static cards
+      'circ.badge': 'ইন্টারেক্টিভ হৃৎস্পন্দন ইঞ্জিন',
+      'circ.slider.label': 'হৃৎস্পন্দন পরিবর্তন করতে স্লাইডার টানুন: বিশ্রাম, দৌড় বা ঘুম!',
+      'circ.vessels.title': '❤️ ৬০,০০০ মাইল দীর্ঘ রক্তনালী',
+      'circ.vessels.desc': 'একটি মানবদেহের সব রক্তনালী সোজা করে জুড়লে তা পৃথিবীকে দুইবারেরও বেশি ঘুরে আসতে পারবে!',
+      'circ.double.title': 'দ্বৈত চক্রাকার পাম্প:',
+      'circ.double.desc': 'হৃদপিণ্ডের ডান পাশ অক্সিজেনবিহীন রক্ত ফুসফুসে পাঠায়। আর বাম পাশ অক্সিজেনসমৃদ্ধ রক্ত সারা শরীরে পাম্প করে!',
+      'circ.veins.title': 'শিরার রঙ নীল দেখায় কেন?',
+      'circ.veins.desc': 'তোমার রক্ত সবসময়ই লাল! ত্বক ভেদ করে নীল আলো সহজে প্রতিফলিত হয়ে ফিরে আসে বলেই শিরাগুলোকে নীলচে দেখায়।',
+
+      // Immunology
+      'immune.title': '🛡️ রোগ প্রতিরোধ সেনা: আণুবীক্ষণিক রক্ষক',
+      'immune.subtitle': 'চিনে নাও সেই কোষযোদ্ধাদের যারা ২৪ ঘণ্টা তোমার শরীর পাহারা দিচ্ছে',
+      'immune.btn.macrophage': '🛡️ ম্যাক্রোফেজ',
+      'immune.btn.neutrophil': '⚡ নিউট্রোফিল',
+      'immune.btn.dendritic': '📡 ডেনড্রাইটিক কোষ',
+      'immune.btn.tcell': '🎯 টি-কোষ (টি-সেল)',
+      'immune.btn.bcell': '🏷️ বি-কোষ ও অ্যান্টিবডি',
+
+      // Cell Biology
+      'cell.title': '🧬 কোষের গোপন জীবন',
+      'cell.subtitle': 'প্রতিটি জীবন্ত প্রাণীর ভেতরের আণুবীক্ষণিক শহরটি ঘুরে দেখো',
+      'cell.btn.nucleus': '🏛️ নিউক্লিয়াস ও ডিএনএ',
+      'cell.btn.mitochondria': '⚡ মাইটোকন্ড্রিয়া',
+      'cell.btn.ribosome': '🏭 রাইবোজোম',
+      'cell.btn.membrane': '🛡️ কোষঝিল্লি',
+      'cell.scale.title': '🔬 কত ছোট হতে পারে "ক্ষুদ্র"? আকারের এক আশ্চর্য যাত্রা',
+      'cell.scale.hair': 'মানুষের চুলের প্রস্থ',
+      'cell.scale.cell': 'ত্বক বা যকৃতের কোষ',
+      'cell.scale.bacteria': 'ব্যাকটেরিয়া (ই. কোলাই)',
+      'cell.scale.virus': 'ফ্লু বা করোনা ভাইরাস',
+      'cell.scale.dna': 'ডিএনএ ডাবল হেলিক্স',
+
+      // Mathematics & Logic
+      'math.title': '📐 গণিতের রহস্য: প্রকৃতির গোপন সংকেত',
+      'math.subtitle': 'ইন্টারেক্টিভ ফিবোনাচ্চি স্পাইরাল ও গোল্ডেন রেশিও',
+      'math.fibo.title': 'স্বর্ণিল সর্পিল: জীবনের ১৩৭.৫° কোণ',
+      'math.fibo.desc': 'সূর্যমুখীর বীজ কেন নিখুঁত সর্পিলাকারে সাজানো থাকে? কারণ গোল্ডেন অ্যাঙ্গেলে (১৩৭.৫°) বীজ সাজালে প্রতিটি বীজের জন্য সর্বোচ্চ জায়গা নিশ্চিত হয়!',
+      'math.fibo.slider': 'বীজের সংখ্যা নিয়ন্ত্রণ:',
+      'math.pinecone.title': '🌲 পাইনকোনের সর্পিল',
+      'math.pinecone.desc': 'পাইনকোনের দুই দিকের প্যাটার্ন গুনলে সবসময় ৮ ও ১৩ এর মতো ফিবোনাচ্চি সংখ্যা পাওয়া যায়!',
+      'math.cicada.title': '🦗 মৌলিক সংখ্যার ঝিঁঝিঁ পোকা',
+      'math.cicada.desc': 'কিছু ঝিঁঝিঁ পোকা ঠিক ১৩ বা ১৭ বছর মাটির নিচে থাকে, কারণ এগুলো মৌলিক সংখ্যা হওয়ায় শিকারীরা এদের জীবনচক্রের সাথে খাপ খাওয়াতে পারে না!',
+
+      // Mind & Psychology
+      'psych.title': '🧠 মন, মস্তিষ্ক ও দৃষ্টিবিভ্রম: ইলিউশন ল্যাব',
+      'psych.subtitle': 'তোমার ভিজ্যুয়াল কর্টেক্স কীভাবে আলোক সংকেত থেকে বাস্তব রূপ দেয় তা দেখো',
+      'psych.tab.cafe': '🧱 ক্যাফে দেওয়াল',
+      'psych.tab.hermann': '🏁 হারম্যান গ্রিড',
+      'psych.tab.growth': '🌱 গ্রোথ মাইন্ডসেট',
+      'psych.cafe.q': 'অনুভূমিক রেখাগুলো কি সম্পূর্ণ সোজা ও সমান্তরাল?',
+      'psych.cafe.desc': 'চোখের মনে হবে রেখাগুলো বাঁকা! নিচের সুইচটি চেপে লাল সোজা রেখা মিলিয়ে দেখো।',
+      'psych.cafe.toggle': 'সমান্তরাল লাল গাইড রেখা দেখান',
+      'psych.hermann.title': 'ভৌতিক বিন্দুর খেলা',
+      'psych.hermann.desc': 'গ্রিডের দিকে তাকাও। সাদা সংযোগস্থলে কি ধূসর ছোপ ছোপ বিন্দু দেখতে পাচ্ছ? কোনো একটার দিকে সরাসরি তাকালে সেটা মিলিয়ে যায়!',
+      'psych.hermann.expl': 'কারণ তোমার চোখের রেটিনার পার্শ্বীয় বাধা (ল্যাটারাল ইনহিবিশন)! মস্তিষ্ক সংযোগস্থলগুলোকে কিছুটা অন্ধকার ধরে নেয়।',
+      'psych.growth.title': '🌱 মস্তিষ্কও একটি পেশির মতো: নিউরোপ্লাস্টিসিটি',
+      'psych.growth.desc': 'কঠিন গণিত বা নতুন কিছু শেখার সময় যে পরিশ্রম হয়, তাতে তুমি ব্যর্থ হচ্ছো না—বরং তোমার মস্তিষ্কের নিউরন নতুন ডেনড্রাইট তৈরি করে আরও শক্তিশালী হচ্ছে!',
+      'psych.growth.fixed.title': 'স্থবির চিন্তা (ফিক্সড মাইন্ডসেট):',
+      'psych.growth.fixed.desc': '“আমি ভুল করেছি, তাই আমি এটা পারি না।”',
+      'psych.growth.grow.title': 'উন্নয়নমুখী চিন্তা (গ্রোথ মাইন্ডসেট):',
+      'psych.growth.grow.desc': '“আমি ভুল করেছি, যার মানে আমার মস্তিষ্ক এমন কিছু শিখল যা ৫ মিনিট আগেও জানত না!”',
+
+      // Philosophy & Big Questions
+      'phil.title': '💭 বড় প্রশ্ন: ক্ষুদে চিন্তাবিদদের দর্শন',
+      'phil.subtitle': 'চিন্তার পরীক্ষা, নীতিগত দ্বন্দ্ব ও বিস্ময়ের আনন্দ',
+      'phil.theseus.badge': 'চিন্তার পরীক্ষা ১: আত্মপরিচয়',
+      'phil.theseus.title': 'থিসিয়াসের জাহাজ ⛵',
+      'phil.theseus.intro': 'কল্পনা করো, বীর থিসিয়াস একটি কাঠের জাহাজে বাড়ি ফিরছে। ৩০ বছর যাত্রাপথে প্রতিটি তক্তা নষ্ট হয়ে যায় এবং নতুন তক্তা দিয়ে বদলে ফেলা হয়।',
+      'phil.theseus.slider': 'জাহাজের তক্তা পরিবর্তন করুন:',
+      'phil.dilemma.title': 'চিন্তার পরীক্ষা ২: অদৃশ্য হওয়ার আংটি 💍',
+      'phil.dilemma.q': 'তুমি যদি এমন একটি জাদুকরী আংটি পাও যা তোমাকে অদৃশ্য করে দেয়, কেউ তোমাকে ধরতে না পারলেও তুমি কি ভালো কাজ করবে?',
+      'phil.dilemma.opt1': 'হ্যাঁ! ভালো কাজ করা মনের ব্যাপার, শাস্তির ভয়ে নয়।',
+      'phil.dilemma.opt2': 'হয়তো নিরীহ দুষ্টুমি করব বা লুকিয়ে মিষ্টি খাব!',
+      'phil.dilemma.opt3': 'আমাকে ভাবায় আইন কেন তৈরি হয়েছে।',
+
+      // Day & Night section
+      'dn.badge': 'গ্রহের আকার ও ঘূর্ণন',
+      'dn.title': 'পৃথিবীর আসল আকার এবং দিন ও রাত',
+      'dn.shape.title': 'পৃথিবী নিখুঁত গোলক নয়!',
+      'dn.shape.p1': 'মহাকাশ থেকে দেখলে পৃথিবীকে গোল মার্বেলের মতো মনে হয়। কিন্তু আসলে পৃথিবী একটি উপবৃত্তাকার গোলক (অবলেট স্ফেরয়েড)!',
+      'dn.shape.p2': '২৪ ঘণ্টায় একবার তীব্র গতিতে ঘূর্ণনের কারণে কেন্দ্রাতিগ বল বিষুবরেখাকে বাইরের দিকে ফুলিয়ে দেয় এবং দুই মেরু কিছুটা চ্যাপ্টা করে দেয়!',
+      'dn.stat.eq_diam': 'বিষুবীয় ব্যাস',
+      'dn.stat.pol_diam': 'মেরু ব্যাস',
+      'dn.stat.bulge': 'বিষুবীয় স্ফীতি',
+      'dn.stat.class': 'প্রকৃত রূপ',
+      'dn.carousel.title': '২৪ ঘণ্টার মহাজাগতিক ঘূর্ণন',
+      'dn.carousel.desc': 'পৃথিবী তার ২৩.৪৪° হেলে থাকা অক্ষে ঘোরার সময় সূর্য সবসময় কেবল একটি অর্ধাংশকে আলোকিত করে:',
+      'dn.carousel.day': 'দিনের দিক: সূর্যের মুখোমুখি, আলো ও তাপে ভরা।',
+      'dn.carousel.night': 'রাতের দিক: মহাকাশের দিকে মুখ করা, শহরের আলোয় উজ্জ্বল!',
+      'dn.carousel.term': 'ছায়াবৃত্ত (টারমিনেটর): দিন ও রাতের সীমারেখা।',
+      'dn.chimborazo.title': 'বিস্ময়কর ভৌগোলিক তথ্য:',
+      'dn.chimborazo.desc': 'পৃথিবীর বিষুবীয় স্ফীতির কারণে ইকুয়েডরের মাউন্ট চিম্বোরাজো চূড়াটি পৃথিবীর কেন্দ্র থেকে সবচেয়ে দূরবর্তী স্থান—মাউন্ট এভারেস্টের চেয়েও মহাকাশের ২ কিমি বেশি কাছে!',
+
+      // Seasons section
+      'sea.badge': 'অক্ষের হেলন ও কক্ষপথ',
+      'sea.title': 'ঋতু পরিবর্তনের ২৩.৫° গোপন রহস্য',
+      'sea.desc': 'সূর্য থেকে দূরত্বের কারণে ঋতু বদলায় না! ঋতু পরিবর্তনের একমাত্র কারণ হলো পৃথিবীর অক্ষ ২৩.৪৪° হেলে থাকা!',
+      'sea.north': 'উত্তর গোলার্ধ',
+      'sea.south': 'দক্ষিণ গোলার্ধ',
+      'sea.june.title': '☀️ জুন: কর্কট সংক্রান্তি (গ্রীষ্মকাল)',
+      'sea.june.desc': 'সূর্যের দিকে হেলে থাকে। খাড়া কিরণে সর্বোচ্চ তাপ পৌঁছায় এবং দিন বড় হয়।',
+      'sea.dec.title': '❄️ ডিসেম্বর: মকর সংক্রান্তি (শীতকাল)',
+      'sea.dec.desc': 'সূর্য থেকে দূরে হেলে থাকে। তীর্যক আলো পৌঁছায় এবং দিন ছোট হয়।',
+      'sea.flashlight.title': 'টর্চের কোণ পরীক্ষা:',
+      'sea.flashlight.desc': 'কাগজে সোজা টর্চ মারলে আলো গোল ও উজ্জ্বল হয় (গ্রীষ্ম)। কাত করে মারলে আলো ছড়িয়ে যায় ও ম্লান হয় (শীতকাল)।'
+
     }
   };
 
@@ -487,6 +775,144 @@
     }
   };
 
+  
+  // Digestive Educational Data (Bengali)
+  const digestiveBengaliStages = [
+    {
+      step: 1,
+      organ: "👄 মুখ ও দাঁত (Mouth & Teeth)",
+      role: "যান্ত্রিক চর্বণ ও এনজাইম প্রক্রিয়া",
+      description: "তোমার ধারালো সামনের দাঁত ও চর্বণকারী মাড়ির দাঁত খাবারকে ছোট টুকরোয় পরিণত করে, আর লালার অ্যামাইলেজ এনজাইম শ্বেতসারকে মিষ্টি গ্লুকোজে রূপান্তর শুরু করে।",
+      detail: "মজার তথ্য: তুমি প্রতিদিন প্রায় ১.৫ লিটার লালা তৈরি করো—যা দিয়ে দুটি বড় পানির বোতল ভরে ফেলা যায়!",
+      color: "#fbbf24"
+    },
+    {
+      step: 2,
+      organ: "🧬 খাদ্যনালী (The Esophagus)",
+      role: "পেরিস্তালসিস পেশিতরঙ্গ",
+      description: "এটি একটি ১০ ইঞ্চি দীর্ঘ পেশীবহুল নালী। খাবার শুধু মাধ্যাকর্ষণে নিচে পড়ে না—বরং তরঙ্গায়িত পেশি সংকোচনের (পেরিস্তালসিস) মাধ্যমে নিচে নেমে যায়। এমনকি উল্টো হয়ে দাঁড়ালেও তুমি খাবার গিলতে পারবে!",
+      detail: "এপিগ্লোটিস নামের একটি ছোট ঢাকনা শ্বাসনালী ঢেকে রাখে, যাতে খাবার কখনোই ফুসফুসে ঢুকতে না পারে।",
+      color: "#f43f5e"
+    },
+    {
+      step: 3,
+      organ: "🧪 পাকস্থলী অ্যাসিড আলোড়ক (Stomach Acid)",
+      role: "রাসায়নিক ভাঙন ও জীবাণুমুক্তকরণ",
+      description: "একটি শক্তিশালী স্থিতিস্থাপক থলি যাতে হাইড্রোক্লোরিক অ্যাসিড (pH 1.5–2.0) থাকে—যা ব্যাটারির অ্যাসিডের মতোই অম্লীয়! এটি ক্ষতিকর ব্যাকটেরিয়া মেরে খাবারকে তরল স্যুপ বা 'কাইম'-এ পরিণত করে।",
+      detail: "পাকস্থলী নিজে কেন অ্যাসিডে গলে যায় না? কারণ এর ভেতরের পুরু শ্লেষ্মা স্তর প্রতি ৩ দিন পর পর নতুন করে তৈরি হয়!",
+      color: "#a855f7"
+    },
+    {
+      step: 4,
+      organ: "🌱 ক্ষুদ্রান্ত্র (Small Intestine)",
+      role: "পুষ্টি শোষণের আসল জাদু",
+      description: "নামে ক্ষুদ্র হলেও এটি ২০ ফুটের বেশি লম্বা! এর প্রাচীরের লক্ষ লক্ষ মাইক্রোস্কোপিক আঙুলের মতো ভাঁজ (ভিলাই) ভিটামিন, অ্যামিনো অ্যাসিড ও পুষ্টি সরাসরি রক্তে শোষণ করে তোমার পেশিগুলোকে শক্তি জোগায়।",
+      detail: "তোমার ক্ষুদ্রান্ত্রের সব ভিলাই ও মাইক্রোভিলাইকে সমতল করলে তা একটি আস্ত টেনিস কোর্টের সমান হবে!",
+      color: "#10b981"
+    },
+    {
+      step: 5,
+      organ: "💧 বৃহদান্ত্র ও মাইক্রোবায়োম (Large Intestine)",
+      role: "পানি শোষণ ও বন্ধু ব্যাকটেরিয়া",
+      description: "এটি খাবারের ৯০% পানি ও প্রয়োজনীয় খনিজ শোষণ করে নেয়, আর ট্রিলিয়ন ট্রিলিয়ন বন্ধু ব্যাকটেরিয়া ভিটামিন কে তৈরি করে এবং বর্জ্য নিষ্কাশনের আগে রোগ প্রতিরোধ ব্যবস্থা সুরক্ষিত রাখে।",
+      detail: "তোমার পুরো শরীরে যতগুলো মানব কোষ রয়েছে, তার চেয়ে বেশি বন্ধু ব্যাকটেরিয়া বাস করে তোমার পরিপাকতন্ত্রে!",
+      color: "#38bdf8"
+    }
+  ];
+
+  // Immunology Profiles in Bengali
+  const defenderBengaliProfiles = {
+    macrophage: {
+      name: "বিশাল ম্যাক্রোফেজ (Giant Macrophage)",
+      badge: "ক্ষুধার্ত পাহারাদার",
+      icon: "🛡️",
+      quote: "আমি অচেনা জীবাণুদের খুঁজে বের করি, আস্ত গিলে ফেলি এবং মৃত কোষ পরিষ্কার করি!",
+      power: "ফ্যাগোসাইটোসিস (আস্ত গিলে ফেলা)",
+      speed: "মাঝারি টহল (কলা বা টিস্যুতে)",
+      mission: "ফুসফুস, ত্বক ও অঙ্গে মোতায়েন থাকে। ব্যাকটেরিয়া ঢুকলেই ম্যাক্রোফেজ ১০০টি পর্যন্ত জীবাণু গিলে ফেলে এবং অতিরিক্ত সৈন্যের সংকেত পাঠায়।",
+      color: "#10b981"
+    },
+    neutrophil: {
+      name: "দ্রুতগতির নিউট্রোফিল (Neutrophil Scout)",
+      badge: "প্রথম জরুরি সাড়াদানকারী",
+      icon: "⚡",
+      quote: "আমরা কোটি কোটি সৈন্য নিয়ে কয়েক মিনিটে হাজির হই এবং মরণ ফাঁদ ফেলে জীবাণু ধ্বংস করি!",
+      power: "NETs (নিউক্লিক অ্যাসিডের মরণ ফাঁদ)",
+      speed: "অতি দ্রুত (রক্তপ্রবাহের মাধ্যমে)",
+      mission: "তোমার রক্তকণিকার ৬০% হলো নিউট্রোফিল। ক্ষতস্থানে ছুটে গিয়ে এরা ব্যাকটেরিয়া ধ্বংস করে এবং সুস্থ কোষ বাঁচাতে নিজের জীবন উৎসর্গ করে।",
+      color: "#f59e0b"
+    },
+    dendritic: {
+      name: "ডেনড্রাইটিক বার্তা প্রেরক (Dendritic Messenger)",
+      badge: "গোয়েন্দা ও বার্তাবাহক",
+      icon: "📡",
+      quote: "আমি শত্রুর বৈশিষ্ট্য বিশ্লেষণ করে লিম্ফ নোডে আমাদের সেনা প্রধানদের কাছে পৌঁছে দিই!",
+      power: "অ্যান্টিজেন প্রেজেন্টেশন (শত্রুর পরিচয় তুলে ধরা)",
+      speed: "পরিযায়ী বার্তাবাহক",
+      mission: "ধ্বংসপ্রাপ্ত ভাইরাসের অংশবিশেষ সংগ্রহ করে লিম্ফ নোডে নিয়ে যায় এবং হেল্পার টি-কোষকে সক্রিয় করে বড় সামরিক অভিযান পরিচালনা করায়।",
+      color: "#38bdf8"
+    },
+    tcell: {
+      name: "টি-কোষ সেনাপতি ও ঘাতক (Helper & Killer T-Cells)",
+      badge: "কৌশলী সেনাপতি ও স্নাইপার",
+      icon: "🎯",
+      quote: "আমরা রাসায়নিক সংকেতে বাহিনীকে পরিচালনা করি এবং ভাইরাসে আক্রান্ত কোষ ধ্বংস করি!",
+      power: "সাইটোটক্সিক পারফোরিন ও গ্র্যানজাইম",
+      speed: "লক্ষ্যভেদী আক্রমণ",
+      mission: "হেল্পার টি-কোষ রাসায়নিক সংকেত দিয়ে পুরো শরীরকে সতর্ক করে। আর কিলার টি-কোষ ভাইরাসে জিম্মি হওয়া কোষ খুঁজে বের করে তাদের নিরাপদে আত্মধ্বংসের নির্দেশ দেয়।",
+      color: "#a855f7"
+    },
+    bcell: {
+      name: "বি-কোষ ও অ্যান্টিবডি কারখানা (B-Cell & Antibodies)",
+      badge: "অ্যান্টিবডির নিখুঁত কারখানা",
+      icon: "🏷️",
+      quote: "আমি শত্রুর বিরুদ্ধে প্রতি সেকেন্ডে ২,০০০টি নিখুঁত ওয়াই-আকারের অ্যান্টিবডি তৈরি করি!",
+      power: "অ্যান্টিবডি উৎপাদন ও দীর্ঘমেয়াদী স্মৃতি",
+      speed: "সিস্টেমিক প্রতিরক্ষা (রক্ত ও লসিকায়)",
+      mission: "তৈরি করে কাস্টম অ্যান্টিবডি যা ভাইরাসের উপর হাতকড়ার মতো আটকে যায় যাতে ভাইরাস কোষে ঢুকতে না পারে। কিছু বি-কোষ মেমোরি কোষে পরিণত হয়ে বহু বছর ধরে তোমাকে রক্ষা করে!",
+      color: "#f43f5e"
+    }
+  };
+
+  // Organelle Profiles in Bengali
+  const organelleBengaliData = {
+    nucleus: {
+      title: "নিউক্লিয়াস (কোষের নিয়ন্ত্রণ কেন্দ্র ও ডিএনএ লাইব্রেরি)",
+      role: "মূল নকশার ভাণ্ডার",
+      info: "এর ভেতরে ডিএনএ দিয়ে তৈরি ৪৬টি ক্রোমোজোম থাকে। তোমার শরীরের প্রতিটি প্রোটিন, হরমোন এবং কোষ তৈরির সম্পূর্ণ বংশগত রেসিপি এখানে সুরক্ষিত রয়েছে।",
+      fact: "মাত্র একটি আণুবীক্ষণিক কোষের ডিএনএ সোজা করে টানলে তা প্রায় ৬ ফুট (২ মিটার) লম্বা হবে!"
+    },
+    mitochondria: {
+      title: "মাইটোকন্ড্রিয়া (কোষের শক্তিঘর)",
+      role: "এটিপি শক্তি উৎপাদন কারখানা",
+      info: "খাবারের গ্লুকোজ ও ফুসফুসের অক্সিজেনকে এটিপিতে (ATP) রূপান্তরিত করে—যা দিয়ে তোমার পেশি নড়াচড়া করে আর মস্তিষ্ক চিন্তা করে।",
+      fact: "মাইটোকন্ড্রিয়ার নিজস্ব বৃত্তাকার ডিএনএ রয়েছে যা মানুষ শুধুমাত্র মায়ের কাছ থেকে লাভ করে!"
+    },
+    ribosome: {
+      title: "রাইবোজোম (প্রোটিন তৈরির কারখানা)",
+      role: "প্রোটিন সংযোজন লাইন",
+      info: "ডিএনএ-এর বার্তাবাহক আরএনএ পড়ে প্রতি সেকেন্ডে ২০টি অ্যামিনো অ্যাসিড জোড়া লাগিয়ে এনজাইম, চুল, অ্যান্টিবডি ও পেশিতন্তু তৈরি করে।",
+      fact: "একটিমাত্র যকৃতের কোষে এক কোটি পর্যন্ত সক্রিয় রাইবোজোম দিনরাত অবিরাম কাজ করে যায়!"
+    },
+    membrane: {
+      title: "কোষঝিল্লি (স্মার্ট সীমান্ত পাহারা)",
+      role: "নির্বাচনী বাধা ও সেন্সর",
+      info: "ফসফোলিপিড ও প্রোটিন দ্বারা গঠিত একটি তরল পর্দা। এটি ঠিক করে কোন পুষ্টি ভেতরে ঢুকবে (গ্লুকোজ, পানি, আয়ন) আর ক্ষতিকর পদার্থ আটকে দেয়।",
+      fact: "কোষঝিল্লি মাত্র দুটি অণু পরিমাণ পুরু (প্রায় ৭ ন্যানোমিটার)—এমন ১০,০০০ ঝিল্লি একসাথে রাখলে একটি কাগজের সমান পুরু হবে।"
+    }
+  };
+
+  const breathingBengaliData = {
+    inhale: {
+      airFlow: '⬇ অক্সিজেন (O₂) শ্বাসনালী দিয়ে ভেতরে ঢুকছে',
+      status: 'শ্বাস গ্রহণ: ডায়াফ্রাম নিচের দিকে সংকুচিত হয়, বুক প্রসারিত হয়ে চাপ কমে এবং তাজা বাতাস ভেতরে টেনে নেয়।'
+    },
+    exhale: {
+      airFlow: '⬆ কার্বন ডাই-অক্সাইড (CO₂) বাইরে বেরিয়ে যাচ্ছে',
+      status: 'শ্বাস ত্যাগ: ডায়াফ্রাম শিথিল হয়ে উপরের দিকে ওঠে, বুকের ভেতর চাপ বৃদ্ধি পায় এবং দূষিত গ্যাস আলতোভাবে বেরিয়ে যায়।'
+    }
+  };
+
   class ToruI18n {
     constructor() {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -537,6 +963,12 @@
       }
       if (window.skeletonSim3D && typeof window.skeletonSim3D.onLanguageChanged === 'function') {
         window.skeletonSim3D.onLanguageChanged(lang);
+      }
+      if (window.toruPortal && typeof window.toruPortal.onLanguageChanged === 'function') {
+        window.toruPortal.onLanguageChanged(lang);
+      }
+      if (window.cosmicQuiz && typeof window.cosmicQuiz.renderQuestion === 'function') {
+        window.cosmicQuiz.renderQuestion();
       }
 
       // Dispatch custom window event
@@ -602,6 +1034,49 @@
         return this.boneBengaliData[boneId];
       }
       return null;
+    }
+
+    getDigestiveStages(enStages) {
+      if (this.currentLang === 'bn') {
+        return digestiveBengaliStages;
+      }
+      return enStages;
+    }
+
+    getDefenderProfiles(enProfiles) {
+      if (this.currentLang === 'bn') {
+        return defenderBengaliProfiles;
+      }
+      return enProfiles;
+    }
+
+    getOrganelles(enOrganelles) {
+      if (this.currentLang === 'bn') {
+        return organelleBengaliData;
+      }
+      return enOrganelles;
+    }
+
+    getBreathingData(state) {
+      if (this.currentLang === 'bn' && breathingBengaliData[state]) {
+        return breathingBengaliData[state];
+      }
+      return null;
+    }
+
+    getTheseusStatus(val) {
+      if (this.currentLang === 'bn') {
+        if (val === 0) return "১০০% আসল কাঠ। সবাই একমত: এটি নিঃসন্দেহে আসল জাহাজ।";
+        if (val < 50) return "ক্ষয়ে যাওয়ার কারণে কয়েকটি কাঠের তক্তা বদলানো হয়েছে। ক্ষুদ্র অংশ বদলালে কি মূল পরিচয় বদলে যায়?";
+        if (val === 50) return "ঠিক অর্ধেক আসল কাঠ, আর অর্ধেক সম্পূর্ণ নতুন কাঠ। এটা কি এখন অর্ধেক আসল জাহাজ, নাকি আগের জাহাজই?";
+        if (val < 100) return "অধিকাংশ পুরানো তক্তা বদলে গেছে। তবুও নাবিকেরা এক মুহূর্তের জন্যও থামা ছাড়া একটানা যাত্রা করেছে!";
+        return "<strong>জাহাজের ১০০% তক্তাই বদলে নতুন করা হয়েছে।</strong> কেউ যদি পুরানো ফেলে দেওয়া তক্তাগুলো জড়ো করে বন্দরে আরেকটি জাহাজ বানায়, তবে এদের মধ্যে কোনটি হবে থিসিয়াসের আসল জাহাজ?";
+      }
+      if (val === 0) return "100% original wood. Everyone agrees: this is unquestionably the original ship.";
+      if (val < 50) return "A few wooden planks have been replaced due to weathering. Does changing a small part change who you are?";
+      if (val === 50) return "Exactly half original wood, half brand new timber. Is it half the original ship, or still the same ship?";
+      if (val < 100) return "Most original timber is gone. Yet the crew sailed it continuously without ever stopping!";
+      return "<strong>100% of all planks have been replaced.</strong> If someone collected the discarded old planks and rebuilt them into a second ship in a harbor, which of the two is the REAL Ship of Theseus?";
     }
   }
 

@@ -26,6 +26,7 @@ class ToruPortal {
     this.setupMathCanvas();
     this.setupPsychologyLab();
     this.setupPhilosophyLab();
+    window.addEventListener("toru:langchange", (e) => this.onLanguageChanged(e.detail?.lang));
   }
 
   // ================= VIEW ROUTING =================
@@ -154,7 +155,7 @@ class ToruPortal {
     });
 
     // --- Digestive Step-Through ---
-    const digestiveStages = [
+    this.digestiveStagesEn = [
       {
         step: 1,
         organ: "👄 The Mouth & Teeth",
@@ -199,12 +200,14 @@ class ToruPortal {
 
     const stageEl = document.getElementById('digestive-stage-info');
     const updateDigestiveUI = () => {
-      const stage = digestiveStages[this.digestiveStep];
+      const stages = window.toruI18n?.getDigestiveStages(this.digestiveStagesEn) || this.digestiveStagesEn;
+      const stage = stages[this.digestiveStep];
+      const isBn = window.currentLang === 'bn';
       if (!stageEl || !stage) return;
 
       stageEl.innerHTML = `
         <div class="stage-badge" style="background:${stage.color}22; border-color:${stage.color}; color:${stage.color};">
-          Step ${stage.step} of 5: ${stage.role}
+          ${isBn ? `ধাপ ${stage.step}/৫: ${stage.role}` : `Step ${stage.step} of 5: ${stage.role}`}
         </div>
         <h3 class="stage-title">${stage.organ}</h3>
         <p class="stage-desc">${stage.description}</p>
@@ -245,6 +248,7 @@ class ToruPortal {
       });
     });
 
+    this.updateDigestiveUI = updateDigestiveUI;
     updateDigestiveUI();
 
     // --- Respiratory Simulator ---
@@ -274,16 +278,17 @@ class ToruPortal {
 
     if (!lungs || !diag) return;
 
+    const bn = window.toruI18n?.getBreathingData(this.breathingState);
     if (this.breathingState === 'inhale') {
       lungs.style.transform = 'scale(1.15)';
       diag.style.transform = 'translateY(18px)';
-      if (airFlow) airFlow.textContent = '⬇ Oxygen (O₂) Flowing In Through Trachea';
-      if (statusText) statusText.textContent = 'Inhaling: Diaphragm contracts downwards, chest expands, creating low pressure that pulls fresh air in.';
+      if (airFlow) airFlow.textContent = bn ? bn.airFlow : '⬇ Oxygen (O₂) Flowing In Through Trachea';
+      if (statusText) statusText.textContent = bn ? bn.status : 'Inhaling: Diaphragm contracts downwards, chest expands, creating low pressure that pulls fresh air in.';
     } else {
       lungs.style.transform = 'scale(0.92)';
       diag.style.transform = 'translateY(0px)';
-      if (airFlow) airFlow.textContent = '⬆ Carbon Dioxide (CO₂) Flowing Out';
-      if (statusText) statusText.textContent = 'Exhaling: Diaphragm relaxes upwards, compressing chest cavity to gently push waste carbon dioxide out.';
+      if (airFlow) airFlow.textContent = bn ? bn.airFlow : '⬆ Carbon Dioxide (CO₂) Flowing Out';
+      if (statusText) statusText.textContent = bn ? bn.status : 'Exhaling: Diaphragm relaxes upwards, compressing chest cavity to gently push waste carbon dioxide out.';
     }
   }
 
@@ -296,7 +301,7 @@ class ToruPortal {
 
   // ================= DOMAIN 2: IMMUNOLOGY DEFENDERS =================
   setupImmunologyLab() {
-    const defenderProfiles = {
+    this.defenderProfilesEn = {
       macrophage: {
         name: "Giant Macrophage",
         badge: "The Voracious Sentinel",
@@ -353,8 +358,11 @@ class ToruPortal {
     const infoContainer = document.getElementById('defender-detail-card');
 
     const renderDefender = (key) => {
-      const d = defenderProfiles[key];
+      this.currentDefenderKey = key;
+      const profiles = window.toruI18n?.getDefenderProfiles(this.defenderProfilesEn) || this.defenderProfilesEn;
+      const d = profiles[key] || this.defenderProfilesEn[key];
       if (!infoContainer || !d) return;
+      const isBn = window.currentLang === 'bn';
 
       infoContainer.innerHTML = `
         <div class="defender-hero-header" style="border-left: 4px solid ${d.color};">
@@ -369,20 +377,21 @@ class ToruPortal {
         <p class="defender-quote">“${d.quote}”</p>
         <div class="defender-stats-grid">
           <div class="stat-pill glass-panel">
-            <span class="stat-label">Special Power</span>
+            <span class="stat-label">${isBn ? 'বিশেষ শক্তি' : 'Special Power'}</span>
             <span class="stat-val">${d.power}</span>
           </div>
           <div class="stat-pill glass-panel">
-            <span class="stat-label">Deployment Speed</span>
+            <span class="stat-label">${isBn ? 'কার্যকর গতি' : 'Deployment Speed'}</span>
             <span class="stat-val">${d.speed}</span>
           </div>
         </div>
         <div class="defender-mission glass-panel">
-          <span class="mission-title">Tactical Mission in Your Body:</span>
+          <span class="mission-title">${isBn ? 'দেহের অভ্যন্তরে সামরিক মিশন:' : 'Tactical Mission in Your Body:'}</span>
           <p>${d.mission}</p>
         </div>
       `;
     };
+    this.renderDefender = renderDefender;
 
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -398,7 +407,7 @@ class ToruPortal {
 
   // ================= DOMAIN 3: CELL BIOLOGY =================
   setupCellLab() {
-    const organelles = {
+    this.organellesEn = {
       nucleus: {
         title: "The Nucleus (City Hall & DNA Library)",
         role: "Master Blueprint Storage",
@@ -429,7 +438,9 @@ class ToruPortal {
     const displayBox = document.getElementById('organelle-detail-box');
 
     const showOrganelle = (key) => {
-      const o = organelles[key];
+      this.currentOrganelleKey = key;
+      const allOrganelles = window.toruI18n?.getOrganelles(this.organellesEn) || this.organellesEn;
+      const o = allOrganelles[key] || this.organellesEn[key];
       if (!displayBox || !o) return;
       displayBox.innerHTML = `
         <span class="badge-role">${o.role}</span>
@@ -441,6 +452,7 @@ class ToruPortal {
         </div>
       `;
     };
+    this.showOrganelle = showOrganelle;
 
     organelleBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -538,29 +550,35 @@ class ToruPortal {
   }
 
   // ================= DOMAIN 6: PHILOSOPHY & BIG QUESTIONS =================
+
+  onLanguageChanged(lang) {
+    if (this.updateDigestiveUI) this.updateDigestiveUI();
+    if (this.renderBreathing) this.renderBreathing();
+    if (this.renderDefender && this.currentDefenderKey) this.renderDefender(this.currentDefenderKey);
+    if (this.showOrganelle && this.currentOrganelleKey) this.showOrganelle(this.currentOrganelleKey);
+    if (this.updateTheseusUI && this.theseusVal !== undefined) this.updateTheseusUI(this.theseusVal);
+  }
+
   setupPhilosophyLab() {
     // Ship of Theseus interactive slider
     const shipSlider = document.getElementById('theseus-slider');
     const shipPercent = document.getElementById('theseus-percent');
     const shipStatus = document.getElementById('theseus-status-text');
 
+    const updateTheseusUI = (val) => {
+      this.theseusVal = val;
+      if (shipPercent) {
+        shipPercent.textContent = window.currentLang === 'bn' ? `${val}% পরিবর্তিত` : `${val}% Replaced`;
+      }
+      if (shipStatus) {
+        shipStatus.innerHTML = window.toruI18n?.getTheseusStatus(val) || "";
+      }
+    };
+    this.updateTheseusUI = updateTheseusUI;
+
     shipSlider?.addEventListener('input', (e) => {
       const val = parseInt(e.target.value);
-      if (shipPercent) shipPercent.textContent = `${val}% Replaced`;
-
-      if (shipStatus) {
-        if (val === 0) {
-          shipStatus.textContent = "100% original wood. Everyone agrees: this is unquestionably the original ship.";
-        } else if (val < 50) {
-          shipStatus.textContent = "A few wooden planks have been replaced due to weathering. Does changing a small part change who you are?";
-        } else if (val === 50) {
-          shipStatus.textContent = "Exactly half original wood, half brand new timber. Is it half the original ship, or still the same ship?";
-        } else if (val < 100) {
-          shipStatus.textContent = "Most original timber is gone. Yet the crew sailed it continuously without ever stopping!";
-        } else {
-          shipStatus.innerHTML = "<strong>100% of all planks have been replaced.</strong> If someone collected the discarded old planks and rebuilt them into a second ship in a harbor, which of the two is the REAL Ship of Theseus?";
-        }
-      }
+      updateTheseusUI(val);
     });
 
     // Dilemma interactive voting buttons
