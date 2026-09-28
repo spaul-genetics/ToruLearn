@@ -611,6 +611,26 @@ class SolarSystemSim {
     if (titleEl) titleEl.textContent = 'Our Solar System';
   }
 
+  onLanguageChanged(lang) {
+    const isBn = lang === 'bn';
+    document.querySelectorAll('.planet-quick-btn').forEach(btn => {
+      const pName = btn.dataset.planet;
+      if (pName.toLowerCase() === 'sun') {
+        btn.textContent = isBn ? '☀️ সূর্য' : '☀️ Sun';
+      } else {
+        const bnData = window.toruI18n?.planetBengaliData[pName];
+        const icon = btn.textContent.trim().split(' ')[0];
+        btn.textContent = isBn && bnData ? `${icon} ${bnData.name.split(' ')[0]}` : `${icon} ${pName}`;
+      }
+    });
+
+    if (this.selectedPlanet) {
+      this.selectPlanet(this.selectedPlanet);
+    } else {
+      this.selectSun();
+    }
+  }
+
   selectSun() {
     window.cosmicAudio?.stopSpeaking();
     this.selectedPlanet = null;
@@ -628,47 +648,56 @@ class SolarSystemSim {
     }
     const captionTag = document.querySelector('#ss-planet-card .image-caption-tag');
     if (captionTag) {
-      captionTag.textContent = 'Our Sun • NASA Solar Dynamics Observatory (SDO)';
+      captionTag.textContent = window.currentLang === 'bn' 
+        ? 'আমাদের সূর্য • নাসা সোলার ডায়নামিক্স অবজারভেটরি (SDO)'
+        : 'Our Sun (Sol) • NASA Solar Dynamics Observatory (SDO)';
     }
 
     const titleEl = document.getElementById('ss-inspector-title');
     const contentEl = document.getElementById('ss-detail-content');
     if (!titleEl || !contentEl) return;
 
-    titleEl.textContent = 'The Sun (Sol)';
-    const sunFact = "Light travels at 300,000 km per second! Even at that unfathomable speed, sunlight takes 8 minutes and 20 seconds to travel across space to reach Earth.";
+    const bn = window.toruI18n?.getPlanetDetails('Sun');
+    const isBn = window.currentLang === 'bn' && bn;
+
+    titleEl.textContent = isBn ? bn.name : 'The Sun (Sol)';
+    const sunFact = isBn 
+      ? bn.fact
+      : "Light travels at 300,000 km per second! Even at that unfathomable speed, sunlight takes 8 minutes and 20 seconds to travel across space to reach Earth.";
     const persona = window.cosmicAudio?.getPersona() || { name: 'Sunny 🌟' };
 
     contentEl.innerHTML = `
-      <h3>The Heart of Our Solar System</h3>
-      <p>The Sun is a blazing <strong>Yellow Dwarf star (G-type main-sequence)</strong> at the center of everything. Through nuclear fusion at its core, it fuses 600 million tons of hydrogen into helium every second, generating the radiant light and warmth that makes life on Earth possible.</p>
+      <h3>${isBn ? 'আমাদের সৌরজগতের প্রাণকেন্দ্র' : 'The Heart of Our Solar System'}</h3>
+      <p>${isBn ? bn.description : 'The Sun is a blazing <strong>Yellow Dwarf star (G-type main-sequence)</strong> at the center of everything. Through nuclear fusion at its core, it fuses 600 million tons of hydrogen into helium every second, generating the radiant light and warmth that makes life on Earth possible.'}</p>
       
       <div class="planet-stats-grid">
-        <div class="stat-item"><span class="stat-label">Diameter</span><span class="stat-value">1,392,700 km</span></div>
-        <div class="stat-item"><span class="stat-label">Mass</span><span class="stat-value">333,000x Earth</span></div>
-        <div class="stat-item"><span class="stat-label">Core Temp</span><span class="stat-value">15,000,000°C</span></div>
-        <div class="stat-item"><span class="stat-label">Surface Temp</span><span class="stat-value">5,500°C</span></div>
+        <div class="stat-item"><span class="stat-label">${isBn ? 'ব্যাস' : 'Diameter'}</span><span class="stat-value">1,392,700 km</span></div>
+        <div class="stat-item"><span class="stat-label">${isBn ? 'ভর' : 'Mass'}</span><span class="stat-value">${isBn ? '৩,৩৩,০০০ গুণ পৃথিবী' : '333,000x Earth'}</span></div>
+        <div class="stat-item"><span class="stat-label">${isBn ? 'কেন্দ্রের তাপমাত্রা' : 'Core Temp'}</span><span class="stat-value">15,000,000°C</span></div>
+        <div class="stat-item"><span class="stat-label">${isBn ? 'পৃষ্ঠের তাপমাত্রা' : 'Surface Temp'}</span><span class="stat-value">5,500°C</span></div>
       </div>
       
       <div class="fun-fact-box" id="ss-fun-fact-box">
         <div class="fun-fact-header">
           <div class="fun-fact-header-left">
             <span class="fact-icon">☀️</span>
-            <strong>Speed of Sunlight</strong>
+            <strong>${isBn ? 'আলোর গতি' : 'Speed of Sunlight'}</strong>
             <button class="voice-persona-btn" title="Click to switch voice character (Sunny / Nova / Prof. Paws)">
               <span class="persona-name">Voice: ${persona.name}</span>
             </button>
           </div>
           <button id="ss-speak-fact-btn" class="speak-fact-btn" title="Read fun fact aloud" aria-label="Read fun fact aloud">
             <span class="speak-icon">🔊</span>
-            <span class="speak-label">Read Aloud</span>
+            <span class="speak-label">${isBn ? 'শুনুন' : 'Read Aloud'}</span>
           </button>
         </div>
         <div class="fact-text">${sunFact}</div>
       </div>
     `;
 
-    const speechText = "Did you know? Sunlight travels at three hundred thousand kilometers every single second! Even at that blazing speed, it takes eight minutes and twenty seconds for a ray of sunlight to reach Earth!";
+    const speechText = isBn
+      ? bn.speech
+      : "Did you know? Sunlight travels at three hundred thousand kilometers every single second! Even at that blazing speed, it takes eight minutes and twenty seconds for a ray of sunlight to reach Earth!";
     this.bindSpeechButton(speechText, 'ss-speak-fact-btn', '#ss-fun-fact-box');
   }
 
@@ -700,12 +729,15 @@ class SolarSystemSim {
     const contentEl = document.getElementById('ss-detail-content');
     if (!titleEl || !contentEl) return;
 
-    titleEl.textContent = `${p.name}`;
+    const bn = window.toruI18n?.getPlanetDetails(p.name);
+    const isBn = window.currentLang === 'bn' && bn;
+
+    titleEl.textContent = isBn ? bn.name : p.name;
 
     const moonsHtml = (p.majorMoons && p.majorMoons.length > 0)
       ? `
         <div class="moons-list-box">
-          <span class="moons-title">Notable Moons (${p.moons} total • Click to hear!)</span>
+          <span class="moons-title">${isBn ? `উল্লেখযোগ্য চাঁদসমূহ (${p.moons}টি মোট • ক্লিক করে শুনুন!)` : `Notable Moons (${p.moons} total • Click to hear!)`}</span>
           <div class="moons-tags">
             ${p.majorMoons.map(m => `
               <span class="moon-pill" title="${m.name}: ${m.details}">
@@ -718,23 +750,23 @@ class SolarSystemSim {
       `
       : (p.moons === 0 ? `
         <div class="moons-list-box" style="padding: 7px 12px;">
-          <span style="font-size: 0.8rem; color: #94a3b8;">🌙 No natural satellites or moons</span>
+          <span style="font-size: 0.8rem; color: #94a3b8;">${isBn ? '🌙 কোনো প্রাকৃতিক চাঁদ বা উপগ্রহ নেই' : '🌙 No natural satellites or moons'}</span>
         </div>
       ` : '');
 
     const persona = window.cosmicAudio?.getPersona() || { name: 'Sunny 🌟' };
 
     contentEl.innerHTML = `
-      <h3>${p.type}</h3>
-      <p>${p.description}</p>
+      <h3>${isBn ? bn.type : p.type}</h3>
+      <p>${isBn ? bn.description : p.description}</p>
 
       <div class="planet-stats-grid">
-        <div class="stat-item"><span class="stat-label">Diameter</span><span class="stat-value">${p.diameter}</span></div>
-        <div class="stat-item"><span class="stat-label">Distance from Sun</span><span class="stat-value">${p.distanceSun}</span></div>
-        <div class="stat-item"><span class="stat-label">Length of Year</span><span class="stat-value">${p.yearLength}</span></div>
-        <div class="stat-item"><span class="stat-label">Length of Day</span><span class="stat-value">${p.dayLength}</span></div>
-        <div class="stat-item"><span class="stat-label">Surface Temp</span><span class="stat-value">${p.temp}</span></div>
-        <div class="stat-item"><span class="stat-label">Moons</span><span class="stat-value">${p.moons}</span></div>
+        <div class="stat-item"><span class="stat-label">${isBn ? 'ব্যাস' : 'Diameter'}</span><span class="stat-value">${p.diameter}</span></div>
+        <div class="stat-item"><span class="stat-label">${isBn ? 'সূর্য থেকে দূরত্ব' : 'Distance from Sun'}</span><span class="stat-value">${p.distanceSun}</span></div>
+        <div class="stat-item"><span class="stat-label">${isBn ? 'বছরের দৈর্ঘ্য' : 'Length of Year'}</span><span class="stat-value">${p.yearLength}</span></div>
+        <div class="stat-item"><span class="stat-label">${isBn ? 'দিনের দৈর্ঘ্য' : 'Length of Day'}</span><span class="stat-value">${p.dayLength}</span></div>
+        <div class="stat-item"><span class="stat-label">${isBn ? 'পৃষ্ঠের তাপমাত্রা' : 'Surface Temp'}</span><span class="stat-value">${p.temp}</span></div>
+        <div class="stat-item"><span class="stat-label">${isBn ? 'চাঁদ ও উপগ্রহ' : 'Moons'}</span><span class="stat-value">${p.moons}</span></div>
       </div>
 
       ${moonsHtml}
@@ -743,27 +775,29 @@ class SolarSystemSim {
         <div class="fun-fact-header">
           <div class="fun-fact-header-left">
             <span class="fact-icon">🚀</span>
-            <strong>Cosmic Fact</strong>
+            <strong>${isBn ? 'মহাজাগতিক তথ্য' : 'Cosmic Fact'}</strong>
             <button class="voice-persona-btn" title="Click to switch voice character (Sunny / Nova / Prof. Paws)">
               <span class="persona-name">Voice: ${persona.name}</span>
             </button>
           </div>
           <button id="ss-speak-fact-btn" class="speak-fact-btn" title="Read fun fact aloud" aria-label="Read fun fact aloud">
             <span class="speak-icon">🔊</span>
-            <span class="speak-label">Read Aloud</span>
+            <span class="speak-label">${isBn ? 'শুনুন' : 'Read Aloud'}</span>
           </button>
         </div>
-        <div class="fact-text">${p.fact}</div>
+        <div class="fact-text">${isBn ? bn.fact : p.fact}</div>
       </div>
 
       <div class="interactive-prompt">
-        <h4>Gravity Comparison:</h4>
-        <p>Surface gravity is <strong>${p.gravity}</strong>. If you weigh 70 lbs on Earth, you would weigh approximately <strong>${(70 * (parseFloat(p.gravity) / 9.81)).toFixed(1)} lbs</strong> on ${p.name}!</p>
+        <h4>${isBn ? 'অভিকর্ষের তুলনা:' : 'Gravity Comparison:'}</h4>
+        <p>${isBn 
+          ? `পৃষ্ঠের মাধ্যাকর্ষণ টান <strong>${p.gravity}</strong>। পৃথিবীতে তোমার ওজন যদি ৭০ পাউন্ড হয়, তাহলে ${p.name} গ্রহে তোমার ওজন দাঁড়াবে প্রায় <strong>${(70 * (parseFloat(p.gravity) / 9.81)).toFixed(1)} পাউন্ড</strong>!`
+          : `Surface gravity is <strong>${p.gravity}</strong>. If you weigh 70 lbs on Earth, you would weigh approximately <strong>${(70 * (parseFloat(p.gravity) / 9.81)).toFixed(1)} lbs</strong> on ${p.name}!`}</p>
       </div>
     `;
 
-    // Speak cheerful, friendly cosmic fact
-    const speechText = `Here is a fun cosmic fact about ${p.name}! ${p.fact}`;
+    // Speak cheerful, friendly cosmic fact in current language
+    const speechText = isBn ? bn.speech : `Here is a fun cosmic fact about ${p.name}! ${p.fact}`;
     this.bindSpeechButton(speechText, 'ss-speak-fact-btn', '#ss-fun-fact-box');
 
     // Click moon pills to hear their individual lore
@@ -775,7 +809,9 @@ class SolarSystemSim {
           const parts = moonTitle.split(':');
           const moonName = parts[0] ? parts[0].trim() : '';
           const moonDetails = parts[1] ? parts[1].trim() : moonTitle;
-          const textToSpeak = `Fun fact about ${moonName}! ${moonDetails}`;
+          const textToSpeak = isBn
+            ? `${moonName} উপগ্রহের তথ্য! ${moonDetails}`
+            : `Fun fact about ${moonName}! ${moonDetails}`;
           window.cosmicAudio?.speakText(textToSpeak);
         }
       });
@@ -991,10 +1027,13 @@ class SolarSystemSim {
 
       // Planet Label
       if (this.showLabels) {
-        ctx.font = '600 11px Outfit, sans-serif';
+        ctx.font = window.currentLang === 'bn' ? '600 12px "Hind Siliguri", Outfit, sans-serif' : '600 11px Outfit, sans-serif';
         ctx.fillStyle = (p === this.selectedPlanet || p === this.hoveredPlanet) ? '#38bdf8' : '#e2e8f0';
         ctx.textAlign = 'center';
-        ctx.fillText(p.name, px, py + rad + 14);
+        const displayName = (window.currentLang === 'bn' && window.toruI18n?.planetBengaliData[p.name])
+          ? window.toruI18n.planetBengaliData[p.name].name.split(' ')[0]
+          : p.name;
+        ctx.fillText(displayName, px, py + rad + 14);
       }
     }
 

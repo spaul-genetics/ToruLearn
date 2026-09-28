@@ -762,18 +762,26 @@ class SkeletonSim3D {
       ? `${specificSubName} <span style="font-size: 0.95rem; color: #94a3b8; font-weight: 400;">(${data.name})</span>`
       : data.name;
 
+    const bn = window.toruI18n?.getBoneDetails(this.selectedBone);
+    const isBn = window.currentLang === 'bn' && bn;
+
+    const nameToDisplay = isBn ? bn.name : displayName;
+    const catToDisplay = isBn ? bn.category : data.category;
+    const funcToDisplay = isBn ? bn.function : data.function;
+    const factsToDisplay = isBn ? bn.facts : data.facts;
+
     card.innerHTML = `
       <div class="bone-header-row" style="border-left: 4px solid ${data.color}; padding-left: 14px; margin-bottom: 12px;">
         <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
           <span class="card-cat-badge" style="background:${data.color}22; border-color:${data.color}55; color:${data.color};">
-            ${data.category}
+            ${catToDisplay}
           </span>
           <span style="font-size: 0.78rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); padding: 2px 8px; border-radius: 999px;">
-            ✨ Medical 3D Mesh Active
+            ${isBn ? '✨ মেডিকেল ৩ডি মডেল সক্রিয়' : '✨ Medical 3D Mesh Active'}
           </span>
         </div>
         <h3 style="font-size: 1.4rem; font-weight: 700; color: #ffffff; margin: 6px 0 2px;">
-          ${displayName}
+          ${nameToDisplay}
         </h3>
         <span style="font-size: 0.85rem; color: #94a3b8; font-style: italic;">
           ${data.latin}
@@ -781,16 +789,16 @@ class SkeletonSim3D {
       </div>
 
       <div style="background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md); padding: 12px 14px; margin-bottom: 16px;">
-        <strong style="color: #38bdf8; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em;">Primary Function:</strong>
+        <strong style="color: #38bdf8; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em;">${isBn ? 'প্রধান কাজ:' : 'Primary Function:'}</strong>
         <p style="font-size: 0.92rem; color: #f1f5f9; line-height: 1.5; margin-top: 4px;">
-          ${data.function}
+          ${funcToDisplay}
         </p>
       </div>
 
       <div style="margin-bottom: 16px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 8px; flex-wrap: wrap;">
           <h4 style="font-size: 0.95rem; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 6px;">
-            <span>💡</span> Fascinating Kid Science Facts:
+            <span>💡</span> ${isBn ? 'শিশুদের জন্য মজার বৈজ্ঞানিক তথ্য:' : 'Fascinating Kid Science Facts:'}
           </h4>
           <div style="display: flex; align-items: center; gap: 6px;">
             <button class="voice-persona-btn" title="Click to switch voice character (Sunny / Nova / Prof. Paws)">
@@ -798,12 +806,12 @@ class SkeletonSim3D {
             </button>
             <button id="skeleton-speak-btn" class="speak-fact-btn" title="Read bone facts aloud" aria-label="Read bone facts aloud">
               <span class="speak-icon">🔊</span>
-              <span class="speak-label">Read Aloud</span>
+              <span class="speak-label">${isBn ? 'শুনুন' : 'Read Aloud'}</span>
             </button>
           </div>
         </div>
         <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px;">
-          ${data.facts.map(f => `
+          ${factsToDisplay.map(f => `
             <li style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5; background: rgba(255, 255, 255, 0.04); padding: 8px 12px; border-radius: var(--radius-sm); border-left: 2px solid ${data.color};">
               ${f}
             </li>
@@ -812,8 +820,8 @@ class SkeletonSim3D {
       </div>
 
       <div class="glass-panel" style="padding: 10px 14px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; color: #94a3b8; flex-wrap: wrap; gap: 6px;">
-        <span>🔍 Click ANY bone in 3D to inspect • Drag 360° • Pinch to zoom</span>
-        <span style="color: #38bdf8; font-weight: 600;">206 Total Adult Bones</span>
+        <span>${isBn ? '🔍 ৩ডি মডেলে যেকোনো হাড়ে ক্লিক করুন • ৩৬০° ঘোরান • জুম করুন' : '🔍 Click ANY bone in 3D to inspect • Drag 360° • Pinch to zoom'}</span>
+        <span style="color: #38bdf8; font-weight: 600;">${isBn ? '২০৬টি প্রাপ্তবয়স্ক হাড়' : '206 Total Adult Bones'}</span>
       </div>
     `;
 
@@ -834,31 +842,100 @@ class SkeletonSim3D {
     const speakBtn = document.getElementById('skeleton-speak-btn');
     if (speakBtn) {
       // Natural, conversational kid-friendly speech phrasing
-      const textToRead = `Let's explore the ${displayName}! ${data.facts[0]} ${data.facts[1] || ''}`;
+      const textToRead = isBn
+        ? `এসো ${bn.name} সম্পর্কে জানি! ${bn.facts[0]} ${bn.facts[1] || ''}`
+        : `Let's explore the ${displayName}! ${data.facts[0]} ${data.facts[1] || ''}`;
+
       speakBtn.addEventListener('click', () => {
         if (window.cosmicAudio?.isSpeaking()) {
           window.cosmicAudio.stopSpeaking();
           speakBtn.classList.remove('speaking');
-          speakBtn.innerHTML = '<span class="speak-icon">🔊</span><span class="speak-label">Read Aloud</span>';
+          speakBtn.innerHTML = `<span class="speak-icon">🔊</span><span class="speak-label">${isBn ? 'শুনুন' : 'Read Aloud'}</span>`;
           return;
         }
 
         speakBtn.classList.add('speaking');
-        speakBtn.innerHTML = '<span class="speak-icon">⏹</span><span class="speak-label">Stop</span>';
+        speakBtn.innerHTML = `<span class="speak-icon">⏹</span><span class="speak-label">${isBn ? 'থামুন' : 'Stop'}</span>`;
 
         window.cosmicAudio?.speakText(
           textToRead,
           () => {},
           () => {
             speakBtn.classList.remove('speaking');
-            speakBtn.innerHTML = '<span class="speak-icon">🔊</span><span class="speak-label">Read Aloud</span>';
+            speakBtn.innerHTML = `<span class="speak-icon">🔊</span><span class="speak-label">${isBn ? 'শুনুন' : 'Read Aloud'}</span>`;
           },
           () => {
             speakBtn.classList.remove('speaking');
-            speakBtn.innerHTML = '<span class="speak-icon">🔊</span><span class="speak-label">Read Aloud</span>';
+            speakBtn.innerHTML = `<span class="speak-icon">🔊</span><span class="speak-label">${isBn ? 'শুনুন' : 'Read Aloud'}</span>`;
           }
         );
       });
+    }
+  }
+
+  onLanguageChanged(lang) {
+    const isBn = lang === 'bn';
+    const boneBnLabels = {
+      cranium: 'মাথার খুলি',
+      mandible: 'চোয়াল',
+      clavicle: 'কলারবোন',
+      scapula: 'কাঁধের হাড়',
+      ribcage: 'বুকের খাঁচা',
+      sternum: 'বুকের পাটা',
+      spine: 'মেরুদণ্ড',
+      humerus: 'হিউমেরাস',
+      radius_ulna: 'হাতের অগ্রভাগ',
+      hand: 'হাত',
+      pelvis: 'শ্রোণিচক্র',
+      femur: 'ফিমার',
+      patella: 'হাঁটু',
+      tibia_fibula: 'পায়ের নলা',
+      foot: 'পা'
+    };
+    const boneEnLabels = {
+      cranium: 'Skull',
+      mandible: 'Jaw',
+      clavicle: 'Collarbone',
+      scapula: 'Shoulder Blade',
+      ribcage: 'Ribcage',
+      sternum: 'Breastbone',
+      spine: 'Spine',
+      humerus: 'Upper Arm',
+      radius_ulna: 'Forearm',
+      hand: 'Hand',
+      pelvis: 'Pelvis',
+      femur: 'Femur',
+      patella: 'Kneecap',
+      tibia_fibula: 'Shin',
+      foot: 'Foot'
+    };
+    const boneIcons = {
+      cranium: '💀',
+      mandible: '🦷',
+      clavicle: '🦴',
+      scapula: '🪽',
+      ribcage: '🫁',
+      sternum: '🛡️',
+      spine: '⚡',
+      humerus: '🦾',
+      radius_ulna: '🧤',
+      hand: '✋',
+      pelvis: '🩻',
+      femur: '🦵',
+      patella: '🔘',
+      tibia_fibula: '🦶',
+      foot: '👟'
+    };
+
+    document.querySelectorAll('.bone-quick-btn').forEach(btn => {
+      const bKey = btn.dataset.bone;
+      const icon = boneIcons[bKey] || '🦴';
+      const label = isBn ? (boneBnLabels[bKey] || bKey) : (boneEnLabels[bKey] || bKey);
+      btn.textContent = `${icon} ${label}`;
+    });
+
+    if (this.selectedBone && this.boneDatabase[this.selectedBone]) {
+      this.renderInspectorCard(this.boneDatabase[this.selectedBone]);
     }
   }
 

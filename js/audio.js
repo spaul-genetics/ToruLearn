@@ -244,6 +244,18 @@ class CosmicAudio {
     }
     if (!this.voices || this.voices.length === 0) return null;
 
+    // If current language is Bengali, prioritize natural Bengali voices
+    if (window.currentLang === 'bn') {
+      const bnVoice = this.voices.find(v => 
+        (v.lang && (v.lang.startsWith('bn') || v.lang.includes('bn-BD') || v.lang.includes('bn-IN'))) ||
+        /bangla|bengali/i.test(v.name)
+      );
+      if (bnVoice) {
+        this.selectedVoice = bnVoice;
+        return bnVoice;
+      }
+    }
+
     const enVoices = this.voices.filter(v => v.lang && v.lang.startsWith('en'));
     const pool = enVoices.length > 0 ? enVoices : this.voices;
 
@@ -419,6 +431,7 @@ class CosmicAudio {
     if (voice) {
       utterance.voice = voice;
     }
+    utterance.lang = window.currentLang === 'bn' ? 'bn-BD' : 'en-US';
 
     utterance.onstart = () => {
       this.isNarrating = true;

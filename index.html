@@ -9,7 +9,7 @@
   <!-- Modern Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
@@ -27,41 +27,46 @@
           <span class="brand-sun">🌟</span>
         </div>
         <div class="brand-text">
-          <h1 class="brand-title">ToruLearn</h1>
-          <span class="brand-tagline">Curious Minds • Science, Mind &amp; Philosophy</span>
+          <h1 class="brand-title" data-i18n="brand.title">ToruLearn</h1>
+          <span class="brand-tagline" data-i18n="brand.tagline">Curious Minds • Science, Mind &amp; Philosophy</span>
         </div>
       </div>
 
       <!-- Primary Multi-Domain Navigation Ribbon -->
       <nav class="main-nav-bar" aria-label="Main Disciplines">
         <button class="main-nav-pill active" data-view-target="home" title="Discovery Home">
-          <span>🏠</span> Home
+          <span>🏠</span> <span data-i18n="nav.home">Home</span>
         </button>
         <button class="main-nav-pill" data-view-target="cosmic-explorer" title="Cosmic Explorer &amp; Astronomy">
-          <span>🌌</span> Cosmic Explorer
+          <span>🌌</span> <span data-i18n="nav.cosmic">Cosmic Explorer</span>
         </button>
         <button class="main-nav-pill" data-view-target="body-systems" title="The Human Machine: Living Systems">
-          <span>🫀</span> Body Systems
+          <span>🫀</span> <span data-i18n="nav.body">Body Systems</span>
         </button>
         <button class="main-nav-pill" data-view-target="immunology" title="The Immune Army Defenders">
-          <span>🛡️</span> Immunology
+          <span>🛡️</span> <span data-i18n="nav.immunology">Immunology</span>
         </button>
         <button class="main-nav-pill" data-view-target="cell-biology" title="Cell City &amp; Nanoscopic Biology">
-          <span>🧬</span> Cell Biology
+          <span>🧬</span> <span data-i18n="nav.cell">Cell Biology</span>
         </button>
         <button class="main-nav-pill" data-view-target="math-patterns" title="Math Secrets &amp; Sacred Patterns">
-          <span>📐</span> Math &amp; Logic
+          <span>📐</span> <span data-i18n="nav.math">Math &amp; Logic</span>
         </button>
         <button class="main-nav-pill" data-view-target="psychology" title="Mind, Brain &amp; Optical Illusions">
-          <span>🧠</span> Mind &amp; Brain
+          <span>🧠</span> <span data-i18n="nav.psychology">Mind &amp; Brain</span>
         </button>
         <button class="main-nav-pill" data-view-target="philosophy" title="Big Questions &amp; Philosophy for Kids">
-          <span>💭</span> Big Questions
+          <span>💭</span> <span data-i18n="nav.philosophy">Big Questions</span>
         </button>
       </nav>
 
       <!-- Utility Controls -->
       <div class="header-actions">
+        <!-- Language Switcher Button -->
+        <button id="lang-toggle-btn" class="lang-toggle-btn" title="Switch Language / ভাষা পরিবর্তন করুন" aria-label="Language Selector">
+          <span class="lang-icon">🌐</span>
+          <span id="lang-toggle-label" class="lang-label">বাংলা</span>
+        </button>
         <button id="audio-toggle-btn" class="icon-btn" title="Toggle Cosmic Ambient Audio" aria-label="Toggle Audio">
           <span id="audio-icon">🔇</span>
         </button>
@@ -80,34 +85,34 @@
           
           <!-- Hero Section -->
           <div class="portal-hero">
-            <div class="hero-badge">✨ ToruLearn • Wonder. Think. Discover.</div>
-            <h2>Where Curious Kids Explore Big Questions</h2>
-            <p class="hero-subtitle">
+            <div class="hero-badge" data-i18n="home.hero.badge">✨ ToruLearn • Wonder. Think. Discover.</div>
+            <h2 data-i18n="home.hero.title">Where Curious Kids Explore Big Questions</h2>
+            <p class="hero-subtitle" data-i18n="home.hero.subtitle">
               From the cosmic dance of distant planets to how your stomach turns apples into energy, how white blood cells defend your body, and the greatest philosophical mysteries of existence.
             </p>
             <div class="hero-actions">
               <button class="btn-hero-primary" data-view-target="cosmic-explorer">
-                <span>🌌</span> Launch Cosmic Explorer
+                <span>🌌</span> <span data-i18n="home.hero.btn.cosmic">Launch Cosmic Explorer</span>
               </button>
               <button class="btn-hero-secondary" data-view-target="body-systems">
-                <span>🫀</span> The Human Machine
+                <span>🫀</span> <span data-i18n="home.hero.btn.body">The Human Machine</span>
               </button>
               <button class="btn-hero-secondary" data-view-target="immunology">
-                <span>🛡️</span> The Immune Army
+                <span>🛡️</span> <span data-i18n="home.hero.btn.immune">The Immune Army</span>
               </button>
             </div>
           </div>
 
           <!-- Category Filter Bar -->
           <div class="topic-filter-bar">
-            <button class="topic-filter-pill active" data-filter="all">All Topics (7)</button>
-            <button class="topic-filter-pill" data-filter="astronomy">🌌 Space &amp; Astronomy</button>
-            <button class="topic-filter-pill" data-filter="body">🫀 Human Body Systems</button>
-            <button class="topic-filter-pill" data-filter="immunology">🛡️ Immunology</button>
-            <button class="topic-filter-pill" data-filter="cell">🧬 Cell Biology</button>
-            <button class="topic-filter-pill" data-filter="math">📐 Math &amp; Logic</button>
-            <button class="topic-filter-pill" data-filter="psychology">🧠 Mind &amp; Brain</button>
-            <button class="topic-filter-pill" data-filter="philosophy">💭 Big Questions</button>
+            <button class="topic-filter-pill active" data-filter="all" data-i18n="filter.all">All Topics (7)</button>
+            <button class="topic-filter-pill" data-filter="astronomy" data-i18n="filter.astronomy">🌌 Space &amp; Astronomy</button>
+            <button class="topic-filter-pill" data-filter="body" data-i18n="filter.body">🫀 Human Body Systems</button>
+            <button class="topic-filter-pill" data-filter="immunology" data-i18n="filter.immunology">🛡️ Immunology</button>
+            <button class="topic-filter-pill" data-filter="cell" data-i18n="filter.cell">🧬 Cell Biology</button>
+            <button class="topic-filter-pill" data-filter="math" data-i18n="filter.math">📐 Math &amp; Logic</button>
+            <button class="topic-filter-pill" data-filter="psychology" data-i18n="filter.psychology">🧠 Mind &amp; Brain</button>
+            <button class="topic-filter-pill" data-filter="philosophy" data-i18n="filter.philosophy">💭 Big Questions</button>
           </div>
 
           <!-- Topic Exploration Cards Grid -->
@@ -117,17 +122,17 @@
             <div class="portal-topic-card" data-category="astronomy" style="--card-color: #38bdf8;">
               <div>
                 <div class="card-top-row">
-                  <span class="card-cat-badge">Astronomy &amp; Astrophysics</span>
+                  <span class="card-cat-badge" data-i18n="card.cosmic.cat">Astronomy &amp; Astrophysics</span>
                   <span class="card-status-badge">● Interactive Lab</span>
                 </div>
                 <div class="card-title-row">
                   <span class="card-domain-icon">🌌</span>
                   <div class="card-title-text">
-                    <h3>Cosmic Explorer</h3>
-                    <span class="card-tagline">Planets, Day &amp; Night, and The Seasons</span>
+                    <h3 data-i18n="card.cosmic.title">Cosmic Explorer</h3>
+                    <span class="card-tagline" data-i18n="card.cosmic.tagline">Planets, Day &amp; Night, and The Seasons</span>
                   </div>
                 </div>
-                <div class="card-question-box">
+                <div class="card-question-box" data-i18n="card.cosmic.q">
                   “Why is it night in Dhaka when it's bright daytime in New York? What makes Saturn's icy rings?”
                 </div>
                 <div class="card-tags-list">
@@ -138,7 +143,7 @@
                   <span class="subtopic-tag">Eclipses</span>
                 </div>
               </div>
-              <button class="card-action-btn" data-view-target="cosmic-explorer">
+              <button class="card-action-btn" data-view-target="cosmic-explorer" data-i18n="card.cosmic.btn">
                 Launch Cosmic Explorer ➔
               </button>
             </div>
@@ -147,17 +152,17 @@
             <div class="portal-topic-card" data-category="body biology" style="--card-color: #f43f5e;">
               <div>
                 <div class="card-top-row">
-                  <span class="card-cat-badge">Human Anatomy &amp; Physiology</span>
+                  <span class="card-cat-badge" data-i18n="card.body.cat">Human Anatomy &amp; Physiology</span>
                   <span class="card-status-badge">● Interactive Lab</span>
                 </div>
                 <div class="card-title-row">
                   <span class="card-domain-icon">🫀</span>
                   <div class="card-title-text">
-                    <h3>The Human Machine</h3>
-                    <span class="card-tagline">Body &amp; Living Systems in Action</span>
+                    <h3 data-i18n="card.body.title">The Human Machine</h3>
+                    <span class="card-tagline" data-i18n="card.body.tagline">Body &amp; Living Systems in Action</span>
                   </div>
                 </div>
-                <div class="card-question-box">
+                <div class="card-question-box" data-i18n="card.body.q">
                   “How do your 206 bones support your body? Where does food go after you chew it? How do your lungs breathe?”
                 </div>
                 <div class="card-tags-list">
@@ -167,7 +172,7 @@
                   <span class="subtopic-tag">❤️ 100,000 Heartbeats</span>
                 </div>
               </div>
-              <button class="card-action-btn" data-view-target="body-systems">
+              <button class="card-action-btn" data-view-target="body-systems" data-i18n="card.body.btn">
                 Explore 3D Skeleton &amp; Systems ➔
               </button>
             </div>
@@ -176,17 +181,17 @@
             <div class="portal-topic-card" data-category="immunology biology" style="--card-color: #10b981;">
               <div>
                 <div class="card-top-row">
-                  <span class="card-cat-badge">Immunology &amp; Health</span>
+                  <span class="card-cat-badge" data-i18n="card.immune.cat">Immunology &amp; Health</span>
                   <span class="card-status-badge">● Interactive Lab</span>
                 </div>
                 <div class="card-title-row">
                   <span class="card-domain-icon">🛡️</span>
                   <div class="card-title-text">
-                    <h3>The Immune Army</h3>
-                    <span class="card-tagline">Microscopic Defenders Fighting For You</span>
+                    <h3 data-i18n="card.immune.title">The Immune Army</h3>
+                    <span class="card-tagline" data-i18n="card.immune.tagline">Microscopic Defenders Fighting For You</span>
                   </div>
                 </div>
-                <div class="card-question-box">
+                <div class="card-question-box" data-i18n="card.immune.q">
                   “What happens when you get a scrape? Who are the microscopic soldiers protecting your cells 24/7?”
                 </div>
                 <div class="card-tags-list">
@@ -196,7 +201,7 @@
                   <span class="subtopic-tag">Antibody Precision Keys</span>
                 </div>
               </div>
-              <button class="card-action-btn" data-view-target="immunology">
+              <button class="card-action-btn" data-view-target="immunology" data-i18n="card.immune.btn">
                 Meet the Defenders ➔
               </button>
             </div>
@@ -205,17 +210,17 @@
             <div class="portal-topic-card" data-category="cell biology" style="--card-color: #a855f7;">
               <div>
                 <div class="card-top-row">
-                  <span class="card-cat-badge">Cell Biology &amp; Genetics</span>
+                  <span class="card-cat-badge" data-i18n="card.cell.cat">Cell Biology &amp; Genetics</span>
                   <span class="card-status-badge">● Interactive Lab</span>
                 </div>
                 <div class="card-title-row">
                   <span class="card-domain-icon">🧬</span>
                   <div class="card-title-text">
-                    <h3>The Secret Life of Cells</h3>
-                    <span class="card-tagline">Inside the Nanoscopic Living City</span>
+                    <h3 data-i18n="card.cell.title">The Secret Life of Cells</h3>
+                    <span class="card-tagline" data-i18n="card.cell.tagline">Inside the Nanoscopic Living City</span>
                   </div>
                 </div>
-                <div class="card-question-box">
+                <div class="card-question-box" data-i18n="card.cell.q">
                   “If every human is made of 37 trillion cells, what does a single cell look like inside?”
                 </div>
                 <div class="card-tags-list">
@@ -225,7 +230,7 @@
                   <span class="subtopic-tag">Cell Membrane Gate</span>
                 </div>
               </div>
-              <button class="card-action-btn" data-view-target="cell-biology">
+              <button class="card-action-btn" data-view-target="cell-biology" data-i18n="card.cell.btn">
                 Enter the Cell City ➔
               </button>
             </div>
@@ -234,17 +239,17 @@
             <div class="portal-topic-card" data-category="math" style="--card-color: #f59e0b;">
               <div>
                 <div class="card-top-row">
-                  <span class="card-cat-badge">Mathematics &amp; Patterns</span>
+                  <span class="card-cat-badge" data-i18n="card.math.cat">Mathematics &amp; Patterns</span>
                   <span class="card-status-badge">● Interactive Canvas</span>
                 </div>
                 <div class="card-title-row">
                   <span class="card-domain-icon">📐</span>
                   <div class="card-title-text">
-                    <h3>Math Secrets</h3>
-                    <span class="card-tagline">Hidden Codes of Nature &amp; Cosmos</span>
+                    <h3 data-i18n="card.math.title">Math Secrets</h3>
+                    <span class="card-tagline" data-i18n="card.math.tagline">Hidden Codes of Nature &amp; Cosmos</span>
                   </div>
                 </div>
-                <div class="card-question-box">
+                <div class="card-question-box" data-i18n="card.math.q">
                   “Why do sunflowers pack seeds in Fibonacci spirals? Can numbers describe the shapes of nature?”
                 </div>
                 <div class="card-tags-list">
@@ -254,7 +259,7 @@
                   <span class="subtopic-tag">Prime Number Cicadas</span>
                 </div>
               </div>
-              <button class="card-action-btn" data-view-target="math-patterns">
+              <button class="card-action-btn" data-view-target="math-patterns" data-i18n="card.math.btn">
                 Discover Math Patterns ➔
               </button>
             </div>
@@ -263,17 +268,17 @@
             <div class="portal-topic-card" data-category="psychology" style="--card-color: #06b6d4;">
               <div>
                 <div class="card-top-row">
-                  <span class="card-cat-badge">Psychology &amp; Neuroscience</span>
+                  <span class="card-cat-badge" data-i18n="card.psych.cat">Psychology &amp; Neuroscience</span>
                   <span class="card-status-badge">● Interactive Lab</span>
                 </div>
                 <div class="card-title-row">
                   <span class="card-domain-icon">🧠</span>
                   <div class="card-title-text">
-                    <h3>Mind, Brain &amp; Perception</h3>
-                    <span class="card-tagline">How Your Brain Reconstructs Reality</span>
+                    <h3 data-i18n="card.psych.title">Mind &amp; Brain Tricks</h3>
+                    <span class="card-tagline" data-i18n="card.psych.tagline">Perception, Memory &amp; Optical Illusions</span>
                   </div>
                 </div>
-                <div class="card-question-box">
+                <div class="card-question-box" data-i18n="card.psych.q">
                   “Can you always trust your own eyes? Why do optical illusions fool our clever brains?”
                 </div>
                 <div class="card-tags-list">
@@ -283,7 +288,7 @@
                   <span class="subtopic-tag">Growth Mindset Superpower</span>
                 </div>
               </div>
-              <button class="card-action-btn" data-view-target="psychology">
+              <button class="card-action-btn" data-view-target="psychology" data-i18n="card.psych.btn">
                 Test Your Brain ➔
               </button>
             </div>
@@ -292,17 +297,17 @@
             <div class="portal-topic-card" data-category="philosophy" style="--card-color: #ec4899;">
               <div>
                 <div class="card-top-row">
-                  <span class="card-cat-badge">Philosophy &amp; Critical Thinking</span>
+                  <span class="card-cat-badge" data-i18n="card.phil.cat">Philosophy &amp; Critical Thinking</span>
                   <span class="card-status-badge">● Thought Experiments</span>
                 </div>
                 <div class="card-title-row">
                   <span class="card-domain-icon">💭</span>
                   <div class="card-title-text">
-                    <h3>Big Questions</h3>
-                    <span class="card-tagline">Puzzles For Curious Young Thinkers</span>
+                    <h3 data-i18n="card.phil.title">Big Questions</h3>
+                    <span class="card-tagline" data-i18n="card.phil.tagline">Puzzles For Curious Young Thinkers</span>
                   </div>
                 </div>
-                <div class="card-question-box">
+                <div class="card-question-box" data-i18n="card.phil.q">
                   “If you replace every wooden plank on a ship, is it still the same ship? What makes something truly fair?”
                 </div>
                 <div class="card-tags-list">
@@ -312,7 +317,7 @@
                   <span class="subtopic-tag">The Art of Asking "Why?"</span>
                 </div>
               </div>
-              <button class="card-action-btn" data-view-target="philosophy">
+              <button class="card-action-btn" data-view-target="philosophy" data-i18n="card.phil.btn">
                 Ponder Big Questions ➔
               </button>
             </div>
@@ -344,35 +349,35 @@
       <!-- ================= VIEW 2: COSMIC EXPLORER (ASTRONOMY SUITE) ================= -->
       <section id="view-cosmic-explorer" class="app-main-view">
         <div class="view-top-toolbar glass-panel">
-          <button class="back-to-home-btn" data-view-target="home">
-            <span>←</span> Back to ToruLearn Home
+          <button class="back-to-home-btn" data-view-target="home" data-i18n="nav.back_home">
+            ← Back to ToruLearn Home
           </button>
           
           <!-- Astronomy Simulation Sub-Tabs -->
           <nav class="nav-tabs" role="tablist" aria-label="Astronomy Simulations">
             <button class="nav-tab active" data-tab="solar-system" role="tab" aria-selected="true" id="tab-solar-system">
               <span class="tab-icon">🌌</span>
-              <span class="tab-label">Solar System</span>
+              <span class="tab-label" data-i18n="cosmic.tab.solar">Solar System</span>
             </button>
             <button class="nav-tab" data-tab="day-night" role="tab" aria-selected="false" id="tab-day-night">
               <span class="tab-icon">☀️</span>
-              <span class="tab-label">Day &amp; Night</span>
+              <span class="tab-label" data-i18n="cosmic.tab.daynight">Day &amp; Night</span>
             </button>
             <button class="nav-tab" data-tab="seasons" role="tab" aria-selected="false" id="tab-seasons">
               <span class="tab-icon">🌍</span>
-              <span class="tab-label">The Seasons</span>
+              <span class="tab-label" data-i18n="cosmic.tab.seasons">The Seasons</span>
             </button>
             <button class="nav-tab" data-tab="moon-phases" role="tab" aria-selected="false" id="tab-moon-phases">
               <span class="tab-icon">🌖</span>
-              <span class="tab-label">Moon Phases</span>
+              <span class="tab-label" data-i18n="cosmic.tab.moon">Moon Phases</span>
             </button>
             <button class="nav-tab" data-tab="eclipses" role="tab" aria-selected="false" id="tab-eclipses">
               <span class="tab-icon">🌑</span>
-              <span class="tab-label">Eclipses Lab</span>
+              <span class="tab-label" data-i18n="cosmic.tab.eclipses">Eclipses Lab</span>
             </button>
             <button class="nav-tab" data-tab="quiz" role="tab" aria-selected="false" id="tab-quiz">
               <span class="tab-icon">🏆</span>
-              <span class="tab-label">Cosmic Quiz</span>
+              <span class="tab-label" data-i18n="cosmic.tab.quiz">Cosmic Quiz</span>
             </button>
           </nav>
         </div>
@@ -1040,12 +1045,12 @@
       <!-- ================= VIEW 3: HUMAN BODY SYSTEMS ================= -->
       <section id="view-body-systems" class="app-main-view">
         <div class="view-top-toolbar glass-panel">
-          <button class="back-to-home-btn" data-view-target="home">
-            <span>←</span> Back to ToruLearn Home
+          <button class="back-to-home-btn" data-view-target="home" data-i18n="nav.back_home">
+            ← Back to ToruLearn Home
           </button>
           <div class="view-heading-box">
-            <h2>🫀 The Human Machine: Living Systems</h2>
-            <p>Explore How Organs, Blood &amp; Oxygen Power You Every Second</p>
+            <h2 data-i18n="skel.title">🫀 The Human Machine: Living Systems</h2>
+            <p data-i18n="skel.subtitle">Explore How Organs, Blood &amp; Oxygen Power You Every Second</p>
           </div>
         </div>
 
@@ -1053,16 +1058,16 @@
           <!-- Sub-Tabs for Body Systems (Skeleton FIRST!) -->
           <div class="body-sys-nav">
             <button class="body-sys-tab active" data-system="skeleton">
-              <span>🦴</span> The Skeleton (3D Framework)
+              <span>🦴</span> <span data-i18n="skel.tab.skeleton">The Skeleton (3D Framework)</span>
             </button>
             <button class="body-sys-tab" data-system="digestive">
-              <span>🍎</span> The Digestive Journey
+              <span>🍎</span> <span data-i18n="skel.tab.digestive">The Digestive Journey</span>
             </button>
             <button class="body-sys-tab" data-system="respiratory">
-              <span>🫁</span> The Breathing Engine (Lungs)
+              <span>🫁</span> <span data-i18n="skel.tab.breathing">The Breathing Engine (Lungs)</span>
             </button>
             <button class="body-sys-tab" data-system="circulatory">
-              <span>❤️</span> The Living Pump (Heart &amp; Blood)
+              <span>❤️</span> <span data-i18n="skel.tab.heart">The Living Pump (Heart &amp; Blood)</span>
             </button>
           </div>
 
@@ -1285,8 +1290,8 @@
       <!-- ================= VIEW 4: IMMUNOLOGY DEFENDERS ================= -->
       <section id="view-immunology" class="app-main-view">
         <div class="view-top-toolbar glass-panel">
-          <button class="back-to-home-btn" data-view-target="home">
-            <span>←</span> Back to ToruLearn Home
+          <button class="back-to-home-btn" data-view-target="home" data-i18n="nav.back_home">
+            ← Back to ToruLearn Home
           </button>
           <div class="view-heading-box">
             <h2>🛡️ The Immune Army: Microscopic Defenders</h2>
@@ -1375,8 +1380,8 @@
       <!-- ================= VIEW 5: CELL BIOLOGY ================= -->
       <section id="view-cell-biology" class="app-main-view">
         <div class="view-top-toolbar glass-panel">
-          <button class="back-to-home-btn" data-view-target="home">
-            <span>←</span> Back to ToruLearn Home
+          <button class="back-to-home-btn" data-view-target="home" data-i18n="nav.back_home">
+            ← Back to ToruLearn Home
           </button>
           <div class="view-heading-box">
             <h2>🧬 The Secret Life of Cells</h2>
@@ -1434,8 +1439,8 @@
       <!-- ================= VIEW 6: MATHEMATICS & LOGIC ================= -->
       <section id="view-math-patterns" class="app-main-view">
         <div class="view-top-toolbar glass-panel">
-          <button class="back-to-home-btn" data-view-target="home">
-            <span>←</span> Back to ToruLearn Home
+          <button class="back-to-home-btn" data-view-target="home" data-i18n="nav.back_home">
+            ← Back to ToruLearn Home
           </button>
           <div class="view-heading-box">
             <h2>📐 Math Secrets: Nature's Hidden Code</h2>
@@ -1482,8 +1487,8 @@
       <!-- ================= VIEW 7: MIND & PSYCHOLOGY ================= -->
       <section id="view-psychology" class="app-main-view">
         <div class="view-top-toolbar glass-panel">
-          <button class="back-to-home-btn" data-view-target="home">
-            <span>←</span> Back to ToruLearn Home
+          <button class="back-to-home-btn" data-view-target="home" data-i18n="nav.back_home">
+            ← Back to ToruLearn Home
           </button>
           <div class="view-heading-box">
             <h2>🧠 Mind, Brain &amp; Perception: The Illusion Lab</h2>
@@ -1590,8 +1595,8 @@
       <!-- ================= VIEW 8: PHILOSOPHY & BIG QUESTIONS ================= -->
       <section id="view-philosophy" class="app-main-view">
         <div class="view-top-toolbar glass-panel">
-          <button class="back-to-home-btn" data-view-target="home">
-            <span>←</span> Back to ToruLearn Home
+          <button class="back-to-home-btn" data-view-target="home" data-i18n="nav.back_home">
+            ← Back to ToruLearn Home
           </button>
           <div class="view-heading-box">
             <h2>💭 Big Questions: Philosophy for Young Thinkers</h2>
@@ -1661,6 +1666,8 @@
     </div>
   </div>
 
+  <!-- Bilingual Localization (English & Bengali) -->
+  <script src="js/i18n.js"></script>
   <!-- Audio Synthesis, Simulations & Multi-Domain Portal Scripts -->
   <script src="js/audio.js"></script>
   <script src="js/solar_system.js"></script>
