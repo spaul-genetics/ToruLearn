@@ -788,14 +788,19 @@ class SkeletonSim3D {
       </div>
 
       <div style="margin-bottom: 16px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 8px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 8px; flex-wrap: wrap;">
           <h4 style="font-size: 0.95rem; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 6px;">
             <span>💡</span> Fascinating Kid Science Facts:
           </h4>
-          <button id="skeleton-speak-btn" class="speak-fact-btn" title="Read bone facts aloud" aria-label="Read bone facts aloud">
-            <span class="speak-icon">🔊</span>
-            <span class="speak-label">Read Aloud</span>
-          </button>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <button class="voice-persona-btn" title="Click to switch voice character (Sunny / Nova / Prof. Paws)">
+              <span class="persona-name">Voice: ${(window.cosmicAudio?.getPersona() || { name: 'Sunny 🌟' }).name}</span>
+            </button>
+            <button id="skeleton-speak-btn" class="speak-fact-btn" title="Read bone facts aloud" aria-label="Read bone facts aloud">
+              <span class="speak-icon">🔊</span>
+              <span class="speak-label">Read Aloud</span>
+            </button>
+          </div>
         </div>
         <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px;">
           ${data.facts.map(f => `
@@ -812,10 +817,24 @@ class SkeletonSim3D {
       </div>
     `;
 
+    // Persona switch listener
+    card.querySelectorAll('.voice-persona-btn').forEach(pb => {
+      pb.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const p = window.cosmicAudio?.cyclePersona();
+        if (p) {
+          document.querySelectorAll('.voice-persona-btn .persona-name').forEach(el => {
+            el.textContent = `Voice: ${p.name}`;
+          });
+        }
+      });
+    });
+
     // Bind Read Aloud narration button
     const speakBtn = document.getElementById('skeleton-speak-btn');
     if (speakBtn) {
-      const textToRead = `${displayName}. Also known as ${data.latin}. Function: ${data.function}. Fun facts: ${data.facts.join('. ')}`;
+      // Natural, conversational kid-friendly speech phrasing
+      const textToRead = `Let's explore the ${displayName}! ${data.facts[0]} ${data.facts[1] || ''}`;
       speakBtn.addEventListener('click', () => {
         if (window.cosmicAudio?.isSpeaking()) {
           window.cosmicAudio.stopSpeaking();

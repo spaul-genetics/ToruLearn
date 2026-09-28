@@ -573,6 +573,20 @@ class SolarSystemSim {
         }
       );
     });
+
+    // Voice Persona switcher button
+    const personaBtns = box ? box.querySelectorAll('.voice-persona-btn') : document.querySelectorAll('.voice-persona-btn');
+    personaBtns.forEach(pb => {
+      pb.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const p = window.cosmicAudio?.cyclePersona();
+        if (p) {
+          document.querySelectorAll('.voice-persona-btn .persona-name').forEach(el => {
+            el.textContent = `Voice: ${p.name}`;
+          });
+        }
+      });
+    });
   }
 
   resetCamera() {
@@ -623,6 +637,8 @@ class SolarSystemSim {
 
     titleEl.textContent = 'The Sun (Sol)';
     const sunFact = "Light travels at 300,000 km per second! Even at that unfathomable speed, sunlight takes 8 minutes and 20 seconds to travel across space to reach Earth.";
+    const persona = window.cosmicAudio?.getPersona() || { name: 'Sunny 🌟' };
+
     contentEl.innerHTML = `
       <h3>The Heart of Our Solar System</h3>
       <p>The Sun is a blazing <strong>Yellow Dwarf star (G-type main-sequence)</strong> at the center of everything. Through nuclear fusion at its core, it fuses 600 million tons of hydrogen into helium every second, generating the radiant light and warmth that makes life on Earth possible.</p>
@@ -639,6 +655,9 @@ class SolarSystemSim {
           <div class="fun-fact-header-left">
             <span class="fact-icon">☀️</span>
             <strong>Speed of Sunlight</strong>
+            <button class="voice-persona-btn" title="Click to switch voice character (Sunny / Nova / Prof. Paws)">
+              <span class="persona-name">Voice: ${persona.name}</span>
+            </button>
           </div>
           <button id="ss-speak-fact-btn" class="speak-fact-btn" title="Read fun fact aloud" aria-label="Read fun fact aloud">
             <span class="speak-icon">🔊</span>
@@ -649,7 +668,8 @@ class SolarSystemSim {
       </div>
     `;
 
-    this.bindSpeechButton(sunFact, 'ss-speak-fact-btn', '#ss-fun-fact-box');
+    const speechText = "Did you know? Sunlight travels at three hundred thousand kilometers every single second! Even at that blazing speed, it takes eight minutes and twenty seconds for a ray of sunlight to reach Earth!";
+    this.bindSpeechButton(speechText, 'ss-speak-fact-btn', '#ss-fun-fact-box');
   }
 
   selectPlanet(p) {
@@ -685,7 +705,7 @@ class SolarSystemSim {
     const moonsHtml = (p.majorMoons && p.majorMoons.length > 0)
       ? `
         <div class="moons-list-box">
-          <span class="moons-title">Notable Moons (${p.moons} total)</span>
+          <span class="moons-title">Notable Moons (${p.moons} total • Click to hear!)</span>
           <div class="moons-tags">
             ${p.majorMoons.map(m => `
               <span class="moon-pill" title="${m.name}: ${m.details}">
@@ -701,6 +721,8 @@ class SolarSystemSim {
           <span style="font-size: 0.8rem; color: #94a3b8;">🌙 No natural satellites or moons</span>
         </div>
       ` : '');
+
+    const persona = window.cosmicAudio?.getPersona() || { name: 'Sunny 🌟' };
 
     contentEl.innerHTML = `
       <h3>${p.type}</h3>
@@ -722,6 +744,9 @@ class SolarSystemSim {
           <div class="fun-fact-header-left">
             <span class="fact-icon">🚀</span>
             <strong>Cosmic Fact</strong>
+            <button class="voice-persona-btn" title="Click to switch voice character (Sunny / Nova / Prof. Paws)">
+              <span class="persona-name">Voice: ${persona.name}</span>
+            </button>
           </div>
           <button id="ss-speak-fact-btn" class="speak-fact-btn" title="Read fun fact aloud" aria-label="Read fun fact aloud">
             <span class="speak-icon">🔊</span>
@@ -737,7 +762,8 @@ class SolarSystemSim {
       </div>
     `;
 
-    const speechText = `${p.name}. ${p.description}. Cosmic fact: ${p.fact}`;
+    // Speak cheerful, friendly cosmic fact
+    const speechText = `Here is a fun cosmic fact about ${p.name}! ${p.fact}`;
     this.bindSpeechButton(speechText, 'ss-speak-fact-btn', '#ss-fun-fact-box');
 
     // Click moon pills to hear their individual lore
@@ -746,7 +772,11 @@ class SolarSystemSim {
         window.cosmicAudio?.playTink();
         const moonTitle = pill.getAttribute('title');
         if (moonTitle) {
-          window.cosmicAudio?.speakText(moonTitle);
+          const parts = moonTitle.split(':');
+          const moonName = parts[0] ? parts[0].trim() : '';
+          const moonDetails = parts[1] ? parts[1].trim() : moonTitle;
+          const textToSpeak = `Fun fact about ${moonName}! ${moonDetails}`;
+          window.cosmicAudio?.speakText(textToSpeak);
         }
       });
     });

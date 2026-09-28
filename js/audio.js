@@ -10,8 +10,41 @@ class CosmicAudio {
     this.ambientGain = null;
     this.ambientOsc1 = null;
     this.ambientOsc2 = null;
-    this.ambientFilter = null;
     this.initialized = false;
+
+    // Kid-Friendly Speech Synthesis Engine
+    this.voices = [];
+    this.selectedVoice = null;
+    this.isNarrating = false;
+    this.currentPersona = 'sunny'; // 'sunny' (Playful Kid), 'nova' (Cosmic Explorer), 'paws' (Warm Teacher)
+    this.personas = {
+      sunny: {
+        id: 'sunny',
+        name: 'Sunny 🌟',
+        label: 'Playful Kid Guide',
+        pitch: 1.25,
+        rate: 0.95,
+        greeting: "Hi space explorer! I'm Sunny! Let's discover amazing things together!"
+      },
+      nova: {
+        id: 'nova',
+        name: 'Nova 🚀',
+        label: 'Cosmic Explorer',
+        pitch: 1.10,
+        rate: 0.96,
+        greeting: "Greetings explorer! I'm Nova, your stellar science guide!"
+      },
+      paws: {
+        id: 'paws',
+        name: 'Prof. Paws 🦉',
+        label: 'Wise Storyteller',
+        pitch: 0.98,
+        rate: 0.88,
+        greeting: "Hello young scholar! I'm Professor Paws! Ready for a wonderful discovery?"
+      }
+    };
+
+    this.initVoiceEngine();
   }
 
   init() {
@@ -181,7 +214,178 @@ class CosmicAudio {
     this.playChime(783.99); // G5 chime
   }
 
-  // ================= WEB SPEECH API NARRATION =================
+  // ================= KID-FRIENDLY VOICE SYNTHESIS ENGINE =================
+  initVoiceEngine() {
+    if (!('speechSynthesis' in window)) return;
+
+    const cacheVoices = () => {
+      try {
+        const available = window.speechSynthesis.getVoices() || [];
+        if (available.length > 0) {
+          this.voices = available;
+          this.pickBestVoice();
+        }
+      } catch (e) {
+        console.warn('Could not retrieve speech voices:', e);
+      }
+    };
+
+    cacheVoices();
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = cacheVoices;
+    }
+  }
+
+  pickBestVoice() {
+    if (!this.voices || this.voices.length === 0) {
+      if ('speechSynthesis' in window) {
+        this.voices = window.speechSynthesis.getVoices() || [];
+      }
+    }
+    if (!this.voices || this.voices.length === 0) return null;
+
+    const enVoices = this.voices.filter(v => v.lang && v.lang.startsWith('en'));
+    const pool = enVoices.length > 0 ? enVoices : this.voices;
+
+    // 1. Natural Child or Youthful Voices (e.g. Microsoft Ana is specifically a young girl voice)
+    const childMatch = pool.find(v =>
+      /\b(ana|child|kid|junior|young|maisie)\b/i.test(v.name) &&
+      !/compact|espeak|robot/i.test(v.name)
+    );
+    if (childMatch) {
+      this.selectedVoice = childMatch;
+      return childMatch;
+    }
+
+    // 2. High-fidelity Natural / Neural Female voices that sound warm & maternal/teacher-like
+    const warmMatch = pool.find(v =>
+      /(jenny|aria|zoe|ava|samantha.*enhanced|samantha|allison|sonia|victoria|karen|fiona|tessa)/i.test(v.name) &&
+      !/compact|espeak|robot|bad/i.test(v.name)
+    );
+    if (warmMatch) {
+      this.selectedVoice = warmMatch;
+      return warmMatch;
+    }
+
+    // 3. Any Natural / Neural / Premium online voices
+    const naturalMatch = pool.find(v =>
+      /(natural|neural|premium|enhanced|online)/i.test(v.name) &&
+      !/compact|espeak|robot/i.test(v.name)
+    );
+    if (naturalMatch) {
+      this.selectedVoice = naturalMatch;
+      return naturalMatch;
+    }
+
+    // 4. Google US English or UK Female
+    const googleMatch = pool.find(v =>
+      /google us english|google uk english female/i.test(v.name)
+    );
+    if (googleMatch) {
+      this.selectedVoice = googleMatch;
+      return googleMatch;
+    }
+
+    // 5. Friendly non-robotic fallback (explicitly avoiding robotic synths)
+    const cleanFallback = pool.find(v =>
+      !/compact|espeak|croak|klatt|whisper|cellos|bad|bells|boing|bubbles/i.test(v.name)
+    );
+    this.selectedVoice = cleanFallback || pool[0];
+    return this.selectedVoice;
+  }
+
+  cyclePersona() {
+    const keys = ['sunny', 'nova', 'paws'];
+    const currentIdx = keys.indexOf(this.currentPersona);
+    const nextIdx = (currentIdx + 1) % keys.length;
+    this.currentPersona = keys[nextIdx];
+    const newPersona = this.personas[this.currentPersona];
+    
+    // Play cheerful chime and preview greeting
+    this.playTink();
+    this.speakText(newPersona.greeting);
+    return newPersona;
+  }
+
+  setPersona(personaKey) {
+    if (this.personas[personaKey]) {
+      this.currentPersona = personaKey;
+      return this.personas[personaKey];
+    }
+  }
+
+  getPersona() {
+    return this.personas[this.currentPersona] || this.personas.sunny;
+  }
+
+  prepareKidFriendlyText(text) {
+    if (!text) return '';
+
+    let clean = text
+      .replace(/<[^>]*>/g, ' ') // Strip HTML tags
+      .replace(/&nbsp;/g, ' ')
+      .replace(/&amp;/g, ' and ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    // Natural child-friendly pronunciations for scientific symbols, units, and jargon
+    clean = clean
+      .replace(/\b300,000\s*km\s*per\s*second\b/gi, 'three hundred thousand kilometers every single second')
+      .replace(/\b(\d+[\d,.]*)\s*km\/s\b/gi, '$1 kilometers per second')
+      .replace(/\b(\d+[\d,.]*)\s*km\/h\b/gi, '$1 kilometers per hour')
+      .replace(/\b(\d+[\d,.]*)\s*mph\b/gi, '$1 miles per hour')
+      .replace(/\b(\d+[\d,.]*)\s*km\b/gi, '$1 kilometers')
+      .replace(/\b(\d+[\d,.]*)\s*AU\b/gi, '$1 astronomical units')
+      .replace(/\b-(\d+)\s*°C\b/gi, 'minus $1 degrees Celsius')
+      .replace(/\b\+(\d+)\s*°C\b/gi, 'plus $1 degrees Celsius')
+      .replace(/\b(\d+)\s*°C\b/gi, '$1 degrees Celsius')
+      .replace(/\b(\d+[\d,.]*)\s*m\/s²\b/gi, '$1 meters per second squared')
+      .replace(/\b(\d+[\d,.]*)\s*lbs\b/gi, '$1 pounds')
+      .replace(/\b(\d+[\d,.]*)\s*x Earth\b/gi, '$1 times the size of Earth')
+      .replace(/\b3D\b/gi, 'three-D')
+      .replace(/\bapprox\./gi, 'approximately')
+      .replace(/\be\.g\.,?\b/gi, 'for example,')
+      .replace(/\bi\.e\.,?\b/gi, 'that is,')
+      .replace(/\bvs\.?\b/gi, 'versus')
+      .replace(/\bSol\b/g, 'Sole')
+      .replace(/•/g, ', ')
+      .replace(/[\(\)]/g, ', ')
+      .replace(/"/g, '')
+      .replace(/\s*:\s*/g, ': ');
+
+    // Add lively greeting pauses to educational headers
+    clean = clean
+      .replace(/^Cosmic Fact:\s*/i, 'Fun cosmic fact! ')
+      .replace(/^Did You Know\?\s*/i, 'Did you know? ')
+      .replace(/^Speed of Sunlight:\s*/i, 'Fun fact about sunlight! ');
+
+    // Smooth out consecutive commas or spaces
+    clean = clean.replace(/,\s*,/g, ',').replace(/\s+/g, ' ').trim();
+
+    return clean;
+  }
+
+  playSpeechChime() {
+    if (this.isMuted || !this.ctx) return;
+    try {
+      if (this.ctx.state === 'suspended') this.ctx.resume();
+      const now = this.ctx.currentTime;
+      // Cheerful sparkling 2-tone melodic chime: G5 (784Hz) -> C6 (1046.5Hz)
+      [783.99, 1046.50].forEach((freq, idx) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+        gain.gain.setValueAtTime(0.09, now + idx * 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.28);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now + idx * 0.08);
+        osc.stop(now + idx * 0.08 + 0.28);
+      });
+    } catch (e) {}
+  }
+
   speakText(text, onStart, onEnd, onError) {
     if (!('speechSynthesis' in window)) {
       console.warn('Web Speech API is not supported in this browser.');
@@ -197,30 +401,23 @@ class CosmicAudio {
       return;
     }
 
-    // Clean text: strip HTML and clean up special characters
-    const cleanText = text.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.rate = 0.95; // Clear, friendly educational cadence
-    utterance.pitch = 1.05; // Slightly warm/bright tone for kids
+    // Play sparkling chime to grab child's attention
+    this.playSpeechChime();
 
-    // Find best English voice (prefer natural/humanoid voices)
-    const voices = window.speechSynthesis.getVoices();
-    if (voices && voices.length > 0) {
-      const preferred = voices.find(v => v.lang.startsWith('en') && (
-        v.name.includes('Natural') ||
-        v.name.includes('Samantha') ||
-        v.name.includes('Google US English') ||
-        v.name.includes('Daniel') ||
-        v.name.includes('Victoria') ||
-        v.name.includes('Karen') ||
-        v.name.includes('Alex')
-      ));
-      if (preferred) {
-        utterance.voice = preferred;
-      } else {
-        const anyEn = voices.find(v => v.lang.startsWith('en'));
-        if (anyEn) utterance.voice = anyEn;
-      }
+    // Prepare natural kid-friendly phonetics and phrasing
+    const cleanText = this.prepareKidFriendlyText(text);
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+
+    // Apply voice persona settings (elevated pitch and friendly pacing)
+    const persona = this.getPersona();
+    utterance.pitch = persona.pitch;
+    utterance.rate = persona.rate;
+    utterance.volume = 1.0;
+
+    // Assign top natural/child voice
+    const voice = this.pickBestVoice();
+    if (voice) {
+      utterance.voice = voice;
     }
 
     utterance.onstart = () => {
@@ -241,7 +438,17 @@ class CosmicAudio {
       if (onEnd) onEnd();
     };
 
-    window.speechSynthesis.speak(utterance);
+    // Small delay so sparkling chime rings cleanly before voice speaks
+    setTimeout(() => {
+      try {
+        if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        }
+        window.speechSynthesis.speak(utterance);
+      } catch (err) {
+        console.warn('SpeechSynthesis error on speak:', err);
+      }
+    }, 160);
   }
 
   stopSpeaking() {
