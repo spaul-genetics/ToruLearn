@@ -176,6 +176,84 @@ class CosmicAudio {
   playPlanetSelect() {
     this.playChime(587.33); // D5 chime
   }
+
+  playTink() {
+    this.playChime(783.99); // G5 chime
+  }
+
+  // ================= WEB SPEECH API NARRATION =================
+  speakText(text, onStart, onEnd, onError) {
+    if (!('speechSynthesis' in window)) {
+      console.warn('Web Speech API is not supported in this browser.');
+      if (onError) onError('Speech synthesis not supported');
+      return;
+    }
+
+    // Cancel any active utterance
+    window.speechSynthesis.cancel();
+
+    if (!text || text.trim() === '') {
+      if (onEnd) onEnd();
+      return;
+    }
+
+    // Clean text: strip HTML and clean up special characters
+    const cleanText = text.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.rate = 0.95; // Clear, friendly educational cadence
+    utterance.pitch = 1.05; // Slightly warm/bright tone for kids
+
+    // Find best English voice (prefer natural/humanoid voices)
+    const voices = window.speechSynthesis.getVoices();
+    if (voices && voices.length > 0) {
+      const preferred = voices.find(v => v.lang.startsWith('en') && (
+        v.name.includes('Natural') ||
+        v.name.includes('Samantha') ||
+        v.name.includes('Google US English') ||
+        v.name.includes('Daniel') ||
+        v.name.includes('Victoria') ||
+        v.name.includes('Karen') ||
+        v.name.includes('Alex')
+      ));
+      if (preferred) {
+        utterance.voice = preferred;
+      } else {
+        const anyEn = voices.find(v => v.lang.startsWith('en'));
+        if (anyEn) utterance.voice = anyEn;
+      }
+    }
+
+    utterance.onstart = () => {
+      this.isNarrating = true;
+      if (onStart) onStart();
+    };
+
+    utterance.onend = () => {
+      this.isNarrating = false;
+      if (onEnd) onEnd();
+    };
+
+    utterance.onerror = (e) => {
+      this.isNarrating = false;
+      if (e.error !== 'interrupted' && e.error !== 'canceled') {
+        console.warn('Speech synthesis error:', e);
+      }
+      if (onEnd) onEnd();
+    };
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  stopSpeaking() {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      this.isNarrating = false;
+    }
+  }
+
+  isSpeaking() {
+    return 'speechSynthesis' in window && (window.speechSynthesis.speaking || window.speechSynthesis.pending);
+  }
 }
 
 // Global sound manager instance

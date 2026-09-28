@@ -661,27 +661,150 @@ input[type="range"]:active::-moz-range-thumb {
 /* Fun Fact Callout Box */
 .fun-fact-box {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: 10px;
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(168, 85, 247, 0.08) 100%);
   border: 1px solid rgba(245, 158, 11, 0.3);
   border-radius: var(--radius-md);
   padding: 14px;
   margin: 16px 0;
+  transition: all 0.3s ease;
+}
+
+.fun-fact-box.narrating {
+  border-color: #38bdf8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.18) 0%, rgba(168, 85, 247, 0.12) 100%);
+}
+
+.fun-fact-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.fun-fact-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.speak-fact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(56, 189, 248, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  color: #38bdf8;
+  padding: 4px 11px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.speak-fact-btn:hover {
+  background: rgba(56, 189, 248, 0.3);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.35);
+}
+
+.speak-fact-btn.speaking {
+  background: rgba(245, 158, 11, 0.25);
+  border-color: #f59e0b;
+  color: #fef08a;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+  animation: speakPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes speakPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(245, 158, 11, 0);
+  }
 }
 
 .fact-icon {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   flex-shrink: 0;
 }
 
 .fact-text {
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   color: #fef08a;
   line-height: 1.55;
+  transition: color 0.25s ease;
+}
+
+.fun-fact-box.narrating .fact-text {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
 }
 
 .fact-text strong {
   color: #ffffff;
+}
+
+/* Notable Moons List Styling */
+.moons-list-box {
+  margin: 12px 0 16px 0;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+}
+
+.moons-title {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.moons-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.moon-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  color: #e2e8f0;
+  transition: all 0.2s ease;
+  cursor: help;
+}
+
+.moon-pill:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.moon-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
 }
 
 /* Concept Bullet Lists */

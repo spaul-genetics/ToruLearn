@@ -55,6 +55,7 @@ class SolarSystemSim {
         yearLength: '88 Earth days',
         temp: '-180°C to +430°C',
         moons: 0,
+        majorMoons: [],
         gravity: '3.7 m/s² (0.38g)',
         description: 'Mercury is the smallest and fastest planet in our solar system! Because it has virtually no atmosphere to trap heat, daytime surfaces reach an oven-hot 430°C, while nighttime plunges to a freezing -180°C.',
         fact: 'A year on Mercury (88 days) is shorter than one of its full day-night cycles (176 Earth days from sunrise to sunrise)!'
@@ -77,6 +78,7 @@ class SolarSystemSim {
         yearLength: '225 Earth days',
         temp: '465°C (Hottest Planet!)',
         moons: 0,
+        majorMoons: [],
         gravity: '8.87 m/s² (0.91g)',
         description: 'Often called Earth\'s "evil twin", Venus is blanketed in thick clouds of suffocating carbon dioxide and sulfuric acid. Its extreme greenhouse effect traps heat, making it hotter than an oven day and night.',
         fact: 'Venus spins backward (retrograde rotation) compared to most other planets, so the Sun rises in the west and sets in the east!'
@@ -99,6 +101,9 @@ class SolarSystemSim {
         yearLength: '365.25 days',
         temp: 'Average 15°C',
         moons: 1,
+        majorMoons: [
+          { name: 'Moon (Luna)', dist: 16, speed: 0.24, size: 2.5, color: '#f1f5f9', details: 'Earth\'s only natural satellite, causing ocean tides and stabilizing our climate.' }
+        ],
         gravity: '9.81 m/s² (1.0g)',
         description: 'Our home oasis! Earth is the only known world in the universe confirmed to harbor liquid water, a protective magnetic field, an oxygen-rich atmosphere, and abundant life.',
         fact: 'Earth\'s atmosphere protects us from meteoroids, burning up thousands of space rocks every single day as "shooting stars"!'
@@ -121,9 +126,13 @@ class SolarSystemSim {
         yearLength: '687 Earth days',
         temp: 'Average -63°C',
         moons: 2,
+        majorMoons: [
+          { name: 'Phobos', dist: 13, speed: 0.46, size: 1.6, color: '#e2e8f0', details: 'Innermost and larger moon of Mars; orbits so fast it circles Mars 3 times per day!' },
+          { name: 'Deimos', dist: 19, speed: 0.22, size: 1.3, color: '#cbd5e1', details: 'Outermost smaller moon of Mars, potato-shaped and likely a captured carbon-rich asteroid.' }
+        ],
         gravity: '3.72 m/s² (0.38g)',
         description: 'Mars gets its rusty red hue from iron oxide (rust) covering its surface. It hosts the largest volcano in the entire solar system: Olympus Mons, standing 3 times taller than Mount Everest!',
-        fact: 'Mars has two tiny, potato-shaped moons named Phobos and Deimos, which may be captured asteroids!'
+        fact: 'Mars has two tiny, potato-shaped moons named Phobos and Deimos, which may be captured asteroids from the nearby asteroid belt!'
       },
       {
         name: 'Jupiter',
@@ -143,6 +152,12 @@ class SolarSystemSim {
         yearLength: '11.86 Earth years',
         temp: '-110°C (Cloud tops)',
         moons: 95,
+        majorMoons: [
+          { name: 'Io', dist: 25, speed: 0.40, size: 2.0, color: '#facc15', details: 'The most volcanically active body in the Solar System, with hundreds of erupting lava lakes.' },
+          { name: 'Europa', dist: 32, speed: 0.29, size: 1.8, color: '#bae6fd', details: 'Smooth water-ice crust sheltering a massive liquid ocean with twice the water of all Earth\'s oceans combined!' },
+          { name: 'Ganymede', dist: 40, speed: 0.20, size: 2.7, color: '#cbd5e1', details: 'The largest moon in the Solar System—larger than planet Mercury and dwarf planet Pluto!' },
+          { name: 'Callisto', dist: 49, speed: 0.13, size: 2.4, color: '#94a3b8', details: 'The most heavily cratered ancient world in our Solar System, with no volcanic resurfacing.' }
+        ],
         gravity: '24.79 m/s² (2.53g)',
         description: 'Jupiter is more than twice as massive as all other solar system planets combined! Its famous "Great Red Spot" is a mammoth anticyclonic storm larger than Earth that has raged for over 300 years.',
         fact: 'Jupiter acts as a cosmic vacuum cleaner! Its immense gravity pulls in or deflects many dangerous comets and asteroids, shielding Earth.'
@@ -168,6 +183,12 @@ class SolarSystemSim {
         yearLength: '29.45 Earth years',
         temp: '-140°C',
         moons: 146,
+        majorMoons: [
+          { name: 'Mimas', dist: 26, speed: 0.38, size: 1.4, color: '#e2e8f0', details: 'Nicknamed the "Death Star" moon due to the colossal 130 km wide Herschel impact crater.' },
+          { name: 'Enceladus', dist: 31, speed: 0.30, size: 1.6, color: '#ffffff', details: 'Pure white ice moon with towering geysers blasting subsurface ocean water into space!' },
+          { name: 'Rhea', dist: 38, speed: 0.22, size: 1.8, color: '#cbd5e1', details: 'Saturn\'s second-largest moon, consisting almost entirely of water ice and rock.' },
+          { name: 'Titan', dist: 48, speed: 0.14, size: 2.8, color: '#f59e0b', details: 'Giant moon with a thick golden nitrogen atmosphere, rain clouds, and lakes of liquid methane!' }
+        ],
         gravity: '10.44 m/s² (1.06g)',
         description: 'Saturn is crowned with the most magnificent ring system in space. Although spanning 282,000 km across, the main rings are razor-thin—only about 10 to 30 meters thick—composed of billions of chunks of water ice and rock!',
         fact: 'Saturn is the only planet in our solar system less dense than water! If you had a bathtub big enough, Saturn would literally float!'
@@ -191,6 +212,13 @@ class SolarSystemSim {
         yearLength: '84 Earth years',
         temp: '-195°C (Coldest Atmosphere)',
         moons: 28,
+        majorMoons: [
+          { name: 'Miranda', dist: 17, speed: 0.36, size: 1.3, color: '#e2e8f0', details: 'Features Verona Rupes, the tallest sheer cliff in the Solar System dropping 20 km (12 miles)!' },
+          { name: 'Ariel', dist: 22, speed: 0.27, size: 1.6, color: '#bae6fd', details: 'Brightest and geologically youngest surface of all Uranian moons, scored by rift valleys.' },
+          { name: 'Umbriel', dist: 28, speed: 0.20, size: 1.5, color: '#94a3b8', details: 'Darkest major moon of Uranus, heavily cratered with mysterious bright ring craters.' },
+          { name: 'Titania', dist: 34, speed: 0.15, size: 1.9, color: '#cbd5e1', details: 'Largest moon of Uranus, crisscrossed by immense fault scarps and icy canyon valleys.' },
+          { name: 'Oberon', dist: 41, speed: 0.11, size: 1.8, color: '#94a3b8', details: 'Second-largest and outermost major moon of Uranus, covered in dark-floored impact craters.' }
+        ],
         gravity: '8.69 m/s² (0.89g)',
         description: 'Uranus is an icy world made of water, ammonia, and methane ice crystals that scatter sunlight to give it a stunning aquamarine glow. It rotates completely sideways with an extreme axial tilt of 98 degrees!',
         fact: 'Because Uranus rolls on its side, each pole experiences 42 continuous years of uninterrupted sunlight followed by 42 years of freezing darkness.'
@@ -213,6 +241,10 @@ class SolarSystemSim {
         yearLength: '164.8 Earth years',
         temp: '-200°C',
         moons: 16,
+        majorMoons: [
+          { name: 'Proteus', dist: 18, speed: 0.33, size: 1.4, color: '#94a3b8', details: 'Second largest moon of Neptune, irregularly shaped like a boxy polyhedron.' },
+          { name: 'Triton', dist: 28, speed: -0.21, size: 2.5, color: '#a7f3d0', details: 'The only large moon in the Solar System that orbits backward (retrograde); erupts nitrogen ice geysers!' }
+        ],
         gravity: '11.15 m/s² (1.14g)',
         description: 'Deep azure Neptune is the most distant major planet in our solar system. It whips up the fastest atmospheric winds recorded anywhere in the solar system, gusting at up to 2,100 km/h (1,300 mph)!',
         fact: 'Neptune was the first planet discovered through pure mathematical prediction rather than direct telescope observation!'
@@ -235,6 +267,10 @@ class SolarSystemSim {
         yearLength: '248 Earth years',
         temp: '-230°C',
         moons: 5,
+        majorMoons: [
+          { name: 'Charon', dist: 14, speed: 0.22, size: 2.1, color: '#cbd5e1', details: 'Pluto\'s giant partner moon; half the size of Pluto, they orbit a mutual balance point in space!' },
+          { name: 'Hydra', dist: 22, speed: 0.11, size: 1.1, color: '#94a3b8', details: 'Small outer moon of Pluto covered in reflective water ice that tumbles chaotically.' }
+        ],
         gravity: '0.62 m/s² (0.06g)',
         description: 'Reclassified as a Dwarf Planet in 2006, Pluto is a captivating world in the icy Kuiper Belt. In 2015, NASA\'s New Horizons spacecraft revealed a towering nitrogen glacier shaped like a giant Valentine\'s heart (Tombaugh Regio)!',
         fact: 'Pluto\'s largest moon, Charon, is so huge relative to Pluto that the two actually orbit a common center of gravity out in the space between them!'
@@ -469,6 +505,10 @@ class SolarSystemSim {
         if (p) this.selectPlanet(p);
       });
     });
+
+    // Initial overview card speech button
+    const initialFact = "The Sun is so gigantic that 1.3 million Earths could fit inside it! Yet, compared to other stars in our Milky Way galaxy, our Sun is just an average yellow dwarf star.";
+    this.bindSpeechButton(initialFact, 'ss-speak-fact-btn', '#ss-fun-fact-box');
   }
 
   handleHover(e) {
@@ -500,7 +540,43 @@ class SolarSystemSim {
     };
   }
 
+  bindSpeechButton(textToSpeak, btnId, boxSelector) {
+    const btn = document.getElementById(btnId);
+    const box = document.querySelector(boxSelector);
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+      if (window.cosmicAudio?.isSpeaking()) {
+        window.cosmicAudio.stopSpeaking();
+        btn.classList.remove('speaking');
+        btn.innerHTML = '<span class="speak-icon">🔊</span><span class="speak-label">Read Aloud</span>';
+        if (box) box.classList.remove('narrating');
+        return;
+      }
+
+      btn.classList.add('speaking');
+      btn.innerHTML = '<span class="speak-icon">⏹</span><span class="speak-label">Stop</span>';
+      if (box) box.classList.add('narrating');
+
+      window.cosmicAudio?.speakText(
+        textToSpeak,
+        () => {},
+        () => {
+          btn.classList.remove('speaking');
+          btn.innerHTML = '<span class="speak-icon">🔊</span><span class="speak-label">Read Aloud</span>';
+          if (box) box.classList.remove('narrating');
+        },
+        () => {
+          btn.classList.remove('speaking');
+          btn.innerHTML = '<span class="speak-icon">🔊</span><span class="speak-label">Read Aloud</span>';
+          if (box) box.classList.remove('narrating');
+        }
+      );
+    });
+  }
+
   resetCamera() {
+    window.cosmicAudio?.stopSpeaking();
     this.camera.targetX = 0;
     this.camera.targetY = 0;
     this.camera.targetZoom = 1;
@@ -522,6 +598,7 @@ class SolarSystemSim {
   }
 
   selectSun() {
+    window.cosmicAudio?.stopSpeaking();
     this.selectedPlanet = null;
     this.camera.targetX = 0;
     this.camera.targetY = 0;
@@ -545,6 +622,7 @@ class SolarSystemSim {
     if (!titleEl || !contentEl) return;
 
     titleEl.textContent = 'The Sun (Sol)';
+    const sunFact = "Light travels at 300,000 km per second! Even at that unfathomable speed, sunlight takes 8 minutes and 20 seconds to travel across space to reach Earth.";
     contentEl.innerHTML = `
       <h3>The Heart of Our Solar System</h3>
       <p>The Sun is a blazing <strong>Yellow Dwarf star (G-type main-sequence)</strong> at the center of everything. Through nuclear fusion at its core, it fuses 600 million tons of hydrogen into helium every second, generating the radiant light and warmth that makes life on Earth possible.</p>
@@ -556,14 +634,26 @@ class SolarSystemSim {
         <div class="stat-item"><span class="stat-label">Surface Temp</span><span class="stat-value">5,500°C</span></div>
       </div>
       
-      <div class="fun-fact-box">
-        <span class="fact-icon">☀️</span>
-        <div class="fact-text"><strong>Speed of Sunlight:</strong> Light travels at 300,000 km per second! Even at that unfathomable speed, sunlight takes <strong>8 minutes and 20 seconds</strong> to travel across space to reach Earth.</div>
+      <div class="fun-fact-box" id="ss-fun-fact-box">
+        <div class="fun-fact-header">
+          <div class="fun-fact-header-left">
+            <span class="fact-icon">☀️</span>
+            <strong>Speed of Sunlight</strong>
+          </div>
+          <button id="ss-speak-fact-btn" class="speak-fact-btn" title="Read fun fact aloud" aria-label="Read fun fact aloud">
+            <span class="speak-icon">🔊</span>
+            <span class="speak-label">Read Aloud</span>
+          </button>
+        </div>
+        <div class="fact-text">${sunFact}</div>
       </div>
     `;
+
+    this.bindSpeechButton(sunFact, 'ss-speak-fact-btn', '#ss-fun-fact-box');
   }
 
   selectPlanet(p) {
+    window.cosmicAudio?.stopSpeaking();
     this.selectedPlanet = p;
     window.cosmicAudio?.playChime(500);
     document.querySelectorAll('.planet-quick-btn').forEach(b => b.classList.toggle('active', b.dataset.planet.toLowerCase() === p.name.toLowerCase()));
@@ -591,6 +681,27 @@ class SolarSystemSim {
     if (!titleEl || !contentEl) return;
 
     titleEl.textContent = `${p.name}`;
+
+    const moonsHtml = (p.majorMoons && p.majorMoons.length > 0)
+      ? `
+        <div class="moons-list-box">
+          <span class="moons-title">Notable Moons (${p.moons} total)</span>
+          <div class="moons-tags">
+            ${p.majorMoons.map(m => `
+              <span class="moon-pill" title="${m.name}: ${m.details}">
+                <span class="moon-dot" style="background: ${m.color || '#cbd5e1'};"></span>
+                <strong>${m.name}</strong>
+              </span>
+            `).join('')}
+          </div>
+        </div>
+      `
+      : (p.moons === 0 ? `
+        <div class="moons-list-box" style="padding: 7px 12px;">
+          <span style="font-size: 0.8rem; color: #94a3b8;">🌙 No natural satellites or moons</span>
+        </div>
+      ` : '');
+
     contentEl.innerHTML = `
       <h3>${p.type}</h3>
       <p>${p.description}</p>
@@ -604,9 +715,20 @@ class SolarSystemSim {
         <div class="stat-item"><span class="stat-label">Moons</span><span class="stat-value">${p.moons}</span></div>
       </div>
 
-      <div class="fun-fact-box">
-        <span class="fact-icon">🚀</span>
-        <div class="fact-text"><strong>Cosmic Fact:</strong> ${p.fact}</div>
+      ${moonsHtml}
+
+      <div class="fun-fact-box" id="ss-fun-fact-box">
+        <div class="fun-fact-header">
+          <div class="fun-fact-header-left">
+            <span class="fact-icon">🚀</span>
+            <strong>Cosmic Fact</strong>
+          </div>
+          <button id="ss-speak-fact-btn" class="speak-fact-btn" title="Read fun fact aloud" aria-label="Read fun fact aloud">
+            <span class="speak-icon">🔊</span>
+            <span class="speak-label">Read Aloud</span>
+          </button>
+        </div>
+        <div class="fact-text">${p.fact}</div>
       </div>
 
       <div class="interactive-prompt">
@@ -614,6 +736,20 @@ class SolarSystemSim {
         <p>Surface gravity is <strong>${p.gravity}</strong>. If you weigh 70 lbs on Earth, you would weigh approximately <strong>${(70 * (parseFloat(p.gravity) / 9.81)).toFixed(1)} lbs</strong> on ${p.name}!</p>
       </div>
     `;
+
+    const speechText = `${p.name}. ${p.description}. Cosmic fact: ${p.fact}`;
+    this.bindSpeechButton(speechText, 'ss-speak-fact-btn', '#ss-fun-fact-box');
+
+    // Click moon pills to hear their individual lore
+    contentEl.querySelectorAll('.moon-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        window.cosmicAudio?.playTink();
+        const moonTitle = pill.getAttribute('title');
+        if (moonTitle) {
+          window.cosmicAudio?.speakText(moonTitle);
+        }
+      });
+    });
   }
 
   update(dt) {
@@ -788,17 +924,39 @@ class SolarSystemSim {
         ctx.restore();
       }
 
-      // Earth's Moon (with realistic moon texture or bright lunar sphere)
-      if (p.name === 'Earth') {
-        const moonDist = rad + 12;
-        const moonAngle = this.timeDays * 0.23; // Moon completes orbit ~27.3 days
-        const mx = px + Math.cos(moonAngle) * moonDist;
-        const my = py + Math.sin(moonAngle) * moonDist * 0.7;
+      // Major Moons rendering for each planet (Mars: Phobos & Deimos, Jupiter Galilean moons, Saturn, etc.)
+      if (p.majorMoons && p.majorMoons.length > 0) {
+        for (const m of p.majorMoons) {
+          const mDist = rad + m.dist;
+          const mAngle = this.timeDays * m.speed;
+          const mx = px + Math.cos(mAngle) * mDist;
+          const my = py + Math.sin(mAngle) * mDist * 0.72; // perspective tilt
 
-        ctx.beginPath();
-        ctx.arc(mx, my, 2.5, 0, Math.PI * 2);
-        ctx.fillStyle = '#f1f5f9';
-        ctx.fill();
+          // Draw moon orbit ellipse around host planet
+          ctx.beginPath();
+          ctx.ellipse(px, py, mDist, mDist * 0.72, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = (p === this.selectedPlanet || p === this.hoveredPlanet)
+            ? 'rgba(255, 255, 255, 0.28)'
+            : 'rgba(255, 255, 255, 0.08)';
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+
+          // Draw moon body
+          ctx.beginPath();
+          ctx.arc(mx, my, m.size, 0, Math.PI * 2);
+          ctx.fillStyle = m.color || '#e2e8f0';
+          ctx.fill();
+
+          // Moon label when labels are on and camera is zoomed in or planet selected/hovered
+          if (this.showLabels && (this.camera.zoom > 1.35 || p === this.selectedPlanet || p === this.hoveredPlanet)) {
+            ctx.font = '500 9px Outfit, sans-serif';
+            ctx.fillStyle = (p === this.selectedPlanet || p === this.hoveredPlanet)
+              ? '#ffffff'
+              : 'rgba(226, 232, 240, 0.75)';
+            ctx.textAlign = 'center';
+            ctx.fillText(m.name, mx, my - m.size - 3);
+          }
+        }
       }
 
       // Planet Label

@@ -698,6 +698,7 @@ class SkeletonSim3D {
 
   // ================= BONE SELECTION & DETAIL DISPLAY =================
   selectBoneByName(boneId, specificSubName = null) {
+    window.cosmicAudio?.stopSpeaking();
     const data = this.boneDatabase[boneId];
     if (!data) return;
 
@@ -787,9 +788,15 @@ class SkeletonSim3D {
       </div>
 
       <div style="margin-bottom: 16px;">
-        <h4 style="font-size: 0.95rem; color: #ffffff; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-          <span>💡</span> Fascinating Kid Science Facts:
-        </h4>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 8px;">
+          <h4 style="font-size: 0.95rem; color: #ffffff; margin: 0; display: flex; align-items: center; gap: 6px;">
+            <span>💡</span> Fascinating Kid Science Facts:
+          </h4>
+          <button id="skeleton-speak-btn" class="speak-fact-btn" title="Read bone facts aloud" aria-label="Read bone facts aloud">
+            <span class="speak-icon">🔊</span>
+            <span class="speak-label">Read Aloud</span>
+          </button>
+        </div>
         <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px;">
           ${data.facts.map(f => `
             <li style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5; background: rgba(255, 255, 255, 0.04); padding: 8px 12px; border-radius: var(--radius-sm); border-left: 2px solid ${data.color};">
@@ -804,6 +811,36 @@ class SkeletonSim3D {
         <span style="color: #38bdf8; font-weight: 600;">206 Total Adult Bones</span>
       </div>
     `;
+
+    // Bind Read Aloud narration button
+    const speakBtn = document.getElementById('skeleton-speak-btn');
+    if (speakBtn) {
+      const textToRead = `${displayName}. Also known as ${data.latin}. Function: ${data.function}. Fun facts: ${data.facts.join('. ')}`;
+      speakBtn.addEventListener('click', () => {
+        if (window.cosmicAudio?.isSpeaking()) {
+          window.cosmicAudio.stopSpeaking();
+          speakBtn.classList.remove('speaking');
+          speakBtn.innerHTML = '<span class="speak-icon">🔊</span><span class="speak-label">Read Aloud</span>';
+          return;
+        }
+
+        speakBtn.classList.add('speaking');
+        speakBtn.innerHTML = '<span class="speak-icon">⏹</span><span class="speak-label">Stop</span>';
+
+        window.cosmicAudio?.speakText(
+          textToRead,
+          () => {},
+          () => {
+            speakBtn.classList.remove('speaking');
+            speakBtn.innerHTML = '<span class="speak-icon">🔊</span><span class="speak-label">Read Aloud</span>';
+          },
+          () => {
+            speakBtn.classList.remove('speaking');
+            speakBtn.innerHTML = '<span class="speak-icon">🔊</span><span class="speak-label">Read Aloud</span>';
+          }
+        );
+      });
+    }
   }
 
   setupUIControls() {
